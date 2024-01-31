@@ -20,7 +20,7 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
             #hero{
                 -webkit-clip-path: ellipse(150% 87% at 93% 13%);
                 clip-path: ellipse(150% 87% at 93% 13%);
-                height: 530px;
+                height: 580px;
             }
         }
 
@@ -28,7 +28,6 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
             #hero > img {
                 position: absolute;
                 transform:scale(1.2);
-                top:15%;
             }
 
         #hero > div > p {
