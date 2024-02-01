@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Service } from 'src/app/models/models';
-import { ServiceService } from 'src/app/service/service.service';
+import { ServiceService } from 'src/app/service/service/service.service';
 
 @Component({
     templateUrl: './service-crud.component.html',
