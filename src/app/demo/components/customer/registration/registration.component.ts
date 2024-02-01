@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
+    selector: 'app-registration-customer',
+    templateUrl: './registration.component.html',
     styles: [`
         :host ::ng-deep .p-password input {
             width: 100%;
@@ -24,11 +24,18 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
         }
     `]
 })
-export class LoginComponent {
+export class RegistrationComponent {
 
     valCheck: string[] = ['remember'];
 
     password!: string;
+
+    selectedState: any;
+
+    dropdownItems = [
+        { name: 'Homme', code: 'Homme' },
+        { name: 'Femme', code: 'Femme' }
+    ];
 
     constructor(public layoutService: LayoutService, public router: Router) { }
 }
