@@ -28,8 +28,9 @@ export class ServiceService {
 //       }))
 
 //   }
-getService(next: (res: any) => any){
-      this.http.get("http://localhost:5050/api/service").subscribe((res=>{
+getService(query:any ,next: (res: any) => any){
+
+      this.http.get("http://localhost:5050/api/service"+query).subscribe((res=>{
         next(res);
         close();
       }))

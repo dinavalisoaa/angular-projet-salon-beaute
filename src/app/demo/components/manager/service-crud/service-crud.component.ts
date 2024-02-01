@@ -37,7 +37,7 @@ export class ServiceCrudComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.fetchList();
+        this.fetchList("");
 
         // this.serviceService.getServices().then(data => );
         // console.log(this.services)
@@ -128,12 +128,18 @@ export class ServiceCrudComponent implements OnInit {
         this.serviceDialog = false;
         this.submitted = false;
     }
-    fetchList() {
-        this.serviceService.getService((res) => {
+    fetchList(query:string) {
+        this.serviceService.getService(query,(res) => {
             this.services = res;
         });
     }
-
+    search(){
+        const commission = this.service.commission;
+        const duration = this.service.duration;
+        const name = this.service.name;
+        const price = this.service.price;
+        const illustration = this.service.illustration;
+    }
     saveService() {
         const commission = this.service.commission;
         const duration = this.service.duration;
@@ -158,7 +164,7 @@ export class ServiceCrudComponent implements OnInit {
                     detail: 'Service Created',
                     life: 3000,
                 });
-                this.fetchList();
+                this.fetchList("");
             });
         } else {
             this.serviceService.updateService(data, this.service._id, () => {
@@ -168,7 +174,7 @@ export class ServiceCrudComponent implements OnInit {
                     detail: 'Service Updated',
                     life: 3000,
                 });
-                this.fetchList();
+                this.fetchList("");
             });
         }
         this.serviceDialog = false;
