@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
-    selector: 'app-login',
+    selector: 'app-login-customer',
     templateUrl: './login.component.html',
     styles: [`
         :host ::ng-deep .p-password input {
