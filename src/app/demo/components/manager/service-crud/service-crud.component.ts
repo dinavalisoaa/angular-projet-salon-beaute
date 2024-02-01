@@ -11,6 +11,8 @@ import { ServiceService } from 'src/app/service/service.service';
 export class ServiceCrudComponent implements OnInit {
     serviceDialog: boolean = false;
 
+    filtreDialog: boolean = false;
+
     deleteServiceDialog: boolean = false;
 
     deleteServicesDialog: boolean = false;
@@ -53,7 +55,27 @@ export class ServiceCrudComponent implements OnInit {
             { label: 'OUTOFSTOCK', value: 'outofstock' },
         ];
     }
+    myUploader(event: any, service?: any) {
+        console.log('onUpload() START');
 
+        for (let file of event.files) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                //   console.log(reader.result);
+                service.illustration = reader.result;
+                //   =reader.result;
+            };
+            console.log('FILE TO BE UPLOADED: ', file);
+            //   this.uploadedFiles.push(file);
+        }
+        // this.service.illustration=
+        this.messageService.add({
+            severity: 'info',
+            summary: 'File Uploaded',
+            detail: '',
+        });
+    }
     openNew() {
         this.service = {};
         this.submitted = false;
@@ -117,10 +139,18 @@ export class ServiceCrudComponent implements OnInit {
         const duration = this.service.duration;
         const name = this.service.name;
         const price = this.service.price;
-        const data: Service = { name, price, commission, duration };
+        const illustration = this.service.illustration;
+        const data: Service = {
+            name,
+            price,
+            commission,
+            duration,
+            illustration,
+        };
 
         if (this.service._id == undefined) {
             this.submitted = true;
+            console.log(data);
             this.serviceService.saveService(data, () => {
                 this.messageService.add({
                     severity: 'success',
@@ -131,7 +161,7 @@ export class ServiceCrudComponent implements OnInit {
                 this.fetchList();
             });
         } else {
-            this.serviceService.updateService(data,this.service._id, () => {
+            this.serviceService.updateService(data, this.service._id, () => {
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Successful',

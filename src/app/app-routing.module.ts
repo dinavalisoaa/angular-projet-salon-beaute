@@ -20,14 +20,14 @@ import { MydashboardComponent } from './demo/components/mydashboard/mydashboard.
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
                     // New Update Template
                     { path: 'mydashboard', component: MydashboardComponent },
-            { path: 'manager', loadChildren: () => import('./pages/manager/manager.module').then(m => m.ManagerModule) },
+            { path: 'manager', loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
+
 
                 ],
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'customer', loadChildren: () => import('./demo/components/customer/customer.module').then(m => m.CustomerModule) },
             { path: 'employee', loadChildren: () => import('./demo/components/employee/employee.module').then(m => m.EmployeeModule) },
-            { path: 'manager', loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             { path: 'pages/notfound', component: NotfoundComponent },
             { path: '**', redirectTo: 'pages/notfound' },

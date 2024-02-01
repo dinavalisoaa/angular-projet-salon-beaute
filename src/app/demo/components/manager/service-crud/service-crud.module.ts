@@ -26,6 +26,7 @@ import { ServiceCrudComponent } from './service-crud.component';
         FormsModule,
         ButtonModule,
         RippleModule,
+        FileUploadModule,
         ToastModule,
         ToolbarModule,
         RatingModule,

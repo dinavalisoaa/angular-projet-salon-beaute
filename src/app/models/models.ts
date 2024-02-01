@@ -4,6 +4,7 @@ export interface Service {
     price?: number,
     duration?: number,
     commission?: number
+    illustration?:string
 }
 
 // export interface Representative {

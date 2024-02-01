@@ -28,9 +28,8 @@
             <th style="width: 3rem">
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
-            <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon></th>
             <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-            <th>Image</th>
             <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
             <th pSortableColumn="duration">Duration <p-sortIcon field="duration"></p-sortIcon></th>
             <th pSortableColumn="commission">Commission <p-sortIcon field="commission"></p-sortIcon></th>
@@ -42,16 +41,18 @@
             <td>
                 <p-tableCheckbox [value]="service"></p-tableCheckbox>
             </td>
-            <td style="width:14%; min-width:10rem;"><span class="p-column-title">Code</span>
-                {{ service._id}}
+            <td style="width:14%; min-width:10rem;">
+                <span class="p-column-title">Name</span>
+               <img [src]="service.illustration" [alt]="service.name" width="100" class="shadow-4" />
             </td>
             <td style="width:14%; min-width:10rem;">
                 <span class="p-column-title">Name</span>
                 {{service.name}}
             </td>
+
             <td style="width:14%; min-width:10rem;"><span class="p-column-title">Price</span>
                 {{service.price}}
-                <!-- <img [src]="'assets/demo/images/service/' + service.image" [alt]="service.name" width="100" class="shadow-4" /> -->
+
             </td>
             <td style="width:14%; min-width:8rem;">
                 <span class="p-column-title">Duration</span>
@@ -75,10 +76,51 @@
     <ng-template pTemplate="content">
         <div class="field">
             <label for="name">Name</label>
+        <p-fileUpload name="myfile[]" [customUpload]="true" (uploadHandler)="myUploader($event,service)"></p-fileUpload>
+    </div>
+        <div class="field">
+            <label for="name">Names</label>
             <input type="text" pInputText id="name" [(ngModel)]="service.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !service.name}"/>
             <small class="ng-dirty ng-invalid" *ngIf="submitted && !service.name">Name is required.</small>
         </div>
         <input type="hidden" pInputText id="_id" [(ngModel)]="service._id" />
+        <input type="hidden" pInputText id="_id" [(ngModel)]="service.illustration" />
+
+        <div class="field">
+            <label for="Ccmmission">Commission</label>
+            <input type="number" pInputText id="commission" [(ngModel)]="service.commission" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !service.commission}"/>
+            <small class="ng-dirty ng-invalid" *ngIf="submitted && !service.commission">Commission is required.</small>
+
+        </div>
+        <div class="field">
+            <label for="description">Duration</label>
+            <input type="number" pInputText id="duration" [(ngModel)]="service.duration" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !service.duration}"/>
+            <small class="ng-dirty ng-invalid" *ngIf="submitted && !service.duration">Duration is required.</small>
+
+        </div>
+        <div class="field">
+            <label for="description">Price</label>
+            <input type="number" pInputText id="price" [(ngModel)]="service.price" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !service.price}"/>
+            <small class="ng-dirty ng-invalid" *ngIf="submitted && !service.price">Price is required.</small>
+
+        </div>
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveService()"></button>
+        </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="filtreDialog" [style]="{width: '450px'}" header="Service Details" [modal]="true" class="p-fluid">
+        <div class="field">
+            <label for="name">Names</label>
+            <input type="text" pInputText id="name" [(ngModel)]="service.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !service.name}"/>
+            <small class="ng-dirty ng-invalid" *ngIf="submitted && !service.name">Name is required.</small>
+        </div>
+        <input type="hidden" pInputText id="_id" [(ngModel)]="service._id" />
+        <input type="hidden" pInputText id="_id" [(ngModel)]="service.illustration" />
 
         <div class="field">
             <label for="Ccmmission">Commission</label>
