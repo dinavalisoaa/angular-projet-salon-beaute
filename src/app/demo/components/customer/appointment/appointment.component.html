@@ -1,0 +1,30 @@
+<div class="grid">
+	<div class="col-12 lg:col-12">
+		<div class="card">
+			<h3>Prendre un rendez-vous</h3>
+            <div class="card p-fluid">
+                <h5>Informations sur le rendez-vous</h5>
+                <div class="field grid">
+                    <label htmlFor="date" class="col-12 mb-2 md:col-1 md:mb-0">Date</label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="date" type="date" />
+                    </div>
+                </div>
+                <div class="field grid">
+                    <label htmlFor="time" class="col-12 mb-2 md:col-1 md:mb-0">Heure</label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="time" type="time" />
+                    </div>
+                </div>
+
+                <h5 style="margin-top: 5%;">Choix de services</h5>
+                <p-pickList [source]="allServices" [target]="servicesToDo" sourceHeader="Tous les services" targetHeader="A faire" [dragdrop]="true"
+						[responsive]="true" [sourceStyle]="{'height':'250px'}" [targetStyle]="{'height':'250px'}">
+                    <ng-template let-service pTemplate="item">
+                        <div>{{service.name}}</div>
+                    </ng-template>
+                </p-pickList>
+            </div>
+		</div>
+	</div>
+</div>
