@@ -11,7 +11,7 @@ export class ServiceService {
 
 getService(query:any ,next: (res: any) => any){
 
-      this.http.get("http://localhost:5050/api/service"+query).subscribe((res=>{
+      this.http.get("http://localhost:5050/api/services"+query).subscribe((res=>{
         next(res);
         close();
       }))
