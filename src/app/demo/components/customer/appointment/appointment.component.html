@@ -7,21 +7,42 @@
                 <div class="field grid">
                     <label htmlFor="date" class="col-12 mb-2 md:col-1 md:mb-0">Date</label>
                     <div class="col-12 md:col-4">
-                        <input pInputText id="date" type="date" />
+                        <input pInputText id="date"  [(ngModel)]="appointment.date" type="datetime-local" />
                     </div>
                 </div>
-                <div class="field grid">
+                
+                <!-- <div class="field grid">
                     <label htmlFor="time" class="col-12 mb-2 md:col-1 md:mb-0">Heure</label>
                     <div class="col-12 md:col-4">
                         <input pInputText id="time" type="time" />
                     </div>
-                </div>
+                </div> -->
 
                 <h5 style="margin-top: 5%;">Choix de services</h5>
+                <div class="col-12 md:col-4">
+                </div>
+                <button pButton pRipple label="Recherche" class="p-button-danger" (click)="saveAppointment()">
+                    <i class="pi pi-search"></i>
+    
+                </button>
                 <p-pickList [source]="allServices" [target]="servicesToDo" sourceHeader="Tous les services" targetHeader="A faire" [dragdrop]="true"
-						[responsive]="true" [sourceStyle]="{'height':'250px'}" [targetStyle]="{'height':'250px'}">
+						[responsive]="true" [sourceStyle]="{'height':'500px'}"
+                        filterBy="name"
+                        [responsive]="true" 
+                        sourceFilterPlaceholder="Search by name"
+                        targetFilterPlaceholder="Search by name" [targetStyle]="{'height':'500px'}">
                     <ng-template let-service pTemplate="item">
-                        <div>{{service.name}}</div>
+
+                        <div class="flex flex-wrap p-2 align-items-center gap-3">
+                            <img class="w-4rem shadow-2 flex-shrink-0 border-round" [src]="service.illustration" [alt]="service.name"/>
+                            <div class="flex-1 flex flex-column gap-2">
+                                <span class="font-bold">{{ service.name }}</span>
+                              
+                            </div>
+                            <span class="font-bold text-900">{{ '$' + service.price }}</span>
+                        </div>
+                      
+
                     </ng-template>
                 </p-pickList>
             </div>

@@ -3,6 +3,9 @@ import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
+import { Appointment, Service,Customer } from 'src/app/models/models';
+import { AppointmentService } from 'src/app/service/appointment/appointment.service';
+import { ServiceService } from 'src/app/service/service/service.service';
 
 @Component({
     templateUrl: './appointment.component.html'
@@ -10,6 +13,7 @@ import { ProductService } from 'src/app/demo/service/product.service';
 export class AppointmentComponent implements OnInit {
 
     products: Product[] = [];
+    appointment: Appointment = {};
 
     sortOptions: SelectItem[] = [];
 
@@ -17,25 +21,28 @@ export class AppointmentComponent implements OnInit {
 
     sortField: string = '';
 
-    allServices: any[] = [];
+    allServices: Service[] = [];
 
-    servicesToDo: any[] = [];
+    servicesToDo: Service[] = [];
 
     orderCities: any[] = [];
 
-    constructor(private productService: ProductService) { }
+    constructor(private productService: ProductService, private serviceService: ServiceService,
+        appointmentService:AppointmentService) { }
 
     ngOnInit() {
         this.productService.getProducts().then(data => this.products = data);
-
-        this.allServices = [
-            { name: 'Manicure', code: 'SF' },
-            { name: 'Pedicure', code: 'LDN' },
-            { name: 'Lissage', code: 'PRS' },
-            { name: 'Soin du visage', code: 'IST' },
-            { name: 'Traitement capillaire', code: 'BRL' },
-            { name: 'Coloration', code: 'BRC' },
-            { name: 'Extension cheveux', code: 'RM' }];
+        this.serviceService.getService("",(res) => {
+            this.allServices = res;
+        });
+        // this.allServices = [
+        //     { name: 'Manicure', code: 'SF' },
+        //     { name: 'Pedicure', code: 'LDN' },
+        //     { name: 'Lissage', code: 'PRS' },
+        //     { name: 'Soin du visage', code: 'IST' },
+        //     { name: 'Traitement capillaire', code: 'BRL' },
+        //     { name: 'Coloration', code: 'BRC' },
+        //     { name: 'Extension cheveux', code: 'RM' }];
 
         this.servicesToDo = [];
 
@@ -53,7 +60,21 @@ export class AppointmentComponent implements OnInit {
             { label: 'Price Low to High', value: 'price' }
         ];
     }
-
+    saveAppointment(){
+        // const {}=;
+        const customer: Customer = {
+           
+        };
+     //   customer.address
+        const data: Appointment = {
+           
+        };
+        data.date=this.appointment.date;
+        data.service=this.servicesToDo;
+        data.customer=new Customer();
+        // this.appointmentService.getProducts().then(data => this.products = data);
+        
+    }
     onSortChange(event: any) {
         const value = event.value;
 
