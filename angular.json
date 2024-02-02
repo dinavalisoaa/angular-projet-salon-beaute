@@ -37,6 +37,7 @@
                         "allowedCommonJsDependencies": ["chart.js"]
                     },
                     "configurations": {
+
                         "production": {
                             "budgets": [
                                 {
