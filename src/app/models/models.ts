@@ -14,9 +14,26 @@ export interface Expense {
     date?: Date,
 }
 
+export interface Employee {
+    _id?:string,
+    name?: String,
+    firstname?: String,
+    dateOfBirth?: Date,
+    sex?:Sex,
+    address?: String,
+    phoneNumber?: String,
+    email?: String,
+    profile?: String,
+    password?: String,
+    schedule?: scheduleForm,
+    status?: Number
+}
+export interface scheduleForm{
+    entry?: Date,
+    exit?: Date
+}
 export interface Sex {
     type?: string
-
 }
 
 export interface Customer {
@@ -39,18 +56,3 @@ export interface Appointment {
     status?: Number,
     isPaid?: Boolean
 }
-// export interface Representative {
-//     name?: string;
-//     image?: string;
-// }
-
-// export interface Customer {
-//     id?: number;
-//     name?: string;
-//     country?: Country;
-//     company?: string;
-//     date?: string;
-//     status?: string;
-//     activity?: number;
-//     representative?: Representative;
-// }
