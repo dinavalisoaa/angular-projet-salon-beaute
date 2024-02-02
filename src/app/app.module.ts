@@ -27,10 +27,11 @@ import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
     declarations: [
-        AppComponent, NotfoundComponent, MydashboardComponent
+        AppComponent, NotfoundComponent, MydashboardComponent, TestComponent
     ],
     imports: [
         AppRoutingModule,

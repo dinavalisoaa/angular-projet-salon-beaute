@@ -1,3 +1,4 @@
+
 export interface Service {
     name?: string,
     _id?: string,
@@ -6,7 +7,38 @@ export interface Service {
     commission?: number
     illustration?:string
 }
+export interface Expense {
+    description?: string,
+    _id?: string,
+    amount?: number,
+    date?: Date,
+}
 
+export interface Sex {
+    type?: string
+
+}
+
+export interface Customer {
+    name?: string,
+    firstname?: string,
+    dateOfBirth?: Date,
+    sex?:Sex,
+    address?: string,
+    phoneNumber?: string,
+    email?: string,
+    profile?: string,
+    password?: string
+
+}
+
+export interface Appointment {
+    date?: Date,
+    customer?:Customer,
+    service?: Service[],
+    status?: Number,
+    isPaid?: Boolean
+}
 // export interface Representative {
 //     name?: string;
 //     image?: string;

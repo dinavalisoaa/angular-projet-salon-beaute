@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "65bbcf712943bcc5f0d2b74e"
+  },
+  "date": {
+    "$date": "2024-01-31T00:00:00.000Z"
+  },
+  "description": "Salaire",
+  "amount": 12999,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65bbcf7f2943bcc5f0d2b751"
+  },
+  "date": {
+    "$date": "2024-02-19T00:00:00.000Z"
+  },
+  "description": "Loyer",
+  "amount": 130,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65bbd3ef2943bcc5f0d2b799"
+  },
+  "date": {
+    "$date": "2024-02-06T00:00:00.000Z"
+  },
+  "description": "Transport",
+  "amount": 12999,
+  "__v": 0
+}]
