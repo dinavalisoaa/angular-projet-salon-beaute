@@ -35,7 +35,11 @@ export interface scheduleForm{
 export interface Sex {
     type?: string
 }
-
+export interface Manager {
+    _id?: string,
+    name?: string,
+    password?: string
+}
 export interface Customer {
     name?: string,
     firstname?: string,
@@ -51,6 +55,7 @@ export interface Customer {
 
 export interface Appointment {
     date?: Date,
+    _id?:string,
     customer?:Customer,
     service?: Service[],
     status?: Number,

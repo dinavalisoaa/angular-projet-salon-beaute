@@ -11,7 +11,6 @@ export class AppointmentService {
     constructor(private http: HttpClient) { }
 
 getAppointment(query:any ,next: (res: any) => any){
-
       this.http.get("http://localhost:5050/api/appointment"+query).subscribe((res=>{
         next(res);
         close();

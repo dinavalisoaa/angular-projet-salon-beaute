@@ -63,17 +63,17 @@ export class AppointmentComponent implements OnInit {
     saveAppointment(){
         // const {}=;
         const customer: Customer = {
-           
+
         };
      //   customer.address
         const data: Appointment = {
-           
+
         };
         data.date=this.appointment.date;
         data.service=this.servicesToDo;
-        data.customer=new Customer();
+        // data.customer=new Customer();
         // this.appointmentService.getProducts().then(data => this.products = data);
-        
+
     }
     onSortChange(event: any) {
         const value = event.value;

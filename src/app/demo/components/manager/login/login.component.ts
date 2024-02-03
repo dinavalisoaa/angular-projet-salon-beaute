@@ -26,9 +26,12 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 })
 export class LoginComponent {
 
-    valCheck: string[] = ['remember'];
-
-    password!: string;
+    // valCheck: string[] = ['remember'];
+    password: string='root';
+    email: string='admin@salon.com';
 
     constructor(public layoutService: LayoutService, public router: Router) { }
+    login(){
+        alert(this.password+"  "+this.email);
+    }
 }
