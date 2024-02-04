@@ -13,7 +13,20 @@ export interface Expense {
     amount?: number,
     date?: Date,
 }
+export interface Account {
+    date?: Date,
+    description?: string,
+    customer?:Customer,
+    debit?: number,
+    credit?: number
+}
 
+export interface TokenObject {
+    token?: string,
+    role?:string,
+    info?:any,
+    userId?: string,
+}
 export interface Employee {
     _id?:string,
     name?: String,
@@ -38,6 +51,7 @@ export interface Sex {
 export interface Manager {
     _id?: string,
     name?: string,
+    email?: string,
     password?: string
 }
 export interface Customer {
