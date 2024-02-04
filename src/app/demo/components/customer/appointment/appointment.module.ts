@@ -10,6 +10,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
     imports: [
@@ -17,12 +21,16 @@ import { ButtonModule } from 'primeng/button';
         FormsModule,
         AppointmentRoutingModule,
         DataViewModule,
+        ToastModule,
         PickListModule,
         OrderListModule,
         InputTextModule,
         DropdownModule,
         RatingModule,
-        ButtonModule
+        ButtonModule,
+        DialogModule,
+        MessagesModule,
+        MessageModule,
     ],
     declarations: [AppointmentComponent]
 })
