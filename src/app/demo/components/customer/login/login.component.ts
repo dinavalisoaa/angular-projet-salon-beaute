@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { Customer, Manager } from 'src/app/models/models';
+import { CustomerService } from 'src/app/service/customer/customer.service';
+import { ManagerService } from 'src/app/service/manager/manager.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
 
 @Component({
     selector: 'app-login-customer',
@@ -24,11 +28,28 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
         }
     `]
 })
+
 export class LoginComponent {
+    // valCheck: string[] = ['remember'];
+    password: string = 'root';
+    email: string = 'randriamifidydina@gmail.com';
 
-    valCheck: string[] = ['remember'];
-
-    password!: string;
-
-    constructor(public layoutService: LayoutService, public router: Router) { }
+    constructor(
+        public layoutService: LayoutService,
+        public customerService: CustomerService,
+        public utilService: UtilService,
+        public router: Router
+    ) {}
+    login() {
+        const password = this.password;
+        const email = this.email;
+        const data: Customer = {
+            password,
+            email,
+        };
+        this.customerService.loginCustomer(data, (res) => {
+            console.log(this.utilService.getToken());
+            this.utilService.navigateTo('/customer/appointment/making');
+        });
+    }
 }
