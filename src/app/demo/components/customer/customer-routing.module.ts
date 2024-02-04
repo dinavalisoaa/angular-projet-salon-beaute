@@ -10,7 +10,8 @@ import { AppLayoutComponent } from 'src/app/layout/app.layout.component';
             path: '', component: AppLayoutComponent,
             children: [
                 { path: 'preference', loadChildren: () => import('./preference/preference.module').then(m => m.PreferenceModule) },
-                { path: 'appointment/making', loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentModule) }
+                { path: 'appointment/making', loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentModule) },
+                { path: 'appointment/history', loadChildren: () => import('./history/history.module').then(m => m.HistoryModule) }
             ],
         }
     ])],
