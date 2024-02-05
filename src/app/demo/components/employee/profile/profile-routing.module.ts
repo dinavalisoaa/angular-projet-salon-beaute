@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ExpenseComponent } from './expense.component';
+import { ProfileComponent } from './profile.component';
 
 @NgModule({
 	imports: [RouterModule.forChild([
-		{ path: '', component: ExpenseComponent }
+		{ path: '', component: ProfileComponent }
 	])],
 	exports: [RouterModule]
 })
-export class ExpenseRoutingModule { }
+export class ProfileRoutingModule { }

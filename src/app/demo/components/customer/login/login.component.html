@@ -13,10 +13,10 @@
 
                 <div class="w-full md:w-10 mx-auto">
                     <label for="email1" class="block text-900 text-xl font-medium mb-2">Adresse email</label>
-                    <input id="email1" type="text" placeholder="Adresse email" pInputText class="w-full mb-3" style="padding:1rem;">
+                    <input id="email1" type="text" [(ngModel)]="email" placeholder="Adresse email" pInputText class="w-full mb-3" style="padding:1rem;">
 
                     <label for="password1" class="block text-900 font-medium text-xl mb-2">Mot de passe</label>
-                    <p-password id="password1" [(ngModel)]="password" placeholder="Mot de passe" [toggleMask]="true" styleClass="w-full mb-3"></p-password>
+                    <input id="email1" type="password"[(ngModel)]="password"  placeholder="Mot de passe"pInputText class="w-full mb-3" style="padding:1rem;">
 
                     <div class="flex align-items-center justify-content-between mb-5">
                         <div class="flex align-items-center">
@@ -24,7 +24,7 @@
                             <label for="rememberme1">Se souvenir de moi</label>
                         </div>
                     </div>
-                    <button pButton pRipple label="Se connecter" class="w-full p-3 text-xl"></button>
+                    <button  (click)="login()" pButton pRipple label="Se connecter" class="w-full p-3 text-xl"></button>
                 </div>
                 <div class="text-center mb-5" style="margin-top: 5%;">
                     <a (click)="router.navigate(['/employee/login'])" class="font-medium no-underline ml-2 text-center cursor-pointer" style="color: var(--primary-color)">Se connecter en tant qu'employé</a>

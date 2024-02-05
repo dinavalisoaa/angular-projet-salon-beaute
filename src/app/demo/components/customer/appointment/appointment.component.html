@@ -1,30 +1,66 @@
 <div class="grid">
-	<div class="col-12 lg:col-12">
-		<div class="card">
-			<h3>Prendre un rendez-vous</h3>
+    <div class="col-12 lg:col-12">
+        <div class="card">
+            <p-toast key="tst" [baseZIndex]="55555"></p-toast>
+
+            <h3>Prendre un rendez-vous</h3>
             <div class="card p-fluid">
                 <h5>Informations sur le rendez-vous</h5>
                 <div class="field grid">
                     <label htmlFor="date" class="col-12 mb-2 md:col-1 md:mb-0">Date</label>
                     <div class="col-12 md:col-4">
-                        <input pInputText id="date" type="date" />
+                        <input pInputText id="date" [(ngModel)]="appointment.date" required       onchange="" type="datetime-local" />
+                        <small class="ng-dirty ng-invalid" *ngIf="!appointment.date">Date est obligatoire.</small>
+                    </div>
+                    <div class="col-12 md:col-4">
+                    </div>
+                    <div class="col-12 md:col-3">
+                        <button (click)="saveAppointment()"   pButton pRipple label="Passer au paiement"
+                            class="w-full p-2 text-s"></button>
+
                     </div>
                 </div>
-                <div class="field grid">
-                    <label htmlFor="time" class="col-12 mb-2 md:col-1 md:mb-0">Heure</label>
-                    <div class="col-12 md:col-4">
-                        <input pInputText id="time" type="time" />
-                    </div>
+                <h5 style="margin-top: 5%;">Choix de services</h5>
+                <div class="col-12 md:col-4">
                 </div>
 
-                <h5 style="margin-top: 5%;">Choix de services</h5>
-                <p-pickList [source]="allServices" [target]="servicesToDo" sourceHeader="Tous les services" targetHeader="A faire" [dragdrop]="true"
-						[responsive]="true" [sourceStyle]="{'height':'250px'}" [targetStyle]="{'height':'250px'}">
+                <p-pickList [source]="allServices" [target]="servicesToDo" sourceHeader="Tous les services"
+                    targetHeader="A faire" [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'500px'}"
+                    filterBy="name" [responsive]="true" sourceFilterPlaceholder="Search by name"
+                    targetFilterPlaceholder="Search by name" [targetStyle]="{'height':'500px'}">
                     <ng-template let-service pTemplate="item">
-                        <div>{{service.name}}</div>
+
+                        <div class="flex flex-wrap p-2 align-items-center gap-3">
+                            <img class="w-4rem shadow-2 flex-shrink-0 border-round" [src]="service.illustration"
+                                [alt]="service.name" />
+                            <div class="flex-1 flex flex-column gap-2">
+                                <span class="font-bold">{{ service.name }}</span>
+
+                            </div>
+                            <span class="font-bold text-900">{{ '$' + service.price }}</span>
+                        </div>
+
+
                     </ng-template>
                 </p-pickList>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
+<p-dialog [(visible)]="visiblePay" [style]="{width: '450px'}" header="Espacement de paiement" [modal]="true" class="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="field">
+            <label for="description">Amount</label>
+            <h4 class="ng-dirty ng-invalid">{{total}} Ar</h4>
+            <h4 class="ng-dirty ng-invalid">{{state}} Ar</h4>
+            <!-- <input type="number" pInputText id="amount" [(ngModel)]="amount" required autofocus
+                [ngClass]="{'ng-invalid ng-dirty' :  !amount}" value="{{total}}" /> -->
+                <p-message severity="error"*ngIf="show" text="Compte insuffisant"></p-message>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <!-- <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button> -->
+        <button pButton pRipple label="Payer" [disabled]="show" icon="pi pi-check" class="btn btn-primary" (click)="pay()"></button>
+    </ng-template>
+</p-dialog>

@@ -13,12 +13,47 @@ export interface Expense {
     amount?: number,
     date?: Date,
 }
-
-export interface Sex {
-    type?: string
-
+export interface Account {
+    date?: Date,
+    description?: string,
+    customer?:Customer,
+    debit?: number,
+    credit?: number
 }
 
+export interface TokenObject {
+    token?: string,
+    role?:string,
+    info?:any,
+    userId?: string,
+}
+export interface Employee {
+    _id?:string,
+    name?: String,
+    firstname?: String,
+    dateOfBirth?: Date,
+    sex?:Sex,
+    address?: String,
+    phoneNumber?: String,
+    email?: String,
+    profile?: String,
+    password?: String,
+    schedule?: scheduleForm,
+    status?: Number
+}
+export interface scheduleForm{
+    entry?: Date,
+    exit?: Date
+}
+export interface Sex {
+    type?: string
+}
+export interface Manager {
+    _id?: string,
+    name?: string,
+    email?: string,
+    password?: string
+}
 export interface Customer {
     name?: string,
     firstname?: string,
@@ -34,23 +69,9 @@ export interface Customer {
 
 export interface Appointment {
     date?: Date,
+    _id?:string,
     customer?:Customer,
     service?: Service[],
     status?: Number,
     isPaid?: Boolean
 }
-// export interface Representative {
-//     name?: string;
-//     image?: string;
-// }
-
-// export interface Customer {
-//     id?: number;
-//     name?: string;
-//     country?: Country;
-//     company?: string;
-//     date?: string;
-//     status?: string;
-//     activity?: number;
-//     representative?: Representative;
-// }

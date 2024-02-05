@@ -4,15 +4,18 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { MydashboardComponent } from './demo/components/mydashboard/mydashboard.component';
+import { AuthGuardPermission } from './demo/components/manager/auth-permission';
+import { NotAuthorized } from './demo/components/manager/notauthorized/notauthorized.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
-            { path: 'customer', loadChildren: () => import('./demo/components/customer/customer.module').then(m => m.CustomerModule) },
+            { path: 'customer',  loadChildren: () => import('./demo/components/customer/customer.module').then(m => m.CustomerModule) },
             { path: 'employee', loadChildren: () => import('./demo/components/employee/employee.module').then(m => m.EmployeeModule) },
-            { path: 'manager', loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
+            { path: 'manager',
+            loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             {
                 path: '', component: AppLayoutComponent,
@@ -29,6 +32,7 @@ import { MydashboardComponent } from './demo/components/mydashboard/mydashboard.
                 ],
             },
             { path: 'pages/notfound', component: NotfoundComponent },
+            { path: '403', component: NotAuthorized },
             { path: '**', redirectTo: 'pages/notfound' }
             // Dinas URL
 
