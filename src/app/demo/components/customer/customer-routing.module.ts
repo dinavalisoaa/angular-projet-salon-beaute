@@ -44,6 +44,28 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                                 (m) => m.AppointmentModule
                             ),
                     },
+                    {
+                        path: 'account/load',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./account/account.module').then(
+                                (m) => m.AccountDemoModule
+                            ),
+                    },
+                    {
+                        path: 'account/list',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./list-account/list-account.module').then(
+                                (m) => m.ListAccountModule
+                            ),
+                    },
                 ],
             },
         ]),

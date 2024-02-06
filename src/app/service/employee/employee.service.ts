@@ -1,42 +1,36 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
-import { Manager, TokenObject } from 'src/app/models/models';
+import { Employee, TokenObject } from 'src/app/models/models';
 import { CheckError } from '../util-service/error';
 import { UtilService } from '../util-service/util.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ManagerService {
+export class EmployeeService {
     constructor(private http: HttpClient, public uService: UtilService) {}
-    // private handleError(error: HttpErrorResponse) {
-    //     if (error.status == 0) {
-    //     } else {
-    //         alert(error.error.error);
-    //     }
-    //     return throwError(() => new Error('eeeeeeeeeeee'));
-    // }
-    getManager(query: any, next: (res: any) => any) {
+
+    getEmployee(query: any, next: (res: any) => any) {
         this.http
-            .get('http://localhost:5050/api/mange' + query)
+            .get('http://localhost:5050/api/employee' + query)
             .subscribe((res) => {
                 next(res);
                 close();
             });
     }
-    saveManager(data: Manager, next: (res: any) => any) {
+    saveEmployee(data: Employee, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/Manager', data)
+            .post('http://localhost:5050/api/employee', data)
             .subscribe((res) => {
                 next(res);
                 close();
             });
     }
 
-    loginManager(data: Manager, next: (res: any) => any) {
+    loginEmployee(data: Employee, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/manager/connection', data)
+            .post('http://localhost:5050/api/employee/connection', data)
             .subscribe(
                 CheckError((res) => {
                     const data: TokenObject = {
@@ -51,9 +45,9 @@ export class ManagerService {
                 })
             );
     }
-    updateManager(data: Manager, param: any, next: (res: any) => any) {
+    updateEmployee(data: Employee, param: any, next: (res: any) => any) {
         this.http
-            .put('http://localhost:5050/api/appointment/' + param, data)
+            .put('http://localhost:5050/api/employee/' + param, data)
             .subscribe((res) => {
                 next(res);
                 close();
