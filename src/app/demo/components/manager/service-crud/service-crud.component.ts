@@ -128,11 +128,13 @@ export class ServiceCrudComponent implements OnInit {
         this.serviceDialog = false;
         this.submitted = false;
     }
+
     fetchList(query:string) {
         this.serviceService.getService(query,(res) => {
             this.services = res;
         });
     }
+
     search(){
         const commission = this.service.commission;
         const duration = this.service.duration;

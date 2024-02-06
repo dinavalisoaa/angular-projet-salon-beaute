@@ -3,6 +3,9 @@ import { Product } from 'src/app/demo/api/product';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { ProductService } from 'src/app/demo/service/product.service';
+import { EmployeeService } from 'src/app/service/employee/employee.service';
+import { SexService } from 'src/app/service/sex/sex.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
 
 @Component({
     templateUrl: './personnel.component.html',
@@ -27,9 +30,37 @@ export class PersonnelComponent implements OnInit {
 
     product: Product = {};
 
-    selectedProducts: Product[] = [];
+    ///////////////////////////////////////////////////////////
+
+    confirmationPassword: any;
+
+    entry: any;
+
+    exit: any;
+
+    selectedSex: any;
+
+    dropdownSexes: [] = [];
+
+    personnelDialog: boolean = false;
+
+    editPersonnelDialog: boolean = false;
+
+    deletePersonnelDialog: boolean = false;
+
+    personnels: [] = [];
+
+    personnel: any = {};
 
     submitted: boolean = false;
+
+    entryTimePart: any;
+
+    exitTimePart: any;
+
+    ///////////////////////////////////////////////////////////
+
+    selectedProducts: Product[] = [];
 
     cols: any[] = [];
 
@@ -37,10 +68,26 @@ export class PersonnelComponent implements OnInit {
 
     rowsPerPageOptions = [5, 10, 20];
 
-    constructor(private productService: ProductService, private messageService: MessageService) { }
+    constructor(
+        private productService: ProductService,
+        private messageService: MessageService,
+        private employeeService: EmployeeService,
+        private sexService: SexService,
+        public utilService: UtilService
+    ) { }
 
     ngOnInit() {
         this.productService.getProducts().then(data => this.products = data);
+
+        ///////////////////////////////////////////////////////////
+        this.fetchPersonnel();
+        this.fetchSexes();
+
+        // if(this.personnel != null){
+        //     console.log("diff null" + this.personnel.schedule.entry);
+        //     this.entryTimePart = this.utilService.getTimeFromDate(this.personnel.schedule.entry);
+        // }
+        ///////////////////////////////////////////////////////////
 
         this.cols = [
             { field: 'product', header: 'Product' },
@@ -56,6 +103,150 @@ export class PersonnelComponent implements OnInit {
             { label: 'OUTOFSTOCK', value: 'outofstock' }
         ];
     }
+
+    ///////////////////////////////////////////////////////////
+
+    checkStatus(status: number) {
+        let res: { type: any, message: string } = { type: "success", message: "Actif" };
+        if(status == 0){
+            res = { type: "danger", message: "Passif" };
+        }
+        return res;
+    }
+
+    fetchPersonnel() {
+        this.employeeService.getAllEmployees((res) => {
+            this.personnels = res;
+        });
+    }
+
+    fetchSexes() {
+        this.sexService.getAllSexes((res) => {
+            console.log({res});
+            this.dropdownSexes = res;
+        });
+    }
+
+    openNewDialog() {
+        this.personnel = {};
+        this.submitted = false;
+        this.personnelDialog = true;
+    }
+
+    editPersonnel(personnel: any) {
+        this.personnel = { ...personnel };
+        this.entryTimePart = this.utilService.getTimeFromDate(this.personnel.schedule.entry);
+        this.exitTimePart = this.utilService.getTimeFromDate(this.personnel.schedule.exit);
+        this.editPersonnelDialog = true;
+    }
+
+    deletePersonnel(personnel: any) {
+        this.deletePersonnelDialog = true;
+        this.personnel = { ...personnel };
+    }
+
+    savePersonnel() {
+        const name = this.personnel.name;
+        const firstname = this.personnel.firstname;
+        const dateOfBirth = this.personnel.dateOfBirth;
+        const sex = this.selectedSex._id;
+        const address = this.personnel.address;
+        const phoneNumber = this.personnel.phoneNumber;
+        const email = this.personnel.email;
+        const password = this.personnel.password;
+        const confirmationPassword = this.confirmationPassword;
+        const schedule = { entry: this.entry, exit: this.exit };
+        const data: any = {
+            name,
+            firstname,
+            dateOfBirth,
+            sex,
+            address,
+            phoneNumber,
+            email,
+            password,
+            confirmationPassword,
+            schedule
+        };
+        this.submitted = true;
+        console.log(data);
+        this.employeeService.savePersonnel(data, () => {
+            this.messageService.add({
+                severity: 'success',
+                summary: 'Ajout réussi',
+                detail: 'Nouveau personnel enregistré',
+                life: 5000,
+            });
+            this.fetchPersonnel();
+        });
+        this.personnelDialog = false;
+        this.personnel = {};
+    }
+
+    editPersonnelInformation() {
+        const id = this.personnel._id;
+        const name = this.personnel.name;
+        const firstname = this.personnel.firstname;
+        const dateOfBirth = this.personnel.dateOfBirth;
+        const sex = this.personnel.sex;
+        const address = this.personnel.address;
+        const phoneNumber = this.personnel.phoneNumber;
+        const email = this.personnel.email;
+        const password = this.personnel.password;
+        const schedule = { entry: this.entryTimePart, exit: this.exitTimePart };
+        const data: any = {
+            name,
+            firstname,
+            dateOfBirth,
+            sex,
+            address,
+            phoneNumber,
+            email,
+            password,
+            schedule
+        };
+        this.employeeService.updatePersonnel(data, id, () => {
+            this.messageService.add({
+                severity: 'success',
+                summary: 'Informations modifiées',
+                detail: 'Informations du personnel modifiées',
+                life: 5000,
+            });
+            this.fetchPersonnel();
+        });
+        this.editPersonnelDialog = false;
+        this.personnel = {};
+    }
+
+    confirmPersonnelDelete() {
+        const id = this.personnel._id;
+        this.employeeService.deactivatePersonnel(id, () => {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Personnel supprimé',
+                detail: 'Suppression d\'un personnel réussi',
+                life: 5000,
+            });
+            this.fetchPersonnel();
+        });
+        this.deletePersonnelDialog = false;
+        this.personnel = {};
+    }
+
+    restorePersonnel(personnel: any) {
+        const id = personnel._id;
+        this.employeeService.activatePersonnel(id, () => {
+            this.messageService.add({
+                severity: 'success',
+                summary: 'Personnel restauré',
+                detail: 'Restauration du personnel réussie',
+                life: 5000,
+            });
+            this.fetchPersonnel();
+        });
+    }
+
+    ///////////////////////////////////////////////////////////
 
     openNew() {
         this.product = {};

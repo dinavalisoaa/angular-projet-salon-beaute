@@ -5,6 +5,9 @@ import { Customer, TokenObject } from 'src/app/models/models';
 import { CheckError } from '../util-service/error';
 import { UtilService } from '../util-service/util.service';
 
+// const apiUrl = process.env.API_URL;
+const apiUrl = 'http://localhost:5050';
+
 @Injectable({
     providedIn: 'root',
 })
@@ -13,15 +16,16 @@ export class CustomerService {
 
     getCustomer(query: any, next: (res: any) => any) {
         this.http
-            .get('http://localhost:5050/api/customer' + query)
+            .get(`${apiUrl}/api/customer` + query)
             .subscribe((res) => {
                 next(res);
                 close();
             });
     }
+
     saveCustomer(data: Customer, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/customer', data)
+            .post(`${apiUrl}/api/customer`, data)
             .subscribe((res) => {
                 next(res);
                 close();
@@ -30,7 +34,7 @@ export class CustomerService {
 
     loginCustomer(data: Customer, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/customer/connection', data)
+            .post(`${apiUrl}/api/customer/connection`, data)
             .subscribe(
                 CheckError((res) => {
                     const data: TokenObject = {
@@ -45,9 +49,10 @@ export class CustomerService {
                 })
             );
     }
+
     updateCustomer(data: Customer, param: any, next: (res: any) => any) {
         this.http
-            .put('http://localhost:5050/api/customer/' + param, data)
+            .put(`${apiUrl}/api/customer/` + param, data)
             .subscribe((res) => {
                 next(res);
                 close();

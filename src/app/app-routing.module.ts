@@ -14,8 +14,7 @@ import { NotAuthorized } from './demo/components/manager/notauthorized/notauthor
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'customer',  loadChildren: () => import('./demo/components/customer/customer.module').then(m => m.CustomerModule) },
             { path: 'employee', loadChildren: () => import('./demo/components/employee/employee.module').then(m => m.EmployeeModule) },
-            { path: 'manager',
-            loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
+            { path: 'manager', loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             {
                 path: '', component: AppLayoutComponent,
@@ -27,8 +26,7 @@ import { NotAuthorized } from './demo/components/manager/notauthorized/notauthor
                     { path: 'blocks', loadChildren: () => import('./demo/components/primeblocks/primeblocks.module').then(m => m.PrimeBlocksModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
                     // New Update Template
-                    { path: 'mydashboard', component: MydashboardComponent },
-                    { path: 'manager', loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
+                    { path: 'mydashboard', component: MydashboardComponent }
                 ],
             },
             { path: 'pages/notfound', component: NotfoundComponent },

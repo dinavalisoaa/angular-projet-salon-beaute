@@ -13,12 +13,7 @@ export class UtilService {
     getToken () {
         const tokenObjectString = localStorage.getItem('sessionId');
         return JSON.parse(tokenObjectString || "{}");
-      }
-
-    //   registerToken (value: TokenObject) {
-    //     this.storage.setItem(config.tokenKey, JSON.stringify(value));
-    //     this.token = value;
-    //   }
+    }
 
     saveDataStorage(key: any, value: any) {
         localStorage.setItem(key, value);
@@ -34,7 +29,14 @@ export class UtilService {
         localStorage.removeItem(key);
     }
 
-  navigateTo(url:string){
-    this.router.navigate([url])
-  }
+    navigateTo(url:string){
+        this.router.navigate([url])
+    }
+
+    getTimeFromDate(date: any){
+        const fullTime = date.split("T")[1];
+        const hourPart = fullTime.split(":")[0];
+        const minutePart = fullTime.split(":")[1].split(":")[0];
+        return hourPart + ":" +  minutePart;
+    }
 }

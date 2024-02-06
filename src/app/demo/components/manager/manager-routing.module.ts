@@ -39,6 +39,17 @@ import { AuthGuardPermission } from './auth-permission';
                                 (m) => m.ExpenseModule
                             ),
                     },
+                    {
+                        path: 'personnel',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'MANAGER',
+                        },
+                        loadChildren: () =>
+                            import('./personnel/personnel.module').then(
+                                (m) => m.PersonnelModule
+                            ),
+                    },
                 ],
             },
         ]),
