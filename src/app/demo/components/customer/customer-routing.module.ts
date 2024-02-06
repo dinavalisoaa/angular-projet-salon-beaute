@@ -45,6 +45,39 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                             ),
                     },
                     {
+                        path: 'account/load',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./account/account.module').then(
+                                (m) => m.AccountDemoModule
+                            ),
+                    },
+                    {
+                        path: 'account/list',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./list-account/list-account.module').then(
+                                (m) => m.ListAccountModule
+                            ),
+                    },
+                    {
+                        path: 'appointment/making',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./appointment/appointment.module').then(
+                                (m) => m.AppointmentModule
+                            ),
+                    },
+                    {
                         path: 'appointment/history',
                         canActivate: [AuthGuardPermission ],
                         data: {
@@ -54,7 +87,7 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                             import('./history/history.module').then(
                                 (m) => m.HistoryModule
                             ),
-                    },
+                    }
                 ],
             },
         ]),

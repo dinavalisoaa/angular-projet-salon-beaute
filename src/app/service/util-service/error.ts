@@ -6,18 +6,21 @@ export const CheckError = (next: (res: any) => any) => {
       error: (err: HttpErrorResponse) => {
 
         let errorData: any ={}
+
         // let errorData: SweetAlertOptions = {icon: "error", title: "Erreur",};
         if (err.status === 0) {
           errorData.text = "Êtes-vous connecté a internet ?";
         }
-
         else if (500 - err.status <= 0) {
-          errorData.text = "Une erreur est survenue"
+            console.log(err);
+          errorData.text = err.error.error;
+        //   errorData.text = //"Une erreur est survenue";
         }
         else {
           errorData.text = err.error.error;
         }
-        alert(errorData.text);
+
+        alert( errorData.text);
         // Swal.fire(errorData).then();
       }
     }

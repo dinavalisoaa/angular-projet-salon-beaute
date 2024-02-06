@@ -31,13 +31,13 @@ import { TestComponent } from './test/test.component';
 
 @NgModule({
     declarations: [
-        AppComponent, NotfoundComponent, MydashboardComponent, TestComponent
+        AppComponent, NotfoundComponent, MydashboardComponent
     ],
     imports: [
         AppRoutingModule,
         AppLayoutModule,
         TableModule,
-        CommonModule,
+        CommonModule, FormsModule,
         RatingModule,
         ButtonModule,
         SliderModule,

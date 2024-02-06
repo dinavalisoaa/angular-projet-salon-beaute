@@ -10,13 +10,13 @@ import { UtilService } from '../util-service/util.service';
 })
 export class ManagerService {
     constructor(private http: HttpClient, public uService: UtilService) {}
-    private handleError(error: HttpErrorResponse) {
-        if (error.status == 0) {
-        } else {
-            alert(error.error.error);
-        }
-        return throwError(() => new Error('eeeeeeeeeeee'));
-    }
+    // private handleError(error: HttpErrorResponse) {
+    //     if (error.status == 0) {
+    //     } else {
+    //         alert(error.error.error);
+    //     }
+    //     return throwError(() => new Error('eeeeeeeeeeee'));
+    // }
     getManager(query: any, next: (res: any) => any) {
         this.http
             .get('http://localhost:5050/api/mange' + query)

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { Employee } from 'src/app/models/models';
+import { EmployeeService } from 'src/app/service/employee/employee.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
 
 @Component({
     selector: 'app-login-employee',
@@ -25,10 +28,26 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
     `]
 })
 export class LoginComponent {
+    // valCheck: string[] = ['remember'];
+    password: string = 'dina';
+    email: string = 'dina@gmail.com';
 
-    valCheck: string[] = ['remember'];
-
-    password!: string;
-
-    constructor(public layoutService: LayoutService, public router: Router) { }
+    constructor(
+        public layoutService: LayoutService,
+        public employeeService: EmployeeService,
+        public utilService: UtilService,
+        public router: Router
+    ) {}
+    login() {
+        const password = this.password;
+        const email = this.email;
+        const data: Employee = {
+            password,
+            email,
+        };
+        this.employeeService.loginEmployee(data, (res) => {
+            console.log(this.utilService.getToken());
+            this.utilService.navigateTo('/employee/appointment/making');
+        });
+    }
 }

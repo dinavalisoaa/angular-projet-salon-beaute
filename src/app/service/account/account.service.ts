@@ -2,20 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Account, Customer } from 'src/app/models/models';
 import { CheckError } from '../util-service/error';
+import { UtilService } from '../util-service/util.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AccountService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private uService: UtilService) {}
+    // getState(val:number,id: string) {
 
+    // }
     getAccount(query: any, next: (res: any) => any) {
-        this.http.get('http://localhost:5050/api/account' + query).subscribe(
-            CheckError((res) => {
-                next(res);
-                close();
+        let h = new Headers();
+        h.append('Authorization', this.uService.getToken().token);
+        this.http
+            .get('http://localhost:5050/api/accounts' + query, {
+                headers: {
+                    Authorization: this.uService.getToken().token,
+                },
             })
-        );
+            .subscribe(
+                CheckError((res) => {
+                    next(res);
+                    close();
+                })
+            );
     }
     getAccountState(id: string, next: (res: any) => any) {
         this.http
@@ -31,7 +42,9 @@ export class AccountService {
         this.http.post('http://localhost:5050/api/account', data).subscribe(
             CheckError((res) => {
                 next(res);
+                alert(res.message);
                 close();
+
             })
         );
     }

@@ -22,7 +22,7 @@ import { UtilService } from 'src/app/service/util-service/util.service';
 export class AppointmentComponent implements OnInit {
     products: Product[] = [];
     appointment: Appointment = {};
-    filledAppointment:Appointment={};
+    filledAppointment: Appointment = {};
     visiblePay: boolean = false;
     show: boolean = false;
 
@@ -30,8 +30,8 @@ export class AppointmentComponent implements OnInit {
     amount: number = 0;
     sortOrder: number = 0;
     total: number = 0;
-    state: string = "";
-    message: string = "";
+    state: string = '';
+    message: string = '';
 
     sortField: string = '';
 
@@ -70,7 +70,6 @@ export class AppointmentComponent implements OnInit {
             { name: 'Barcelona', code: 'BRC' },
             { name: 'Rome', code: 'RM' },
         ];
-
     }
     totalize() {
         let sum = 0;
@@ -84,28 +83,23 @@ export class AppointmentComponent implements OnInit {
     pay() {
         const token: TokenObject = this.utilService.getToken();
         const account: Account = {};
-        account.customer=token.info;
-        account.date=new Date();
-        account.description="";
-        account.debit=this.total;
-        account.credit=0;
-        this.accountService.saveAccount(account,(res) => {
-
-            // this.state =this.utilService.formatted(res[0].total_credit-res[0].total_debit);
+        account.customer = token.info;
+        account.date = new Date();
+        account.description = '';
+        account.debit = this.total;
+        account.credit = 0;
+        this.accountService.saveAccount(account, (res) => {
+            console.log(res);
         });
-        this.appointmentService.saveAppointment(this.filledAppointment,(res) => {
+        this.appointmentService.saveAppointment(
+            this.filledAppointment,(res) => {
+                // if(res.status==4)
+                // console.log(res);
+            }
+        );
+        this.visiblePay = false;
+        this.appointment = {};
 
-            // this.state =this.utilService.formatted(res[0].total_credit-res[0].total_debit);
-        });
-        this.visiblePay=false;
-        this.appointment={};
-        // this.servicesToDo=[];
-          this.service.add({
-                key: 'tst',
-                severity: 'success',
-                summary: 'Paiement effectue',
-                // detail: 'PrimeNG rocks',
-            });
     }
     saveAppointment() {
         const data: Appointment = {};
@@ -113,29 +107,17 @@ export class AppointmentComponent implements OnInit {
         const token: TokenObject = this.utilService.getToken();
         data.customer = token.info;
         data.service = this.servicesToDo;
-
-        this.filledAppointment=data;
-        // this.serviceService.sumService(data)
+        this.filledAppointment = data;
         this.visiblePay = true;
         this.total = this.totalize();
-        let account=0;
-        this.accountService.getAccountState(token.info._id,(res) => {
-            account=res[0].total_credit-res[0].total_debit;
-            this.state =this.utilService.formatted(account);
+        let account = 0;
+        this.accountService.getAccountState(token.info._id, (res) => {
+            account = res[0].total_credit - res[0].total_debit;
+            this.state = this.utilService.formatted(account);
+            if (account < this.total) {
+                // this.show = true;
+            }
         });
-        if(account<this.total){
-            this.show=true;
-        }
-        // this.serviceService.sumService(data.service, (res) => {
-        //     console.log(res);
-        //     // this.utilService.navigateTo('/customer/appointment/making');
-        //     // this.service.add({
-        //     //     key: 'tst',
-        //     //     severity: 'info',
-        //     //     summary: 'Info Message',
-        //     //     detail: 'PrimeNG rocks',
-        //     // });
-        // });
     }
     onSortChange(event: any) {
         const value = event.value;
