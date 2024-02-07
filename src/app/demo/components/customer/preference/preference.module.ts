@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { CarouselModule } from 'primeng/carousel';
         ButtonModule,
         ImageModule,
         GalleriaModule,
-        CarouselModule
+        CarouselModule,
+        ToastModule
     ],
     declarations: [PreferenceComponent]
 })

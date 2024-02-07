@@ -43,6 +43,7 @@ export class CustomerService {
                     data.userId = res.userId;
                     data.role=res.role;
                     data.info=res.info;
+                    console.log(data);
                     this.uService.saveDataStorage('sessionId',JSON.stringify(data) );
                     next(res);
                     close();
@@ -53,6 +54,42 @@ export class CustomerService {
     updateCustomer(data: Customer, param: any, next: (res: any) => any) {
         this.http
             .put(`${apiUrl}/api/customer/` + param, data)
+            .subscribe((res) => {
+                next(res);
+                close();
+            });
+    }
+
+    choosePreferredService(data: any, id: any, next: (res: any) => any) {
+        this.http
+            .put(`${apiUrl}/api/customer/${id}/choose/service`, data)
+            .subscribe((res) => {
+                next(res);
+                close();
+            });
+    }
+
+    choosePreferredEmployee(data: any, id: any, next: (res: any) => any) {
+        this.http
+            .put(`${apiUrl}/api/customer/${id}/choose/employee`, data)
+            .subscribe((res) => {
+                next(res);
+                close();
+            });
+    }
+
+    getCustomerServices(customerId: any, next: (res: any) => any) {
+        this.http
+            .get(`${apiUrl}/api/customer/${customerId}/services`)
+            .subscribe((res) => {
+                next(res);
+                close();
+            });
+    }
+
+    getCustomerEmployees(customerId: any, next: (res: any) => any) {
+        this.http
+            .get(`${apiUrl}/api/customer/${customerId}/employees`)
             .subscribe((res) => {
                 next(res);
                 close();

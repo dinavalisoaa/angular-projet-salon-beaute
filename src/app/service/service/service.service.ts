@@ -17,9 +17,11 @@ export class ServiceService {
                 close();
             });
     }
+
     createHeader(head: Headers) {
         head.append('Authorization', this.utilService.getToken().token);
     }
+
     saveService(data: Service, next: (res: any) => any) {
         this.http
             .post('http://localhost:5050/api/service', { data })
@@ -28,6 +30,7 @@ export class ServiceService {
                 close();
             });
     }
+
     sumService(data: Service, next: (res: any) => any) {
         let head = new Headers();
         this.createHeader(head);
@@ -41,6 +44,7 @@ export class ServiceService {
                 close();
             });
     }
+
     updateService(data: Service, param: any, next: (res: any) => any) {
         this.http
             .put('http://localhost:5050/api/service/' + param, data)
