@@ -39,4 +39,9 @@ export class UtilService {
         const minutePart = fullTime.split(":")[1].split(":")[0];
         return hourPart + ":" +  minutePart;
     }
+
+    extractDateFromDate(date: any){
+        const datePart = date.split("T")[0];
+        return datePart;
+    }
 }

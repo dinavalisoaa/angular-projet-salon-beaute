@@ -3,7 +3,7 @@
 		<div class="card">
 			<h5>Historique de mes rendez-vous</h5>
 			<p-toast></p-toast>
-			<p-table [value]="products" dataKey="name" [expandedRowKeys]="expandedRows" responsiveLayout="scroll">
+			<p-table [value]="histories" dataKey="_id" [expandedRowKeys]="expandedRows" responsiveLayout="scroll">
 				<ng-template pTemplate="caption">
 					<button pButton icon="pi pi-fw {{showDetails ? 'pi-minus' : 'pi-plus'}}" label="{{showDetails ? 'Masquer les détails' : 'Afficher les détails'}}" (click)="showAddDetails()"></button>
 					<div class="flex table-header">
@@ -14,42 +14,45 @@
 						<th style="width: 3rem"></th>
 						<th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
 						<th>Heure</th>
-						<th pSortableColumn="duration">Durée <p-sortIcon field="duration"></p-sortIcon></th>
-						<th pSortableColumn="amount">Montant <p-sortIcon field="amount"></p-sortIcon></th>
+						<th>Durée</th>
+						<th pSortableColumn="totalAmount">Montant <p-sortIcon field="totalAmount"></p-sortIcon></th>
 						<th pSortableColumn="status">Etat <p-sortIcon field="status"></p-sortIcon></th>
 					</tr>
 				</ng-template>
-				<ng-template pTemplate="body" let-product let-expanded="expanded">
+				<ng-template pTemplate="body" let-history let-expanded="expanded">
 					<tr>
 						<td>
-							<button type="button" pButton pRipple [pRowToggler]="product" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+							<button type="button" pButton pRipple [pRowToggler]="history" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
 						</td>
-						<td style="min-width: 12rem;">{{product.name}}</td>
-						<td>16:30</td>
-						<td style="min-width: 8rem;">{{product.price | currency:'USD'}}</td>
-						<td style="min-width: 10rem;">{{product.category}}</td>
-						<td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td>
+						<td style="min-width: 12rem;">{{utilService.extractDateFromDate(history.date)}}</td>
+						<td>{{utilService.getTimeFromDate(history.date)}}</td>
+						<td *ngIf="history.totalDuration.hours > 0" style="min-width: 8rem;">{{history.totalDuration.hours}} h {{history.totalDuration.minutes}} min</td>
+                        <td *ngIf="history.totalDuration.hours == 0" style="min-width: 8rem;">{{history.totalDuration.minutes}} min</td>
+						<td style="min-width: 10rem;">{{history.totalAmount}} Ar</td>
+						<td>
+                            <p-badge [value]="checkStatus(history.status).message" severity="{{checkStatus(history.status).type}}"></p-badge>
+                        </td>
 					</tr>
 				</ng-template>
-				<ng-template pTemplate="rowexpansion" let-product>
+				<ng-template pTemplate="rowexpansion" let-history>
 					<tr>
 						<td colspan="7">
 							<div class="p-3">
-								<p-table [value]="product.orders" dataKey="id" responsiveLayout="scroll">
+								<p-table [value]="history.service" dataKey="id" responsiveLayout="scroll">
 									<ng-template pTemplate="header">
 					<tr>
                         <th></th>
-						<th pSortableColumn="id">Service <p-sortIcon field="price"></p-sortIcon></th>
-						<th pSortableColumn="customer">Durée <p-sortIcon field="customer"></p-sortIcon></th>
-						<th pSortableColumn="date">Prix <p-sortIcon field="date"></p-sortIcon></th>
+						<th pSortableColumn="name">Service <p-sortIcon field="name"></p-sortIcon></th>
+						<th pSortableColumn="duration">Durée <p-sortIcon field="duration"></p-sortIcon></th>
+						<th pSortableColumn="price">Prix <p-sortIcon field="price"></p-sortIcon></th>
 					</tr>
 				</ng-template>
-				<ng-template pTemplate="body" let-order>
+				<ng-template pTemplate="body" let-service>
 					<tr>
-                        <td><img [src]="'assets/demo/images/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
-						<td>{{order.customer}}</td>
-						<td>{{order.date}}</td>
-						<td>{{order.amount | currency:'USD'}}</td>
+                        <td><img [src]="service.illustration" [alt]="service.name" width="100" class="shadow-4" /></td>
+						<td>{{service.name}}</td>
+						<td>{{service.duration}} min</td>
+						<td>{{service.price}} Ar</td>
 					</tr>
 				</ng-template>
 				<ng-template pTemplate="emptymessage">

@@ -95,4 +95,14 @@ export class CustomerService {
                 close();
             });
     }
+
+    getAppointmentHistory(customerId: any, next: (res: any) => any) {
+        this.http
+            .get(`${apiUrl}/api/appointment/customer/${customerId}`)
+            .subscribe((res) => {
+                next(res);
+                close();
+            });
+    }
 }
+
