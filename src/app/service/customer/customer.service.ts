@@ -32,6 +32,17 @@ export class CustomerService {
             });
     }
 
+    registration(data: Customer, next: (res: any) => any) {
+        this.http
+            .post(`${apiUrl}/api/customer/registration`, data)
+            .subscribe(
+                CheckError((res) => {
+                    next(res);
+                    close();
+                })
+            );
+    }
+
     loginCustomer(data: Customer, next: (res: any) => any) {
         this.http
             .post(`${apiUrl}/api/customer/connection`, data)

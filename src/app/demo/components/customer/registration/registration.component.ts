@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { CustomerService } from 'src/app/service/customer/customer.service';
+import { SexService } from 'src/app/service/sex/sex.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-registration-customer',
@@ -37,5 +41,61 @@ export class RegistrationComponent {
         { name: 'Femme', code: 'Femme' }
     ];
 
-    constructor(public layoutService: LayoutService, public router: Router) { }
+    selectedSex: any;
+
+    dropdownSexes: [] = [];
+
+    customer: any = {};
+
+    constructor(
+        public layoutService: LayoutService,
+        public router: Router,
+        private sexService: SexService,
+        private customerService: CustomerService,
+        private utilService: UtilService
+    ) { }
+
+    ngOnInit() {
+        this.fetchSexes();
+    }
+
+    fetchSexes() {
+        this.sexService.getAllSexes((res) => {
+            this.dropdownSexes = res;
+        });
+    }
+
+    registration() {
+        const name = this.customer.name;
+        const firstname = this.customer.firstname;
+        const dateOfBirth = this.customer.dateOfBirth;
+        const sex = this.selectedSex._id;
+        const address = this.customer.address;
+        const phoneNumber = this.customer.phoneNumber;
+        const email = this.customer.email;
+        const password = this.customer.password;
+        const confirmationPassword = this.customer.confirmationPassword;
+         const data: any = {
+            name,
+            firstname,
+            dateOfBirth,
+            sex,
+            address,
+            phoneNumber,
+            email,
+            password,
+            confirmationPassword
+        };
+        console.log(data);
+        this.customerService.registration(data, () => {
+            this.customerService.loginCustomer( { password, email }, (res) => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Inscription réussi",
+                    text: 'Vous êtes désormais inscrit sur Beauty Salon'
+                });
+                this.utilService.navigateTo('/customer/appointment/making');
+            });
+        });
+    }
 }
