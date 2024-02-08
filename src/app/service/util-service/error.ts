@@ -1,4 +1,5 @@
 import { HttpErrorResponse } from "@angular/common/http";
+import Swal from "sweetalert2";
 
 export const CheckError = (next: (res: any) => any) => {
     return {
@@ -7,21 +8,23 @@ export const CheckError = (next: (res: any) => any) => {
 
         let errorData: any ={}
 
-        // let errorData: SweetAlertOptions = {icon: "error", title: "Erreur",};
         if (err.status === 0) {
-          errorData.text = "Êtes-vous connecté a internet ?";
+          errorData.text = "Êtes-vous connecté à internet ?";
         }
         else if (500 - err.status <= 0) {
             console.log(err);
-          errorData.text = err.error.error;
-        //   errorData.text = //"Une erreur est survenue";
+            errorData.text = err.error.error;
         }
         else {
           errorData.text = err.error.error;
         }
 
-        alert( errorData.text);
-        // Swal.fire(errorData).then();
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorData.text,
+            footer: ''
+        });
       }
     }
   };

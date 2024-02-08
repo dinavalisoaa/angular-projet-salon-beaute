@@ -40,6 +40,7 @@ export class LoginComponent {
         public utilService: UtilService,
         public router: Router
     ) {}
+
     login() {
         const password = this.password;
         const email = this.email;
