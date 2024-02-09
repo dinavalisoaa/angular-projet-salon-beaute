@@ -44,4 +44,17 @@ export class UtilService {
         const datePart = date.split("T")[0];
         return datePart;
     }
+
+    toDateFr(date: any){
+        const originalDate = new Date(date);
+        const moisFr = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+        const day = originalDate.getDate();
+        const month = originalDate.getMonth();
+        const year = originalDate.getFullYear();
+        const formatedDate = `${day} ${moisFr[month]} ${year}`;
+        return formatedDate;
+    }
 }
