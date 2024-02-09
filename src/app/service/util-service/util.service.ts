@@ -62,4 +62,31 @@ export class UtilService {
         const formatedDate = `${day} ${moisFr[month]} ${year}`;
         return formatedDate;
     }
+
+    toTimeFr(time: any){
+        const date = new Date(time);
+        const heures = date.getUTCHours();
+        const minutes = date.getUTCMinutes();
+        const heureMinute = `${heures.toString().padStart(2, '0')}h${minutes.toString().padStart(2, '0')}`;
+        return heureMinute
+    }
+
+    toDatetimeFr(datetime: any){
+        const date = this.toDateFr(datetime);
+        const time = this.toTimeFr(datetime);
+        return `${date} ${time}`;
+    }
+
+    subtractDatePart(date: any, hours: any) {
+        // const newDate = subHours(date, hours);
+        const newDate = new Date(date);
+        newDate.setHours(newDate.getHours() - hours);
+         const datePart = {
+            day: new Date(newDate).getDate(),
+            month: new Date(newDate).getMonth() + 1,
+            hour: new Date(newDate).getHours(),
+            minute: new Date(newDate).getMinutes()
+        }
+        return datePart;
+    };
 }
