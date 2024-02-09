@@ -4,7 +4,8 @@ import { catchError, throwError } from 'rxjs';
 import { Manager, TokenObject } from 'src/app/models/models';
 import { CheckError } from '../util-service/error';
 import { UtilService } from '../util-service/util.service';
-
+import { API_URL } from '../util-service/util.service';
+const apiUrl = API_URL;
 @Injectable({
     providedIn: 'root',
 })
@@ -19,24 +20,28 @@ export class ManagerService {
     // }
     getManager(query: any, next: (res: any) => any) {
         this.http
-            .get('http://localhost:5050/api/mange' + query)
-            .subscribe((res) => {
+            .get(`${apiUrl}/api/manager` + query)
+           .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
     saveManager(data: Manager, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/Manager', data)
-            .subscribe((res) => {
+            .post(`${apiUrl}/api/manager`, data)
+           .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
 
     loginManager(data: Manager, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/manager/connection', data)
+            .post(`${apiUrl}/api/manager/connection`, data)
             .subscribe(
                 CheckError((res) => {
                     const data: TokenObject = {
@@ -53,10 +58,12 @@ export class ManagerService {
     }
     updateManager(data: Manager, param: any, next: (res: any) => any) {
         this.http
-            .put('http://localhost:5050/api/appointment/' + param, data)
-            .subscribe((res) => {
+            .put(`${apiUrl}/api/appointment/` + param, data)
+           .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
 }

@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Account, Customer } from 'src/app/models/models';
 import { CheckError } from '../util-service/error';
-import { UtilService } from '../util-service/util.service';
+import { API_URL, UtilService } from '../util-service/util.service';
+import Swal from 'sweetalert2';
+const apiUrl =API_URL;
 
 @Injectable({
     providedIn: 'root',
 })
+
 export class AccountService {
     constructor(private http: HttpClient, private uService: UtilService) {}
     // getState(val:number,id: string) {
@@ -16,7 +19,7 @@ export class AccountService {
         let h = new Headers();
         h.append('Authorization', this.uService.getToken().token);
         this.http
-            .get('http://localhost:5050/api/accounts' + query, {
+            .get(`${apiUrl}/api/accounts` + query, {
                 headers: {
                     Authorization: this.uService.getToken().token,
                 },
@@ -30,7 +33,7 @@ export class AccountService {
     }
     getAccountState(id: string, next: (res: any) => any) {
         this.http
-            .get('http://localhost:5050/api/account/state?id=' + id)
+            .get(`${apiUrl}/api/account/state?id=` + id)
             .subscribe(
                 CheckError((res) => {
                     next(res);
@@ -39,10 +42,17 @@ export class AccountService {
             );
     }
     saveAccount(data: Account, next: (res: any) => any) {
-        this.http.post('http://localhost:5050/api/account', data).subscribe(
+        this.http.post(`${apiUrl}/api/account`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                alert(res.message);
+                // Swal.showLoading(Swal.getDenyButton())
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message',
+                    text:res.message,
+                    footer: '',
+                });
+                // alert();
                 close();
 
             })
@@ -50,7 +60,7 @@ export class AccountService {
     }
     updateAccount(data: Account, param: any, next: (res: any) => any) {
         this.http
-            .put('http://localhost:5050/api/account/' + param, data)
+            .put(`${apiUrl}/api/account/` + param, data)
             .subscribe(
                 CheckError((res) => {
                     next(res);

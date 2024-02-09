@@ -4,9 +4,14 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { Manager } from 'src/app/models/models';
 
+export const API_URL="http://localhost:5050";
+// export const API_URL= process.env['API_URL'];
+
 @Injectable({
     providedIn: 'root',
 })
+//  process.env.API_URL;
+// export const API_URL= process.env['API_URL'];//"http://localhost:5050";
 export class UtilService {
     constructor(private http: HttpClient,private router:Router) {}
 

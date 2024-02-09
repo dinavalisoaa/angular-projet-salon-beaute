@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Service } from '../../models/models';
 import { UtilService } from '../util-service/util.service';
-
+import { CheckError } from '../util-service/error';
+import { API_URL } from '../util-service/util.service';
+const apiUrl = API_URL;
 @Injectable({
     providedIn: 'root',
 })
@@ -11,11 +13,13 @@ export class ServiceService {
 
     getService(query: any, next: (res: any) => any) {
         this.http
-            .get('http://localhost:5050/api/services' + query)
-            .subscribe((res) => {
+            .get(`${apiUrl}/api/services` + query)
+            .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
 
     createHeader(head: Headers) {
@@ -24,33 +28,39 @@ export class ServiceService {
 
     saveService(data: Service, next: (res: any) => any) {
         this.http
-            .post('http://localhost:5050/api/service', { data })
-            .subscribe((res) => {
+            .post(`${apiUrl}/api/service`, { data })
+            .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
 
     sumService(data: Service, next: (res: any) => any) {
         let head = new Headers();
         this.createHeader(head);
         this.http
-            .get('http://localhost:5050/api/service/sum', {
+            .get(`${apiUrl}/api/service/sum`, {
                 // data
                 // headers: head,
             })
-            .subscribe((res) => {
+            .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
 
     updateService(data: Service, param: any, next: (res: any) => any) {
         this.http
-            .put('http://localhost:5050/api/service/' + param, data)
-            .subscribe((res) => {
+            .put('${apiUrl}/api/service/' + param, data)
+            .subscribe(
+            CheckError((res) => {
                 next(res);
                 close();
-            });
+            })
+        );
     }
 }
