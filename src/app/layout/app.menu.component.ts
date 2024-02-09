@@ -1,6 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
 
 @Component({
     selector: 'app-menu',
@@ -10,9 +11,17 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
-    constructor(public layoutService: LayoutService) { }
+    role: any = '';
+
+    constructor(
+        public layoutService: LayoutService,
+        public utilService: UtilService
+    ) { }
 
     ngOnInit() {
+        this.checkUserRole();
+        console.log("ROLE: " + this.role);
+
         this.model = [
             {
                 label: 'Home',
@@ -163,5 +172,10 @@ export class AppMenuComponent implements OnInit {
                 ]
             }
         ];
+    }
+
+    checkUserRole() {
+        const role = this.utilService.getToken().role;
+        this.role = role;
     }
 }
