@@ -73,6 +73,7 @@ export class AppointmentComponent implements OnInit {
             { name: 'Rome', code: 'RM' },
         ];
     }
+
     totalize() {
         let sum = 0;
         this.servicesToDo.forEach((element) => {
@@ -82,6 +83,7 @@ export class AppointmentComponent implements OnInit {
         });
         return sum;
     }
+
     pay() {
         const token: TokenObject = this.utilService.getToken();
         const account: Account = {};
@@ -103,7 +105,11 @@ export class AppointmentComponent implements OnInit {
         this.appointment = {};
 
     }
+
     saveAppointment() {
+        console.log(this.utilService.subtractDatePart(this.appointment.date, 24));
+        console.log(this.appointment.customer?.email);
+
         const data: Appointment = {};
         data.date = this.appointment.date;
         const token: TokenObject = this.utilService.getToken();
@@ -122,14 +128,9 @@ export class AppointmentComponent implements OnInit {
         });
 
         const data2 = {
-            date: {
-                "day": "9",
-                "month": "2",
-                "hour": "09",
-                "minute": "47"
-            },
+            date: this.utilService.subtractDatePart(this.appointment.date, 24),
             shipper: "BEAUTY SALON",
-            recipient: "lalaina.nancia64@gmail.com",
+            recipient: 'lalaina.nancia64@gmail.com',
             subject: 'Rappel d\'un rendez-vous',
             message: 'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure'
         };
@@ -137,6 +138,7 @@ export class AppointmentComponent implements OnInit {
             console.log(data2);
         });
     }
+
     onSortChange(event: any) {
         const value = event.value;
 
