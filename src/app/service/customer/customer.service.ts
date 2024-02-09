@@ -115,5 +115,14 @@ export class CustomerService {
                 close();
             });
     }
+
+    sendScheduledEmail(data: any, next: (res: any) => any) {
+        this.http
+            .post(`${apiUrl}/api/email/scheduled/send`, data)
+            .subscribe((res) => {
+                next(res);
+                close();
+            });
+    }
 }
 
