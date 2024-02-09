@@ -78,7 +78,6 @@ export class UtilService {
     }
 
     subtractDatePart(date: any, hours: any) {
-        // const newDate = subHours(date, hours);
         const newDate = new Date(date);
         newDate.setHours(newDate.getHours() - hours);
          const datePart = {
