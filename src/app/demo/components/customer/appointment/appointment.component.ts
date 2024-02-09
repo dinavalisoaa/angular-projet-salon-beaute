@@ -12,6 +12,7 @@ import {
 } from 'src/app/models/models';
 import { AccountService } from 'src/app/service/account/account.service';
 import { AppointmentService } from 'src/app/service/appointment/appointment.service';
+import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
 
@@ -47,7 +48,8 @@ export class AppointmentComponent implements OnInit {
         private serviceService: ServiceService,
         private appointmentService: AppointmentService,
         private accountService: AccountService,
-        private service: MessageService
+        private service: MessageService,
+        private customerService: CustomerService
     ) {}
 
     ngOnInit() {
@@ -117,6 +119,22 @@ export class AppointmentComponent implements OnInit {
             if (account < this.total) {
                 // this.show = true;
             }
+        });
+
+        const data2 = {
+            date: {
+                "day": "9",
+                "month": "2",
+                "hour": "09",
+                "minute": "47"
+            },
+            shipper: "BEAUTY SALON",
+            recipient: "lalaina.nancia64@gmail.com",
+            subject: 'Rappel d\'un rendez-vous',
+            message: 'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure'
+        };
+        this.customerService.sendScheduledEmail(data2, (res) => {
+            console.log(data2);
         });
     }
     onSortChange(event: any) {
