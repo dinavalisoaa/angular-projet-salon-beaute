@@ -15,7 +15,7 @@ export class CustomerService {
     constructor(private http: HttpClient, public uService: UtilService) {}
 
     getCustomer(query: any, next: (res: any) => any) {
-        this.http.get(`${apiUrl}/api/customer` + query).subscribe(
+        this.http.get(`${apiUrl}/api/customers` + query).subscribe(
             CheckError((res) => {
                 next(res);
                 close();
