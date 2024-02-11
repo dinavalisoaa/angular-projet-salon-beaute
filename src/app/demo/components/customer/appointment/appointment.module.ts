@@ -14,6 +14,13 @@ import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { MenuModule } from 'primeng/menu';
+import { MegaMenuModule } from 'primeng/megamenu';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { MenubarModule } from 'primeng/menubar';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @NgModule({
     imports: [
@@ -27,11 +34,19 @@ import { MessageModule } from 'primeng/message';
         InputTextModule,
         DropdownModule,
         RatingModule,
+        MenuModule,
+        MegaMenuModule,
+        PanelMenuModule,
+        MenubarModule,
+        BreadcrumbModule,
+        InputTextModule,
+        TieredMenuModule,
+        TabMenuModule,
         ButtonModule,
         DialogModule,
         MessagesModule,
         MessageModule,
     ],
-    declarations: [AppointmentComponent]
+    declarations: [AppointmentComponent],
 })
-export class AppointmentModule { }
+export class AppointmentModule {}

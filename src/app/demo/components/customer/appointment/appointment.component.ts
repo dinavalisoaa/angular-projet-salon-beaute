@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService, SelectItem } from 'primeng/api';
+import { MenuItem, MessageService, SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
@@ -27,6 +27,8 @@ export class AppointmentComponent implements OnInit {
     visiblePay: boolean = false;
     show: boolean = false;
 
+    routeItems!: MenuItem[];
+
     sortOptions: SelectItem[] = [];
     amount: number = 0;
     sortOrder: number = 0;
@@ -51,15 +53,16 @@ export class AppointmentComponent implements OnInit {
         private service: MessageService,
         private customerService: CustomerService
     ) {}
-
+    fetchService() {
+        this.serviceService.getService('', (res) => {
+            this.allServices = res;
+        });
+    }
     ngOnInit() {
         this.productService
             .getProducts()
             .then((data) => (this.products = data));
-        this.serviceService.getService('', (res) => {
-            this.allServices = res;
-        });
-        // this.allServices = [
+        this.fetchService();
 
         this.servicesToDo = [];
 
@@ -94,14 +97,17 @@ export class AppointmentComponent implements OnInit {
             console.log(res);
         });
         this.appointmentService.saveAppointment(
-            this.filledAppointment,(res) => {
+            this.filledAppointment,
+            (res) => {
                 // if(res.status==4)
                 // console.log(res);
             }
         );
+        this.servicesToDo = [];
+        this.fetchService();
+
         this.visiblePay = false;
         this.appointment = {};
-
     }
     saveAppointment() {
         const data: Appointment = {};
@@ -109,6 +115,7 @@ export class AppointmentComponent implements OnInit {
         const token: TokenObject = this.utilService.getToken();
         data.customer = token.info;
         data.service = this.servicesToDo;
+        data.status = 0;
         this.filledAppointment = data;
         this.visiblePay = true;
         this.total = this.totalize();
@@ -123,15 +130,16 @@ export class AppointmentComponent implements OnInit {
 
         const data2 = {
             date: {
-                "day": "9",
-                "month": "2",
-                "hour": "09",
-                "minute": "47"
+                day: '9',
+                month: '2',
+                hour: '09',
+                minute: '47',
             },
-            shipper: "BEAUTY SALON",
-            recipient: "lalaina.nancia64@gmail.com",
-            subject: 'Rappel d\'un rendez-vous',
-            message: 'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure'
+            shipper: 'BEAUTY SALON',
+            recipient: 'lalaina.nancia64@gmail.com',
+            subject: "Rappel d'un rendez-vous",
+            message:
+                'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure',
         };
         this.customerService.sendScheduledEmail(data2, (res) => {
             console.log(data2);
