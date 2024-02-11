@@ -1,0 +1,83 @@
+<div class="grid">
+    <div class="col-12">
+        <!-- <div class="card"> -->
+        <h5>Les rendez-vous({{appointments.length}})</h5>
+        <p-calendar inputId="calendar" [(ngModel)]="datejour" (onSelect)="changeDate($event)"></p-calendar>
+
+
+        <div class="card flex flex-wrap gap-4">
+
+
+            <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
+            (onDrop)="dropTodo()"
+                style="height:500px;overflow: scroll;">
+                <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
+                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Tache a
+                        effectue({{appointTodo.length}})</strong></p>
+
+                <div class="card m-3 border-1 surface-border" *ngFor="let appointment of appointTodo"
+                    style="background-image:url('assets/demo/images/sweet/feature-bg-4.png');padding:10px;" pDraggable
+                    (onDragStart)="dragStartTodo(appointment)" (onDragEnd)="dragEndTodo()">
+                    <div class="text-center">
+
+                        <div class="mb-3">
+                            <div class="text" *ngIf="appointment.customer!=undefined">
+                                Mr/Mle {{appointment.customer.name}}
+                                {{format(appointment.date)}} &agrave; 12h30
+                            </div>
+                            {{showService(appointment)}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
+                (onDrop)="dropDo()"
+                style="height:500px;overflow: scroll;">
+                <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
+                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Do({{appointDo.length}})</strong></p>
+
+                <div class="card m-3 border-1 surface-border" *ngFor="let appointment of appointDo"
+                    style="background-image:url('assets/demo/images/sweet/feature-bg-4.png');padding:10px;" pDraggable
+                    (onDragStart)="dragStartDo(appointment)" (onDragEnd)="dragEndDo()">
+                    <div class="text-center">
+
+                        <div class="mb-3">
+                            <div class="text" *ngIf="appointment.customer!=undefined">
+                                Mr/Mle {{appointment.customer.name}}
+                                {{format(appointment.date)}} &agrave; 12h30
+                            </div>
+                            {{showService(appointment)}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
+                (onDrop)="dropDone()"
+                style="height:500px;overflow: scroll;">
+                <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
+                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Effectuer(({{appointDone.length}}))</strong></p>
+
+                <div class="card m-3 border-1 surface-border" *ngFor="let appointment of appointDone"
+                    style="background-image:url('assets/demo/images/sweet/feature-bg-4.png');padding:10px;" pDraggable
+                    (onDragStart)="dragStartDone(appointment)" (onDragEnd)="dragEndDone()">
+                    <div class="text-center">
+
+                        <div class="mb-3">
+                            <div class="text" *ngIf="appointment.customer!=undefined">
+                                Mr/Mle {{appointment.customer.name}}
+                                {{format(appointment.date)}} &agrave; 12h30
+                            </div>
+                            {{showService(appointment)}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
