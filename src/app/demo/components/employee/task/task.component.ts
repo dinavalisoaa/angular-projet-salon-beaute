@@ -3,12 +3,19 @@ import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
-import { Appointment, Customer, Service } from 'src/app/models/models';
+import {
+    Appointment,
+    Customer,
+    Employee,
+    Service,
+    TokenObject,
+} from 'src/app/models/models';
 import { AppointmentService } from 'src/app/service/appointment/appointment.service';
 import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
+import Swal from 'sweetalert2';
 
 @Component({
     templateUrl: './task.component.html',
@@ -18,7 +25,7 @@ export class TaskComponent implements OnInit {
     dialog: Boolean = false;
     currentFilter: any = {};
     name: string = '';
-    datejour: Date|null|undefined =null ;
+    datejour: Date | null | undefined = null;
     sortOptions: SelectItem[] = [];
     statusOptions: SelectItem[] = [];
     routeItems!: MenuItem[];
@@ -100,21 +107,25 @@ export class TaskComponent implements OnInit {
     getAppointsStatus(status: number) {
         const json: Appointment = {};
         json.status = status;
-        let string="";
-        if (this.datejour && this.datejour!=undefined ) {
-            string+="?year="+ this.datejour.getFullYear();
-            string+="&month="+ (this.datejour.getMonth()+1);
-            string+="&day=" +this.datejour.getDate();
+        let string = '';
+        if (this.datejour && this.datejour != undefined) {
+            string += '?year=' + this.datejour.getFullYear();
+            string += '&month=' + (this.datejour.getMonth() + 1);
+            string += '&day=' + this.datejour.getDate();
         }
-        this.appointmentService.getAppointment(string, {status:status}, (res) => {
-            if (status == 0) {
-                this.appointTodo = res;
-            } else if (status == 1) {
-                this.appointDo = res;
-            } else {
-                this.appointDone = res;
+        this.appointmentService.getAppointment(
+            string,
+            { status: status },
+            (res) => {
+                if (status == 0) {
+                    this.appointTodo = res;
+                } else if (status == 1) {
+                    this.appointDo = res;
+                } else {
+                    this.appointDone = res;
+                }
             }
-        });
+        );
     }
     setService() {
         this.serviceService.getService('', (res) => {
@@ -269,32 +280,43 @@ export class TaskComponent implements OnInit {
     dragStartDo(appointment: Appointment | null) {
         this.draggedDo = appointment;
     }
-
+    getToken() {
+        const token: TokenObject = this.uService.getToken();
+        return token;
+    }
+    getEmp() {
+        const token: TokenObject = this.getToken();
+        const employee: Employee = {};
+        employee._id = token.userId;
+        return employee;
+    }
     dropDo() {
-        if (this.draggedTodo) {
-            // console.log(this.draggedTodo);
+
+        const emps: Employee = this.getEmp();
+        if (this.draggedTodo?._id != undefined) {
+            console.log(this.draggedTodo);
             this.appointmentService.patchAppointment(
-                { status: 1 },
-                this.draggedTodo._id,
+                { status: 1, employee: emps },
+                this.draggedTodo?._id,
                 (res) => {}
             );
             this.fetchAll();
-        } else if (this.draggedDone) {
-            // console.log(this.draggedTodo);
+        } else if (this.draggedDone?._id != undefined) {
             this.appointmentService.patchAppointment(
-                { status: 1 },
-                this.draggedDone._id,
+                { status: 1, employee: emps },
+                this.draggedDone?._id,
                 (res) => {}
             );
             this.fetchAll();
         }
     }
     dropDone() {
-        if (this.draggedDo) {
+        const emps: Employee = this.getEmp();
+        if (this.draggedDo != undefined&&this.draggedDo?._id != undefined) {
             // console.log(this.draggedTodo);
             this.appointmentService.patchAppointment(
-                { status: 2 },
-                this.draggedDo._id,
+                { status: 2, employee: emps },
+                this.draggedDo?._id,
                 (res) => {}
             );
             this.fetchAll();
@@ -302,10 +324,11 @@ export class TaskComponent implements OnInit {
     }
 
     dropTodo() {
-        if (this.draggedDo) {
+        const emps: Employee = this.getEmp();
+        if (this.draggedDo != undefined) {
             this.appointmentService.patchAppointment(
-                { status: 0 },
-                this.draggedDo._id,
+                { status: 0, employee: emps },
+                this.draggedDo?._id,
                 (res) => {}
             );
             this.fetchAll();
