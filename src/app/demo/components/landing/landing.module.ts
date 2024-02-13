@@ -7,6 +7,14 @@ import { DividerModule } from 'primeng/divider';
 import { ChartModule } from 'primeng/chart';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { DataViewModule } from 'primeng/dataview';
+import { PickListModule } from 'primeng/picklist';
+import { OrderListModule } from 'primeng/orderlist';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { RatingModule } from 'primeng/rating';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
     imports: [
@@ -16,6 +24,16 @@ import { ButtonModule } from 'primeng/button';
         StyleClassModule,
         ChartModule,
         PanelModule,
+        ButtonModule,
+        CardModule,
+        InputTextModule,
+        DataViewModule,
+        PickListModule,
+        OrderListModule,
+        ChipModule,
+        InputTextModule,
+        DropdownModule,
+        RatingModule,
         ButtonModule
     ],
     declarations: [LandingComponent]
