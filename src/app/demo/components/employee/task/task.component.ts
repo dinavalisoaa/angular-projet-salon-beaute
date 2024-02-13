@@ -101,7 +101,7 @@ export class TaskComponent implements OnInit {
         const json: Appointment = {};
         json.status = status;
         let string="";
-        if (this.datejour&& this.datejour!=null ) {
+        if (this.datejour && this.datejour!=undefined ) {
             string+="?year="+ this.datejour.getFullYear();
             string+="&month="+ (this.datejour.getMonth()+1);
             string+="&day=" +this.datejour.getDate();
@@ -194,6 +194,7 @@ export class TaskComponent implements OnInit {
     }
     changeDate(event: any) {
         console.log('1111111111111111' + this.datejour);
+
         this.fetchAll();
     }
     filterCustomer(event: any) {
@@ -208,6 +209,7 @@ export class TaskComponent implements OnInit {
 
         this.filteredCustomers = filtered;
     }
+
     filter() {
         const filter: any = {};
         filter.service = this.selectedServices;

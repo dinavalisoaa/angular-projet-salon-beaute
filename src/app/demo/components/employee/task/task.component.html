@@ -1,19 +1,55 @@
 <div class="grid">
+    <div class="col-12 lg:col-4">
+        <div class="card">
+            <h5>Les rendez-vous({{appointments.length}})</h5>
+
+            <p-calendar inputId="calendar" placeholder="Date du jour" [(ngModel)]="datejour"
+                (ngModelChange)="changeDate($event)"></p-calendar>
+            <h3 class="text-center">{{format(datejour)}}</h3>
+        </div>
+    </div>
+    <style>
+        #todo::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            background-color: #444444;
+        }
+
+        #todo::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+
+        #todo::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #D62929;
+            background-image: -webkit-linear-gradient(90deg,
+                    transparent,
+                    rgba(0, 0, 0, 0.4) 50%,
+                    transparent,
+                    transparent)
+        }
+
+    </style>
+    <div class="col-12 lg:col-4">
+        <div class="card z-3">
+            <h3 class="text-center">Heure moyenne de travail</h3>
+            <h2 class="text-center">
+                <span [class]="'customer-badge status-new'" style="font-size: 20px;">8 H</span>
+            </h2>
+
+        </div>
+    </div>
     <div class="col-12">
         <!-- <div class="card"> -->
-        <h5>Les rendez-vous({{appointments.length}})</h5>
-        <p-calendar inputId="calendar" [(ngModel)]="datejour" (onSelect)="changeDate($event)"></p-calendar>
 
 
-        <div class="card flex flex-wrap gap-4">
-
-
-            <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
-            (onDrop)="dropTodo()"
+        <div class="card flex" style="justify-content: space-around;">
+            <div class="p-2 border-1 surface-border border-round w-20rem" pDroppable (onDrop)="dropTodo()"
                 style="height:500px;overflow: scroll;">
                 <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
-                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Tache a
-                        effectue({{appointTodo.length}})</strong></p>
+                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Tache à
+                        effectuée({{appointTodo.length}})</strong></p>
 
                 <div class="card m-3 border-1 surface-border" *ngFor="let appointment of appointTodo"
                     style="background-image:url('assets/demo/images/sweet/feature-bg-4.png');padding:10px;" pDraggable
@@ -31,13 +67,13 @@
                 </div>
 
             </div>
-            <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
-                (onDrop)="dropDo()"
-                style="height:500px;overflow: scroll;">
+            <div class="p-2 border-1 surface-border border-round w-20rem" pDroppable (onDrop)="dropDo()"
+                style="height:500px;overflow: scroll;scrollbar-width: thin;">
                 <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
-                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Do({{appointDo.length}})</strong></p>
+                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>En
+                        traitement({{appointDo.length}})</strong></p>
 
-                <div class="card m-3 border-1 surface-border" *ngFor="let appointment of appointDo"
+                <div id="todo" class="card m-3 border-1 surface-border" *ngFor="let appointment of appointDo"
                     style="background-image:url('assets/demo/images/sweet/feature-bg-4.png');padding:10px;" pDraggable
                     (onDragStart)="dragStartDo(appointment)" (onDragEnd)="dragEndDo()">
                     <div class="text-center">
@@ -53,11 +89,11 @@
                 </div>
 
             </div>
-            <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
-                (onDrop)="dropDone()"
+            <div class="p-2 border-1 surface-border border-round w-20rem" pDroppable (onDrop)="dropDone()"
                 style="height:500px;overflow: scroll;">
                 <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
-                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Effectuer(({{appointDone.length}}))</strong></p>
+                <p class="text-center surface-border border-bottom-1 text-bold" style="">
+                    <strong>Fini({{appointDone.length}})</strong></p>
 
                 <div class="card m-3 border-1 surface-border" *ngFor="let appointment of appointDone"
                     style="background-image:url('assets/demo/images/sweet/feature-bg-4.png');padding:10px;" pDraggable
@@ -80,4 +116,3 @@
 
     </div>
 </div>
-

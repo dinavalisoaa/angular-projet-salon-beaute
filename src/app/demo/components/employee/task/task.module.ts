@@ -23,6 +23,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DragDropModule } from 'primeng/dragdrop';
 import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import { CalendarModule } from 'primeng/calendar';
         AutoCompleteModule,
         ButtonModule,
         TableModule,
-        CalendarModule
+        CalendarModule,
+        CardModule
     ],
     declarations: [TaskComponent],
 })
