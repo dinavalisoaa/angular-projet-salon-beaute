@@ -54,6 +54,7 @@ export interface Manager {
     password?: string;
 }
 export interface Customer {
+    _id?:string;
     name?: string;
     firstname?: string;
     // preference: {   service?: Service[], employee?: Employee[] };
@@ -69,6 +70,7 @@ export interface Customer {
 export interface Appointment {
     date?: Date;
     _id?: string;
+    employee?:Employee;
     customer?: Customer;
     service?: Service[];
     status?: Number;
