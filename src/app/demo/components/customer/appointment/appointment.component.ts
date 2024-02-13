@@ -24,6 +24,10 @@ export class AppointmentComponent implements OnInit {
     products: Product[] = [];
     appointment: Appointment = {};
     filledAppointment: Appointment = {};
+
+    allServices: Service[] = [];
+
+    servicesToDo: Service[] = [];
     visiblePay: boolean = false;
     show: boolean = false;
 
@@ -38,9 +42,6 @@ export class AppointmentComponent implements OnInit {
 
     sortField: string = '';
 
-    allServices: Service[] = [];
-
-    servicesToDo: Service[] = [];
 
     orderCities: any[] = [];
 
