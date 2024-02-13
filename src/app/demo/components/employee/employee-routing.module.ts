@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppLayoutComponent } from 'src/app/layout/app.layout.component';
+import { AuthGuardPermission } from '../manager/auth-permission';
 
 @NgModule({
     imports: [
@@ -16,6 +17,10 @@ import { AppLayoutComponent } from 'src/app/layout/app.layout.component';
                 children: [
                     {
                         path: 'appointment',
+                        canActivate: [AuthGuardPermission],
+                        data: {
+                            role: 'EMP',
+                        },
                         loadChildren: () =>
                             import('./appointment/appointment.module').then(
                                 (m) => m.AppointmentModule
@@ -29,6 +34,10 @@ import { AppLayoutComponent } from 'src/app/layout/app.layout.component';
                 children: [
                     {
                         path: 'task',
+                        canActivate: [AuthGuardPermission],
+                        data: {
+                            role: 'EMP',
+                        },
                         loadChildren: () =>
                             import('./task/task.module').then(
                                 (m) => m.TaskModule
