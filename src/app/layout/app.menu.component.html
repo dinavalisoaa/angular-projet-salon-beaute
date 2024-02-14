@@ -1,30 +1,23 @@
 <ul class="layout-menu">
-    <ng-container *ngFor="let item of model; let i = index;">
-        <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
-        <li *ngIf="item.separator" class="menu-separator"></li>
-    </ng-container>
+    <div *ngIf="role == 'CUSTOMER'">
+        <ng-container *ngFor="let item of model_customer; let i = index;">
+            <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+            <li *ngIf="item.separator" class="menu-separator"></li>
+        </ng-container>
+    </div>
 
-    <!-- If customer -->
-    <!-- <ng-container *ngIf="role == 'CUSTOMER'" *ngFor="let item of model; let i = index;">
-        <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
-        <li *ngIf="item.separator" class="menu-separator"></li>
-    </ng-container> -->
+    <div *ngIf="role == 'EMPLOYEE'">
+        <ng-container *ngFor="let item of model_employee; let i = index;">
+            <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+            <li *ngIf="item.separator" class="menu-separator"></li>
+        </ng-container>
+    </div>
 
-    <!-- If employee -->
-    <!-- <ng-container *ngIf="role == 'EMPLOYEE'" *ngFor="let item of model; let i = index;">
-        <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
-        <li *ngIf="item.separator" class="menu-separator"></li>
-    </ng-container> -->
+    <div *ngIf="role == 'MANAGER'">
+        <ng-container *ngFor="let item of model_manager; let i = index;">
+            <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+            <li *ngIf="item.separator" class="menu-separator"></li>
+        </ng-container>
+    </div>
 
-    <!-- If manager -->
-    <!-- <ng-container *ngIf="role == 'MANAGER'" *ngFor="let item of model; let i = index;">
-        <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
-        <li *ngIf="item.separator" class="menu-separator"></li>
-    </ng-container> -->
-
-    <li>
-        <a href="https://www.primefaces.org/primeblocks-ng/#/">
-            <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'banner-primeblocks' : 'banner-primeblocks-dark'}}.png" alt="Prime Blocks" class="w-full mt-3"/>
-        </a>
-    </li>
 </ul>
