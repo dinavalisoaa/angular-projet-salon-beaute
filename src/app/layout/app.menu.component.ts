@@ -11,6 +11,12 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
+    model_customer: any[] = [];
+
+    model_employee: any[] = [];
+
+    model_manager: any[] = [];
+
     role: any = '';
 
     constructor(
@@ -171,6 +177,138 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             }
+        ];
+
+
+        this.model_customer = [
+            {
+                label: 'Accueil',
+                items: [
+                    { label: 'Page d\'accueil', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                ]
+            },
+            {
+                label: 'Mon compte',
+                icon: 'pi pi-fw pi-briefcase',
+                routerLink: ['/customer'],
+                items: [
+                    {
+                        label: 'Mon profil',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['profile']
+                    },
+                    {
+                        label: 'Mes rendez-vous',
+                        icon: 'pi pi-fw pi-user',
+                        items: [
+                            {
+                                label: 'Nouveau',
+                                icon: 'pi pi-fw pi-sign-in',
+                                routerLink: ['appointment/making']
+                            },
+                            {
+                                label: 'Historique',
+                                icon: 'pi pi-fw pi-times-circle',
+                                routerLink: ['appointment/history']
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Mon compte monétaire',
+                        icon: 'pi pi-fw pi-pencil',
+                        routerLink: ['account/load']
+                    },
+                    {
+                        label: 'Mes préférences',
+                        icon: 'pi pi-fw pi-calendar',
+                        routerLink: ['preference']
+                    },
+                    {
+                        label: 'Mes notifications',
+                        icon: 'pi pi-fw pi-exclamation-circle',
+                        routerLink: ['notifications'],
+                        badge: 3
+                    }
+                ]
+            },
+        ];
+
+        this.model_employee = [
+            {
+                label: 'Accueil',
+                items: [
+                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                ]
+            },
+            {
+                label: 'Mon compte',
+                icon: 'pi pi-fw pi-briefcase',
+                routerLink: ['/employee'],
+                items: [
+                    {
+                        label: 'Mon profil',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['profile']
+                    },
+                    {
+                        label: 'Rendez-vous',
+                        icon: 'pi pi-fw pi-user',
+                        items: [
+                            {
+                                label: 'Nouveau',
+                                icon: 'pi pi-fw pi-sign-in',
+                                routerLink: ['appointment/making']
+                            },
+                            {
+                                label: 'Historique',
+                                icon: 'pi pi-fw pi-times-circle',
+                                routerLink: ['appointment/history']
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Tâches',
+                        icon: 'pi pi-fw pi-pencil',
+                        routerLink: ['account/load']
+                    }
+                ]
+            },
+        ];
+
+        this.model_manager = [
+            {
+                label: 'Accueil',
+                items: [
+                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                ]
+            },
+            {
+                label: 'Mon compte',
+                icon: 'pi pi-fw pi-briefcase',
+                routerLink: ['/customer'],
+                items: [
+                    {
+                        label: 'Employés',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['personnel']
+                    },
+                    {
+                        label: 'Service',
+                        icon: 'pi pi-fw pi-pencil',
+                        routerLink: ['service']
+                    },
+                    {
+                        label: 'Offre spéciale',
+                        icon: 'pi pi-fw pi-calendar',
+                        routerLink: ['special-offer']
+                    },
+                    {
+                        label: 'Dépense',
+                        icon: 'pi pi-fw pi-exclamation-circle',
+                        routerLink: ['expense']
+                    }
+                ]
+            },
         ];
     }
 
