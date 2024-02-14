@@ -26,10 +26,8 @@ export class ServiceService {
         head.append('Authorization', this.utilService.getToken().token);
     }
 
-    saveService(data: Service, next: (res: any) => any) {
-        this.http
-            .post(`${apiUrl}/api/service`, { data })
-            .subscribe(
+    saveService(data: any, next: (res: any) => any) {
+        this.http.post(`${apiUrl}/api/service`, data).subscribe(
             CheckError((res) => {
                 next(res);
                 close();
