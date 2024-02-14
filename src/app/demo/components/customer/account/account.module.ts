@@ -16,6 +16,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { ListAccountComponent } from '../list-account/list-account.component';
 import { ListAccountModule } from '../list-account/list-account.module';
 import { TestComponent } from 'src/app/test/test.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     imports: [
@@ -33,7 +34,7 @@ import { TestComponent } from 'src/app/test/test.component';
         InputTextareaModule,
         InputTextModule,
         ListAccountModule,
-
+        ToastModule
     ],
     declarations: [AccountComponent,TestComponent]
 })
