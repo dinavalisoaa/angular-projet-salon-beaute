@@ -88,4 +88,10 @@ export class UtilService {
         }
         return datePart;
     };
+
+    addToDate(date: any, hours: any) {
+        const newDate = new Date(date);
+        newDate.setHours(newDate.getHours() + hours);
+        return newDate;
+    };
 }
