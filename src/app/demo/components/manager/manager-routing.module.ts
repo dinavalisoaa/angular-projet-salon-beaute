@@ -61,6 +61,17 @@ import { AuthGuardPermission } from './auth-permission';
                                 (m) => m.SpecialOfferModule
                             ),
                     },
+                    {
+                        path: 'dashboard',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'MANAGER',
+                        },
+                        loadChildren: () =>
+                            import('./dashboard/dashboard.module').then(
+                                (m) => m.DashboardModule
+                            ),
+                    },
                 ],
             },
         ]),

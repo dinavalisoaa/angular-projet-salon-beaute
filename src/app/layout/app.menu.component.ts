@@ -279,13 +279,13 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Accueil',
                 items: [
-                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-home', routerLink: ['/manager/dashboard'] }
                 ]
             },
             {
                 label: 'Mon compte',
                 icon: 'pi pi-fw pi-briefcase',
-                routerLink: ['/customer'],
+                routerLink: ['/manager'],
                 items: [
                     {
                         label: 'Employés',
