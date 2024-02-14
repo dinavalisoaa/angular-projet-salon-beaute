@@ -55,6 +55,7 @@ export class ServiceCrudComponent implements OnInit {
             { label: 'OUTOFSTOCK', value: 'outofstock' },
         ];
     }
+
     myUploader(event: any, service?: any) {
         console.log('onUpload() START');
 
@@ -62,20 +63,18 @@ export class ServiceCrudComponent implements OnInit {
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function () {
-                //   console.log(reader.result);
+                console.log(reader.result);
                 service.illustration = reader.result;
-                //   =reader.result;
             };
             console.log('FILE TO BE UPLOADED: ', file);
-            //   this.uploadedFiles.push(file);
         }
-        // this.service.illustration=
         this.messageService.add({
             severity: 'info',
-            summary: 'File Uploaded',
+            summary: 'Image importée',
             detail: '',
         });
     }
+
     openNew() {
         this.service = {};
         this.submitted = false;
@@ -119,7 +118,7 @@ export class ServiceCrudComponent implements OnInit {
             severity: 'success',
             summary: 'Successful',
             detail: 'Service Deleted',
-            life: 3000,
+            life: 5000,
         });
         this.service = {};
     }
@@ -142,18 +141,19 @@ export class ServiceCrudComponent implements OnInit {
         const price = this.service.price;
         const illustration = this.service.illustration;
     }
+
     saveService() {
         const commission = this.service.commission;
         const duration = this.service.duration;
         const name = this.service.name;
         const price = this.service.price;
         const illustration = this.service.illustration;
-        const data: Service = {
+        const data: any = {
             name,
             price,
             commission,
             duration,
-            illustration,
+            illustration
         };
 
         if (this.service._id == undefined) {
@@ -162,9 +162,9 @@ export class ServiceCrudComponent implements OnInit {
             this.serviceService.saveService(data, () => {
                 this.messageService.add({
                     severity: 'success',
-                    summary: 'Successful',
-                    detail: 'Service Created',
-                    life: 3000,
+                    summary: 'Ajout réussi',
+                    detail: 'Service ajouté avec succès',
+                    life: 5000,
                 });
                 this.fetchList("");
             });
@@ -172,9 +172,9 @@ export class ServiceCrudComponent implements OnInit {
             this.serviceService.updateService(data, this.service._id, () => {
                 this.messageService.add({
                     severity: 'success',
-                    summary: 'Successful',
-                    detail: 'Service Updated',
-                    life: 3000,
+                    summary: 'Modification réussi',
+                    detail: 'Service modifié avec succès',
+                    life: 5000,
                 });
                 this.fetchList("");
             });
