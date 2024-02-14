@@ -87,6 +87,17 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                             import('./history/history.module').then(
                                 (m) => m.HistoryModule
                             ),
+                    },
+                    {
+                        path: 'notifications',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./notification/notification.module').then(
+                                (m) => m.NotificationModule
+                            ),
                     }
                 ],
             },
