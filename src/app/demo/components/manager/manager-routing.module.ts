@@ -50,6 +50,17 @@ import { AuthGuardPermission } from './auth-permission';
                                 (m) => m.PersonnelModule
                             ),
                     },
+                    {
+                        path: 'special-offer',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'MANAGER',
+                        },
+                        loadChildren: () =>
+                            import('./special-offer/special-offer.module').then(
+                                (m) => m.SpecialOfferModule
+                            ),
+                    },
                 ],
             },
         ]),
