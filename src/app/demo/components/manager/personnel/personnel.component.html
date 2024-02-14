@@ -11,7 +11,6 @@
                 </ng-template>
 
                 <ng-template pTemplate="right">
-                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Importer" class="mr-2 inline-block"></p-fileUpload>
                     <button pButton pRipple label="Exporter" icon="pi pi-upload" class="p-button-help" (click)="dt.exportCSV()"></button>
                 </ng-template>
             </p-toolbar>
@@ -47,7 +46,8 @@
                             <p-tableCheckbox [value]="personnel"></p-tableCheckbox>
                         </td>
                         <td style="width:14%; min-width:10rem;"><span class="p-column-title">Image</span>
-                            <img [src]="'assets/demo/images/product/blue-band.jpg'" [alt]="personnel.name" width="100" class="shadow-4" />
+                            <img *ngIf="personnel.profile == null" src="assets/demo/images/profile/default-profile.jpg" [alt]="personnel.firstname" class="shadow-4" width="100"/>
+                            <img *ngIf="personnel.profile != null" src="{{personnel.profile}}" [alt]="personnel.firstname" class="shadow-4" width="100"/>
                         </td>
                         <td style="width:14%; min-width:10rem;">
                             <span class="p-column-title">Name</span>
