@@ -1,43 +1,55 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TableModule } from 'primeng/table';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
-import { ToastModule } from 'primeng/toast';
-import { ToolbarModule } from 'primeng/toolbar';
-import { RatingModule } from 'primeng/rating';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { DropdownModule } from 'primeng/dropdown';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { DialogModule } from 'primeng/dialog';
-import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentComponent } from './appointment.component';
+import { AppointmentRoutingModule } from './appointment-routing.module';
+import { DataViewModule } from 'primeng/dataview';
+import { PickListModule } from 'primeng/picklist';
+import { OrderListModule } from 'primeng/orderlist';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { RatingModule } from 'primeng/rating';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { DialogModule } from 'primeng/dialog';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { MegaMenuModule } from 'primeng/megamenu';
+import { MenuModule } from 'primeng/menu';
+import { MenubarModule } from 'primeng/menubar';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { DragDropModule } from 'primeng/dragdrop';
 
 @NgModule({
     imports: [
         CommonModule,
-        AppointmentRoutingModule,
-        TableModule,
-        FileUploadModule,
         FormsModule,
-        ButtonModule,
-        RippleModule,
-        FileUploadModule,
-        ToastModule,
-        ToolbarModule,
-        RatingModule,
+        AppointmentRoutingModule,
+        DataViewModule,
+        PickListModule,
+        OrderListModule,
+        DragDropModule,
+          RatingModule,
+        MenuModule,
+        MegaMenuModule,
+        PanelMenuModule,
+        MenubarModule,
+        BreadcrumbModule,
         InputTextModule,
-        InputNumberModule,
-        InputTextareaModule,
+        TieredMenuModule,
+        TabMenuModule,
+        MultiSelectModule,
+        InputTextModule,
         DropdownModule,
-        RadioButtonModule,
-        InputNumberModule,
-        DialogModule
+        DialogModule,
+        RatingModule,
+        AutoCompleteModule,
+        ButtonModule,
+        TableModule,
     ],
-    declarations: [AppointmentComponent]
+    declarations: [AppointmentComponent],
 })
-export class AppointmentModule { }
+export class AppointmentModule {}

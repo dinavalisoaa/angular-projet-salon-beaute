@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService, SelectItem } from 'primeng/api';
+import { MenuItem, MessageService, SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
@@ -24,8 +24,14 @@ export class AppointmentComponent implements OnInit {
     products: Product[] = [];
     appointment: Appointment = {};
     filledAppointment: Appointment = {};
+
+    allServices: Service[] = [];
+
+    servicesToDo: Service[] = [];
     visiblePay: boolean = false;
     show: boolean = false;
+
+    routeItems!: MenuItem[];
 
     sortOptions: SelectItem[] = [];
     amount: number = 0;
@@ -36,9 +42,6 @@ export class AppointmentComponent implements OnInit {
 
     sortField: string = '';
 
-    allServices: Service[] = [];
-
-    servicesToDo: Service[] = [];
 
     orderCities: any[] = [];
 
@@ -51,15 +54,16 @@ export class AppointmentComponent implements OnInit {
         private service: MessageService,
         private customerService: CustomerService
     ) {}
-
+    fetchService() {
+        this.serviceService.getService('', (res) => {
+            this.allServices = res;
+        });
+    }
     ngOnInit() {
         this.productService
             .getProducts()
             .then((data) => (this.products = data));
-        this.serviceService.getService('', (res) => {
-            this.allServices = res;
-        });
-        // this.allServices = [
+        this.fetchService();
 
         this.servicesToDo = [];
 
@@ -96,14 +100,17 @@ export class AppointmentComponent implements OnInit {
             console.log(res);
         });
         this.appointmentService.saveAppointment(
-            this.filledAppointment,(res) => {
+            this.filledAppointment,
+            (res) => {
                 // if(res.status==4)
                 // console.log(res);
             }
         );
+        this.servicesToDo = [];
+        this.fetchService();
+
         this.visiblePay = false;
         this.appointment = {};
-
     }
 
     saveAppointment() {
@@ -115,6 +122,7 @@ export class AppointmentComponent implements OnInit {
         const token: TokenObject = this.utilService.getToken();
         data.customer = token.info;
         data.service = this.servicesToDo;
+        data.status = 0;
         this.filledAppointment = data;
         this.visiblePay = true;
         this.total = this.totalize();

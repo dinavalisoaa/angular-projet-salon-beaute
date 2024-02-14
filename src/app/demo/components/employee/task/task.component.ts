@@ -3,21 +3,29 @@ import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
-import { Appointment, Customer, Service } from 'src/app/models/models';
+import {
+    Appointment,
+    Customer,
+    Employee,
+    Service,
+    TokenObject,
+} from 'src/app/models/models';
 import { AppointmentService } from 'src/app/service/appointment/appointment.service';
 import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
+import Swal from 'sweetalert2';
 
 @Component({
-    templateUrl: './appointment.component.html',
+    templateUrl: './task.component.html',
 })
-export class AppointmentComponent implements OnInit {
+export class TaskComponent implements OnInit {
     products: Product[] = [];
     dialog: Boolean = false;
     currentFilter: any = {};
     name: string = '';
+    datejour: Date | null | undefined = null;
     sortOptions: SelectItem[] = [];
     statusOptions: SelectItem[] = [];
     routeItems!: MenuItem[];
@@ -40,6 +48,15 @@ export class AppointmentComponent implements OnInit {
     selectedCustomers: any[] = [];
     selectedServices: any[] = [];
     appointments: Appointment[] = [];
+    draggedTodo: Appointment | null = {};
+    draggedDo: Appointment | null = {};
+    draggedDone: Appointment | null = {};
+    appointTodo: Appointment[] = [];
+
+    appointDo: Appointment[] = [];
+
+    appointDone: Appointment[] = [];
+
     customers: Customer[] = [];
     services: Service[] = [];
     constructor(
@@ -82,10 +99,33 @@ export class AppointmentComponent implements OnInit {
         });
     }
     getAppoints() {
-        this.appointmentService.getAppointment('', {}, (res) => {
+        this.appointmentService.getAppointment('', { status: 0 }, (res) => {
             this.appointments = res;
             console.log(res);
         });
+    }
+    getAppointsStatus(status: number) {
+        const json: Appointment = {};
+        json.status = status;
+        let string = '';
+        if (this.datejour && this.datejour != undefined) {
+            string += '?year=' + this.datejour.getFullYear();
+            string += '&month=' + (this.datejour.getMonth() + 1);
+            string += '&day=' + this.datejour.getDate();
+        }
+        this.appointmentService.getAppointment(
+            string,
+            { status: status },
+            (res) => {
+                if (status == 0) {
+                    this.appointTodo = res;
+                } else if (status == 1) {
+                    this.appointDo = res;
+                } else {
+                    this.appointDone = res;
+                }
+            }
+        );
     }
     setService() {
         this.serviceService.getService('', (res) => {
@@ -98,10 +138,17 @@ export class AppointmentComponent implements OnInit {
             console.log(this.customers);
         });
     }
+    fetchAll() {
+        this.getAppointsStatus(0);
+        this.getAppointsStatus(1);
+        this.getAppointsStatus(2);
+    }
     ngOnInit() {
         this.setCustomer();
         this.setService();
         this.getAppoints();
+
+        this.fetchAll();
         this.selectedProducts = [];
         this.availableProducts = [
             { id: '1', name: 'Black Watch' },
@@ -156,6 +203,11 @@ export class AppointmentComponent implements OnInit {
     hideDialog() {
         this.dialog = false;
     }
+    changeDate(event: any) {
+        console.log('1111111111111111' + this.datejour);
+
+        this.fetchAll();
+    }
     filterCustomer(event: any) {
         const filtered: any[] = [];
         const query = event.query;
@@ -168,6 +220,7 @@ export class AppointmentComponent implements OnInit {
 
         this.filteredCustomers = filtered;
     }
+
     filter() {
         const filter: any = {};
         filter.service = this.selectedServices;
@@ -187,7 +240,7 @@ export class AppointmentComponent implements OnInit {
         dv.filter((event.target as HTMLInputElement).value);
     }
 
-    dragStart(product: Product) {
+    dragStart(product: any) {
         this.draggedProduct = product;
     }
 
@@ -205,10 +258,86 @@ export class AppointmentComponent implements OnInit {
         }
     }
 
+    dragEndTodo() {
+        this.draggedTodo = null;
+        this.fetchAll();
+    }
+    dragStartTodo(appointment: Appointment | null) {
+        this.draggedTodo = appointment;
+    }
+    dragEndDone() {
+        this.draggedDone = null;
+        this.fetchAll();
+    }
+    dragStartDone(appointment: Appointment | null) {
+        this.draggedDone = appointment;
+    }
+    dragEndDo() {
+        this.draggedDo = null;
+        this.fetchAll();
+    }
+
+    dragStartDo(appointment: Appointment | null) {
+        this.draggedDo = appointment;
+    }
+    getToken() {
+        const token: TokenObject = this.uService.getToken();
+        return token;
+    }
+    getEmp() {
+        const token: TokenObject = this.getToken();
+        const employee: Employee = {};
+        employee._id = token.userId;
+        return employee;
+    }
+    dropDo() {
+
+        const emps: Employee = this.getEmp();
+        if (this.draggedTodo?._id != undefined) {
+            console.log(this.draggedTodo);
+            this.appointmentService.patchAppointment(
+                { status: 1, employee: emps },
+                this.draggedTodo?._id,
+                (res) => {}
+            );
+            this.fetchAll();
+        } else if (this.draggedDone?._id != undefined) {
+            this.appointmentService.patchAppointment(
+                { status: 1, employee: emps },
+                this.draggedDone?._id,
+                (res) => {}
+            );
+            this.fetchAll();
+        }
+    }
+    dropDone() {
+        const emps: Employee = this.getEmp();
+        if (this.draggedDo != undefined&&this.draggedDo?._id != undefined) {
+            // console.log(this.draggedTodo);
+            this.appointmentService.patchAppointment(
+                { status: 2, employee: emps },
+                this.draggedDo?._id,
+                (res) => {}
+            );
+            this.fetchAll();
+        }
+    }
+
+    dropTodo() {
+        const emps: Employee = this.getEmp();
+        if (this.draggedDo != undefined) {
+            this.appointmentService.patchAppointment(
+                { status: 0, employee: emps },
+                this.draggedDo?._id,
+                (res) => {}
+            );
+            this.fetchAll();
+        }
+    }
     dragEnd1() {
         this.draggedProduct1 = null;
     }
-    dragStart1(product:  Product | null | undefined) {
+    dragStart1(product: Product | null | undefined) {
         this.draggedProduct1 = product;
         console.log(product);
     }
@@ -238,7 +367,7 @@ export class AppointmentComponent implements OnInit {
                 // sourceList.forEach(element => {
                 //     console.log(element);
                 // });
-        // console.log(sourceList+"111<<<");
+                // console.log(sourceList+"111<<<");
 
                 let draggedProductIndex = this.findIndexInSource(
                     draggedProduct,

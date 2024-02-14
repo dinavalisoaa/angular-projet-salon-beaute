@@ -42,6 +42,7 @@ export class AccountService {
             );
     }
     saveAccount(data: Account, next: (res: any) => any) {
+        console.log(data);
         this.http.post(`${apiUrl}/api/account`, data).subscribe(
             CheckError((res) => {
                 next(res);
@@ -52,7 +53,6 @@ export class AccountService {
                     text:res.message,
                     footer: '',
                 });
-                // alert();
                 close();
 
             })
