@@ -19,6 +19,13 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                     ),
             },
             {
+                path: 'appointment',
+                loadChildren: () =>
+                    import('./registration/registration.module').then(
+                        (m) => m.RegistrationModule
+                    ),
+            },
+            {
                 path: '',
                 component: AppLayoutComponent,
                 children: [
