@@ -70,7 +70,7 @@ export interface Customer {
 export interface Appointment {
     date?: Date;
     _id?: string;
-    employee?:Employee;
+    employee?:Employee|null;
     customer?: Customer;
     service?: Service[];
     status?: Number;
