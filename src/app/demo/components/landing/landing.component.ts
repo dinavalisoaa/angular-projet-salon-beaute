@@ -84,24 +84,7 @@ import { DataView } from 'primeng/dataview';
     ],
 })
 export class LandingComponent implements OnInit {
-    getToken() {
-        const token: TokenObject = this.utilService.getToken();
-        return token;
-    }
-    getName() {
-        const token: TokenObject = this.getToken();
-        if (token.userId != null) {
-            return token?.info?.name;
-        }
-        return undefined;
-    }
-    logged() {
-        const token: TokenObject = this.getToken();
-        if (token.userId != null) {
-            return true;
-        }
-        return false;
-    }
+
     constructor(
         public layoutService: LayoutService,
         public router: Router,
