@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Manager } from 'src/app/models/models';
+import Swal from 'sweetalert2';
 
 @Injectable({
     providedIn: 'root',

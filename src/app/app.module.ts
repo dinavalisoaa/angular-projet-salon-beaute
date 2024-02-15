@@ -11,9 +11,8 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-
 //New TODO mydasboard
-import { MydashboardComponent } from './demo/components/mydashboard/mydashboard.component';
+import { MydashboardComponent as DashboardComponent } from './demo/components/mydashboard/mydashboard.component';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -27,11 +26,10 @@ import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
-import { TestComponent } from './test/test.component';
 
 @NgModule({
     declarations: [
-        AppComponent, NotfoundComponent, MydashboardComponent
+        AppComponent, NotfoundComponent, DashboardComponent
     ],
     imports: [
         AppRoutingModule,
