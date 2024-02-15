@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { Manager } from 'src/app/models/models';
 
-export const API_URL="http://localhost:5050";
+export const API_URL = 'http://localhost:5050';
 // export const API_URL= process.env['API_URL'];
 
 @Injectable({
@@ -13,18 +13,29 @@ export const API_URL="http://localhost:5050";
 //  process.env.API_URL;
 // export const API_URL= process.env['API_URL'];//"http://localhost:5050";
 export class UtilService {
-    constructor(private http: HttpClient,private router:Router) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
-    getToken () {
+    getToken() {
         const tokenObjectString = localStorage.getItem('sessionId');
-        return JSON.parse(tokenObjectString || "{}");
+        return JSON.parse(tokenObjectString || '{}');
     }
 
     saveDataStorage(key: any, value: any) {
         localStorage.setItem(key, value);
     }
-    formatted(price:number) {
-       return price.toLocaleString('en-FR');
+    saveCart(value: any) {
+        localStorage.setItem('cartId', JSON.stringify(value));
+    }
+    noCart() {
+        let i = localStorage.getItem('cartId');
+        return i ;
+    }
+    getCart() {
+        const tokenObjectString = localStorage.getItem('cartId');
+        return JSON.parse(tokenObjectString || '{}');
+    }
+    formatted(price: number) {
+        return price.toLocaleString('en-FR');
     }
 
     getDataStorage(key: any) {
@@ -34,30 +45,40 @@ export class UtilService {
         localStorage.removeItem(key);
     }
 
-    navigateTo(url:string){
-        this.router.navigate([url])
+    navigateTo(url: string) {
+        this.router.navigate([url]);
     }
-    navigateToByUrl(url:string){
-        this.router.navigateByUrl(url)
-    }
-
-    getTimeFromDate(date: any){
-        const fullTime = date.split("T")[1];
-        const hourPart = fullTime.split(":")[0];
-        const minutePart = fullTime.split(":")[1].split(":")[0];
-        return hourPart + ":" +  minutePart;
+    navigateToByUrl(url: string) {
+        this.router.navigateByUrl(url);
     }
 
-    extractDateFromDate(date: any){
-        const datePart = date.split("T")[0];
+    getTimeFromDate(date: any) {
+        const fullTime = date.split('T')[1];
+        const hourPart = fullTime.split(':')[0];
+        const minutePart = fullTime.split(':')[1].split(':')[0];
+        return hourPart + ':' + minutePart;
+    }
+
+    extractDateFromDate(date: any) {
+        const datePart = date.split('T')[0];
         return datePart;
     }
 
-    toDateFr(date: any){
+    toDateFr(date: any) {
         const originalDate = new Date(date);
         const moisFr = [
-            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+            'Janvier',
+            'Février',
+            'Mars',
+            'Avril',
+            'Mai',
+            'Juin',
+            'Juillet',
+            'Août',
+            'Septembre',
+            'Octobre',
+            'Novembre',
+            'Décembre',
         ];
         const day = originalDate.getDate();
         const month = originalDate.getMonth();
@@ -66,15 +87,17 @@ export class UtilService {
         return formatedDate;
     }
 
-    toTimeFr(time: any){
+    toTimeFr(time: any) {
         const date = new Date(time);
         const heures = date.getUTCHours();
         const minutes = date.getUTCMinutes();
-        const heureMinute = `${heures.toString().padStart(2, '0')}h${minutes.toString().padStart(2, '0')}`;
-        return heureMinute
+        const heureMinute = `${heures.toString().padStart(2, '0')}h${minutes
+            .toString()
+            .padStart(2, '0')}`;
+        return heureMinute;
     }
 
-    toDatetimeFr(datetime: any){
+    toDatetimeFr(datetime: any) {
         const date = this.toDateFr(datetime);
         const time = this.toTimeFr(datetime);
         return `${date} ${time}`;
@@ -83,18 +106,18 @@ export class UtilService {
     subtractDatePart(date: any, hours: any) {
         const newDate = new Date(date);
         newDate.setHours(newDate.getHours() - hours);
-         const datePart = {
+        const datePart = {
             day: new Date(newDate).getDate(),
             month: new Date(newDate).getMonth() + 1,
             hour: new Date(newDate).getHours(),
-            minute: new Date(newDate).getMinutes()
-        }
+            minute: new Date(newDate).getMinutes(),
+        };
         return datePart;
-    };
+    }
 
     addToDate(date: any, hours: any) {
         const newDate = new Date(date);
         newDate.setHours(newDate.getHours() + hours);
         return newDate;
-    };
+    }
 }
