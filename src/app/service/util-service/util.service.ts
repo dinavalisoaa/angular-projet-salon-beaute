@@ -37,6 +37,9 @@ export class UtilService {
     navigateTo(url:string){
         this.router.navigate([url])
     }
+    navigateToByUrl(url:string){
+        this.router.navigateByUrl(url)
+    }
 
     getTimeFromDate(date: any){
         const fullTime = date.split("T")[1];
