@@ -140,7 +140,7 @@ export class AppointmentComponent implements OnInit {
             shipper: "BEAUTY SALON",
             recipient: 'lalaina.nancia64@gmail.com',
             subject: 'Rappel d\'un rendez-vous',
-            message: 'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure'
+            message: 'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la même heure'
         };
         this.customerService.sendScheduledEmail(data2, (res) => {
             console.log(data2);
