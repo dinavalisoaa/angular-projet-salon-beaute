@@ -47,7 +47,7 @@ export class LoginComponent {
         };
         this.employeeService.loginEmployee(data, (res) => {
             console.log(this.utilService.getToken());
-            this.utilService.navigateTo('/employee/appointment/making');
+            this.utilService.navigateTo('/employee/task');
         });
     }
 }
