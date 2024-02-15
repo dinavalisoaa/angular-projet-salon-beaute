@@ -1,0 +1,40 @@
+<!-- <div class="card m-3 border-1 surface-border" style="background-image:url('assets/demo/images/regular-table-top.png');border-color: #dcebf4 !important;">
+    <div class="text-center">
+        <div class="mb-3">
+            <div class="text" *ngIf="appointment.customer!=undefined">
+                {{appointment.customer.name}} &agrave;
+                <p-chip label="Comedy" styleClass="m-1"></p-chip>
+                <span
+                    [class]="'product-badge status-proposal'"></span>
+
+                {{format(appointment.date)}} 12h30
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<style>
+    .round-icon.green {
+        background: #e0fef4;
+        color: #00f7a7;
+    }
+
+    .round-icon {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        font-size: 18px;
+        line-height: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+<div class="card p-4 border-blue" style="height: 150px;margin:10px;">
+    <h5>
+        <i class="pi {{icon}} round-icon "></i>
+        {{appointment.customer?.name}}
+    </h5>
+    <p class="mb-0">{{format(appointment.date)}}</p>
+    <app-service-avatar [services]="appointment.service"></app-service-avatar>
+</div>

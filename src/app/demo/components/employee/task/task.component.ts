@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
@@ -15,17 +15,25 @@ import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { HttpParams } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
+    selector: 'my-task',
     templateUrl: './task.component.html',
+    styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent implements OnInit {
+    datejour: Date | null | undefined = new Date();
+    successIcon: string = 'pi-check';
+    loadIcon: string = 'pi-clock';
+    beginIcon: string = 'pi-times';
     products: Product[] = [];
     dialog: Boolean = false;
     currentFilter: any = {};
     name: string = '';
-    datejour: Date | null | undefined = null;
+
     sortOptions: SelectItem[] = [];
     statusOptions: SelectItem[] = [];
     routeItems!: MenuItem[];
@@ -60,26 +68,20 @@ export class TaskComponent implements OnInit {
     customers: Customer[] = [];
     services: Service[] = [];
     constructor(
-        private productService: ProductService,
         private appointmentService: AppointmentService,
         private customersService: CustomerService,
         private serviceService: ServiceService,
-        private uService: UtilService
+        private uService: UtilService,
+        private route: ActivatedRoute
     ) {}
-    showService(appointment: Appointment) {
-        let str = '';
-        if (appointment.service != undefined)
-            appointment.service.forEach((element) => {
-                str += element.name + ' & \n ';
-            });
-        return str;
-    }
+
     showDiag() {
         this.dialog = true;
     }
     format(date: any) {
         return this.uService.toDateFr(date);
     }
+
     filterByValue(val: Appointment[], value: any) {
         return val.filter((appointment) =>
             appointment.customer?.name
@@ -107,25 +109,24 @@ export class TaskComponent implements OnInit {
     getAppointsStatus(status: number) {
         const json: Appointment = {};
         json.status = status;
+        if (status != 0) {
+            json.employee = this.getEmp();
+        }
         let string = '';
         if (this.datejour && this.datejour != undefined) {
             string += '?year=' + this.datejour.getFullYear();
             string += '&month=' + (this.datejour.getMonth() + 1);
             string += '&day=' + this.datejour.getDate();
         }
-        this.appointmentService.getAppointment(
-            string,
-            { status: status },
-            (res) => {
-                if (status == 0) {
-                    this.appointTodo = res;
-                } else if (status == 1) {
-                    this.appointDo = res;
-                } else {
-                    this.appointDone = res;
-                }
+        this.appointmentService.getAppointment(string, json, (res) => {
+            if (status == 0) {
+                this.appointTodo = res;
+            } else if (status == 1) {
+                this.appointDo = res;
+            } else {
+                this.appointDone = res;
             }
-        );
+        });
     }
     setService() {
         this.serviceService.getService('', (res) => {
@@ -143,7 +144,14 @@ export class TaskComponent implements OnInit {
         this.getAppointsStatus(1);
         this.getAppointsStatus(2);
     }
+
     ngOnInit() {
+        if (this.route.snapshot.queryParams['date'] != null) {
+            this.datejour =new Date( this.route.snapshot.queryParams['date']);
+        }
+
+        // this.id =
+        // Swal.fire();
         this.setCustomer();
         this.setService();
         this.getAppoints();
@@ -204,8 +212,6 @@ export class TaskComponent implements OnInit {
         this.dialog = false;
     }
     changeDate(event: any) {
-        console.log('1111111111111111' + this.datejour);
-
         this.fetchAll();
     }
     filterCustomer(event: any) {
@@ -227,7 +233,6 @@ export class TaskComponent implements OnInit {
         if (this.selectedCustomers.length != 0) {
             filter.customer = this.selectedCustomers;
         }
-        // console.log("KKKKKKKKKKKKKKKKK"+this.selectedCustomers.length);
         filter.date = this.date;
         this.currentFilter = filter;
 
@@ -242,20 +247,6 @@ export class TaskComponent implements OnInit {
 
     dragStart(product: any) {
         this.draggedProduct = product;
-    }
-
-    drop() {
-        if (this.draggedProduct) {
-            let draggedProductIndex = this.findIndex(this.draggedProduct);
-            this.selectedProducts = [
-                ...(this.selectedProducts as Product[]),
-                this.draggedProduct,
-            ];
-            this.availableProducts = this.availableProducts?.filter(
-                (val, i) => i != draggedProductIndex
-            );
-            this.draggedProduct = null;
-        }
     }
 
     dragEndTodo() {
@@ -291,35 +282,38 @@ export class TaskComponent implements OnInit {
         return employee;
     }
     dropDo() {
-
         const emps: Employee = this.getEmp();
         if (this.draggedTodo?._id != undefined) {
             console.log(this.draggedTodo);
             this.appointmentService.patchAppointment(
                 { status: 1, employee: emps },
                 this.draggedTodo?._id,
-                (res) => {}
+                (res) => {
+                    this.fetchAll();
+                }
             );
             this.fetchAll();
         } else if (this.draggedDone?._id != undefined) {
             this.appointmentService.patchAppointment(
                 { status: 1, employee: emps },
                 this.draggedDone?._id,
-                (res) => {}
+                (res) => {
+                    this.fetchAll();
+                }
             );
-            this.fetchAll();
         }
     }
     dropDone() {
         const emps: Employee = this.getEmp();
-        if (this.draggedDo != undefined&&this.draggedDo?._id != undefined) {
+        if (this.draggedDo != undefined && this.draggedDo?._id != undefined) {
             // console.log(this.draggedTodo);
             this.appointmentService.patchAppointment(
                 { status: 2, employee: emps },
                 this.draggedDo?._id,
-                (res) => {}
+                (res) => {
+                    this.fetchAll();
+                }
             );
-            this.fetchAll();
         }
     }
 
@@ -327,95 +321,12 @@ export class TaskComponent implements OnInit {
         const emps: Employee = this.getEmp();
         if (this.draggedDo != undefined) {
             this.appointmentService.patchAppointment(
-                { status: 0, employee: emps },
+                { status: 0, employee: null },
                 this.draggedDo?._id,
-                (res) => {}
+                (res) => {
+                    this.fetchAll();
+                }
             );
-            this.fetchAll();
         }
-    }
-    dragEnd1() {
-        this.draggedProduct1 = null;
-    }
-    dragStart1(product: Product | null | undefined) {
-        this.draggedProduct1 = product;
-        console.log(product);
-    }
-
-    drop1() {
-        if (this.draggedProduct) {
-            let draggedProductIndex = this.findIndex1(this.draggedProduct);
-            this.availableProducts = [
-                ...(this.availableProducts as Product[]),
-                this.draggedProduct,
-            ];
-            this.selectedProducts = this.selectedProducts?.filter(
-                (val, i) => i != draggedProductIndex
-            );
-            this.draggedProduct = null;
-        }
-    }
-    dropAll(
-        sourceList: Product[],
-        targetList: Product[],
-        draggedProduct: Product | null | undefined
-    ) {
-        if (sourceList != undefined && draggedProduct != undefined) {
-            // if (this.draggedProduct)
-            {
-                console.log(sourceList.length);
-                // sourceList.forEach(element => {
-                //     console.log(element);
-                // });
-                // console.log(sourceList+"111<<<");
-
-                let draggedProductIndex = this.findIndexInSource(
-                    draggedProduct,
-                    sourceList
-                );
-
-                targetList = [...(targetList as Product[]), draggedProduct];
-                // console.log("..."+targetList.length+"...");
-
-                sourceList = sourceList?.filter(
-                    (val, i) => i != draggedProductIndex
-                );
-            }
-        }
-    }
-
-    dragEnd() {
-        this.draggedProduct = null;
-    }
-
-    findIndexInSource(product: Product, sourceList: Product[]) {
-        let index = -1;
-        for (let i = 0; i < (sourceList as Product[]).length; i++) {
-            if (product.id === (sourceList as Product[])[i].id) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
-    findIndex(product: Product) {
-        let index = -1;
-        for (let i = 0; i < (this.availableProducts as Product[]).length; i++) {
-            if (product.id === (this.availableProducts as Product[])[i].id) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
-    findIndex1(product: Product) {
-        let index = -1;
-        for (let i = 0; i < (this.selectedProducts as Product[]).length; i++) {
-            if (product.id === (this.selectedProducts as Product[])[i].id) {
-                index = i;
-                break;
-            }
-        }
-        return index;
     }
 }

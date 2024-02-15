@@ -78,14 +78,17 @@
                                 <!-- <hr />  -->
                                 <div class="mb-3">
                                     {{showService(appointment)}}
+                                {{'/employee/task?date='+ getDate(appointment.date)}}
+
                                 </div>
                                 <!-- <p-rating [ngModel]="appointment.rating" [readonly]="true" [cancel]="false"></p-rating> -->
                             </div>
                             <div class="flex align-items-center justify-content-between">
                                 <!-- <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-outlined p-button-text mr-2 mb-2"></button> -->
-                                <button pButton pRipple type="button" icon="pi pi-plus-circle"
-                                    class="p-button-rounded p-button-outlined mr-2 mb-2"></button>
-                                <button pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
+                                <button (click)="navigate(appointment)"  pButton pRipple type="button" icon="pi pi-plus-circle"
+                                    class="p-button-rounded p-button-outlined mr-2 mb-2">
+                                </button>
+                                <button  pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
                                     class="p-button-rounded p-button-danger mr-2 mb-2"></button>
                                 <button pButton pRipple type="button" icon="pi pi-clock" *ngIf="appointment.status==1"
                                     class="p-button-rounded p-button-secondary mr-2 mb-2"></button>

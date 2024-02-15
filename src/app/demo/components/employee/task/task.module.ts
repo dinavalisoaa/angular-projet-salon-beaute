@@ -24,6 +24,13 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DragDropModule } from 'primeng/dragdrop';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
+import { CardTaskComponent } from '../card-task/card-task.component';
+import { ChipModule } from 'primeng/chip';
+import { AvatarGroup, AvatarGroupModule } from 'primeng/avatargroup';
+import { AvatarModule } from 'primeng/avatar';
+import { ServiceAvatarComponent } from '../service-avatar/service-avatar.component';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @NgModule({
     imports: [
@@ -52,8 +59,13 @@ import { CardModule } from 'primeng/card';
         ButtonModule,
         TableModule,
         CalendarModule,
-        CardModule
+        CardModule,
+        ChipModule,
+        AvatarGroupModule,
+        AvatarModule,
+        ToolbarModule,
+        SplitButtonModule
     ],
-    declarations: [TaskComponent],
+    declarations: [TaskComponent,CardTaskComponent,ServiceAvatarComponent],
 })
 export class TaskModule {}
