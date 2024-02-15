@@ -162,17 +162,7 @@ export class CreateAppointmentComponent implements OnInit {
 
         this.visiblePay = false;
         this.appointment = {};
-        // const data2 = {
-        //     date: this.utilService.subtractDatePart(this.appointment.date, 24),
-        //     shipper: 'BEAUTY SALON',
-        //     recipient: 'lalaina.nancia64@gmail.com',
-        //     subject: "Rappel d'un rendez-vous",
-        //     message:
-        //         'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure',
-        // };
-        // this.customerService.sendScheduledEmail(data2, (res) => {
-        //     console.log(data2);
-        // });
+
     }
     logged() {
         const token: TokenObject = this.getToken();

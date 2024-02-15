@@ -5,6 +5,7 @@ import { CheckError } from '../util-service/error';
 import { API_URL, UtilService } from '../util-service/util.service';
 import Swal from 'sweetalert2';
 import { AppointmentService } from '../appointment/appointment.service';
+import { CustomerService } from '../customer/customer.service';
 const apiUrl = API_URL;
 
 @Injectable({
@@ -14,7 +15,8 @@ export class AccountService {
     constructor(
         private http: HttpClient,
         private uService: UtilService,
-        private appoint: AppointmentService
+        private appoint: AppointmentService,
+        private customerService: CustomerService,
     ) {}
     // getState(val:number,id: string) {
 
@@ -75,6 +77,18 @@ export class AccountService {
                 appoint.isPaid=true;
 
                 this.appoint.saveAppointment(appoint, (res) => {});
+
+                const data2 = {
+                    date: this.uService.subtractDatePart(appoint.date, 24),
+                    shipper: 'BEAUTY SALON',
+                    recipient: 'lalaina.nancia64@gmail.com',
+                    subject: "Rappel d'un rendez-vous",
+                    message:
+                        'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure',
+                };
+                this.customerService.sendScheduledEmail(data2, (res) => {
+                    console.log(data2);
+                });
                 return res;
                 // close();
             })
