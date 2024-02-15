@@ -1,4 +1,3 @@
-import { CustomerModule } from './demo/components/customer/customer.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
