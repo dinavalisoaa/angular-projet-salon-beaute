@@ -24,7 +24,6 @@ import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
     imports: [
-        CreateAppointmentRoutingModule,
         CommonModule,
         FormsModule,
         TableModule,
