@@ -22,6 +22,18 @@ export class EmployeeService {
             })
         );
     }
+    getOneEmployee(query: any, next: (res: any) => any) {
+        let h = new Headers();
+        h.append('Authorization', this.uService.getToken().token);
+        this.http
+            .get(`${apiUrl}/api/employee/` + query)
+            .subscribe(
+                CheckError((res) => {
+                    next(res);
+                    close();
+                })
+            );
+    }
 
     saveEmployee(data: Employee, next: (res: any) => any) {
         this.http.post(`${apiUrl}/api/employee`, data).subscribe(
