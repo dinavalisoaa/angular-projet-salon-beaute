@@ -45,6 +45,7 @@ export interface scheduleForm {
     exit?: Date;
 }
 export interface Sex {
+    _id?:string;
     type?: string;
 }
 export interface Manager {
