@@ -52,6 +52,17 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                             ),
                     },
                     {
+                        path: 'profile',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./profile/profile.module').then(
+                                (m) => m.ProfileModule
+                            ),
+                    },
+                    {
                         path: 'account/load',
                         canActivate: [AuthGuardPermission ],
                         data: {
