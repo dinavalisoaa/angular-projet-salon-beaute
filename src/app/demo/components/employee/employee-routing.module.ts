@@ -44,6 +44,22 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                             ),
                     },
                 ],
+            }, {
+                path: '',
+                component: AppLayoutComponent,
+                children: [
+                    {
+                        path: 'profile',
+                        canActivate: [AuthGuardPermission],
+                        data: {
+                            role: 'EMP',
+                        },
+                        loadChildren: () =>
+                            import('./profile/profile.module').then(
+                                (m) => m.ProfileModule
+                            ),
+                    },
+                ],
             }
         ]),
     ],
