@@ -16,6 +16,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     imports: [
@@ -36,8 +39,12 @@ import { ProfileComponent } from './profile.component';
         DropdownModule,
         RadioButtonModule,
         InputNumberModule,
-        DialogModule
+        ToastModule,
+        MultiSelectModule,
+        CalendarModule,
+        AutoCompleteModule,
+        DialogModule,
     ],
-    declarations: [ProfileComponent]
+    declarations: [ProfileComponent],
 })
-export class ProfileModule { }
+export class ProfileModule {}
