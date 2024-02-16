@@ -1,0 +1,89 @@
+<div class="card">
+    <h3>Prolil</h3>
+    <div class="grid p-fluid mt-3">
+        <div class="col-12 xl:col-5">
+            <div class="field">
+                <label for="illustration">Photo</label>
+
+                <span class="p-float-label">
+                    <p-fileUpload name="myfile[]" [customUpload]="true" (uploadHandler)="myUploader($event,emp)"
+                        [uploadLabel]="label" [showCancelButton]="false" [chooseLabel]="labelChoose"></p-fileUpload>
+                </span>
+                <input type="hidden" pInputText id="_id" [(ngModel)]="emp.profile" />
+                <img [src]="emp.profile" class="shadow-4" height="250" />
+
+            </div>
+
+            <div class="field">
+
+
+            </div>
+        </div>
+        <div class="col-7 flex flex-wrap">
+
+
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText [(ngModel)]="emp.name">
+                    <label for="inputtext">Nom</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText [(ngModel)]="emp.firstname">
+                    <label for="inputtext">Prenom</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText [(ngModel)]="emp.address">
+                    <label for="inputtext">Adresse</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="email" id="inputtext" pInputText [(ngModel)]="emp.email">
+                    <label for="inputtext">Email</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="email" id="inputtext" pInputText [(ngModel)]="emp.phoneNumber">
+                    <label for="inputtext">Numero telephone</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="date" id="inputtext" pInputText [(ngModel)]="emp.dateOfBirth">
+                    <label for="inputtext">Date de naissance</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="sexItem" [(ngModel)]="emp.sex"
+                        optionLabel="type"></p-dropdown>
+                    <label for="dropdown">Sexe</label>
+                </span>
+            </div> <div class="field col-12 md:col-5">
+                <span class="p-float-label">
+                    <input type="password" id="inputtext" pInputText [(ngModel)]="password">
+                    <label for="inputtext">Password</label>
+                </span>
+            </div>
+
+
+            <div class="field col-12 md:col-5">
+                <div class="field flex">
+                    <span class="label">
+
+                        <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-success"
+                            (click)="editempInformation($event)"></button>
+                    </span>
+
+                </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
