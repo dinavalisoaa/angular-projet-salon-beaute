@@ -22,6 +22,14 @@ export class CustomerService {
             })
         );
     }
+    getOneCustomer(query: any, next: (res: any) => any) {
+        this.http.get(`${apiUrl}/api/customer/` + query).subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+            })
+        );
+    }
 
     saveCustomer(data: Customer, next: (res: any) => any) {
         this.http.post(`${apiUrl}/api/customer`, data).subscribe(

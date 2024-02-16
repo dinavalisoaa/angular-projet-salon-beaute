@@ -15,6 +15,7 @@ import { NotAuthorized } from './demo/components/manager/notauthorized/notauthor
             { path: 'employee', loadChildren: () => import('./demo/components/employee/employee.module').then(m => m.EmployeeModule) },
             { path: 'manager', loadChildren: () => import('./demo/components/manager/manager.module').then(m => m.ManagerModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
+            
             {
                 path: '', component: AppLayoutComponent,
                 children: [
