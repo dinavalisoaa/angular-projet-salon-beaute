@@ -78,14 +78,16 @@
                                 <!-- <hr />  -->
                                 <div class="mb-3">
                                     {{showService(appointment)}}
+
                                 </div>
                                 <!-- <p-rating [ngModel]="appointment.rating" [readonly]="true" [cancel]="false"></p-rating> -->
                             </div>
                             <div class="flex align-items-center justify-content-between">
                                 <!-- <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-outlined p-button-text mr-2 mb-2"></button> -->
-                                <button pButton pRipple type="button" icon="pi pi-plus-circle"
-                                    class="p-button-rounded p-button-outlined mr-2 mb-2"></button>
-                                <button pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
+                                <button (click)="navigate(appointment)"  pButton pRipple type="button" icon="pi pi-plus-circle"
+                                    class="p-button-rounded p-button-outlined mr-2 mb-2">
+                                </button>
+                                <button  pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
                                     class="p-button-rounded p-button-danger mr-2 mb-2"></button>
                                 <button pButton pRipple type="button" icon="pi pi-clock" *ngIf="appointment.status==1"
                                     class="p-button-rounded p-button-secondary mr-2 mb-2"></button>
@@ -147,24 +149,3 @@
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="filter()"></button>
     </ng-template>
 </p-dialog>
-
-<div class="card flex flex-wrap gap-3">
-    <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable
-        (onDrop)="dropAll(selectedProducts,availableProducts,draggedProduct1)">
-        <ul class="list-none flex flex-column gap-2 p-0 m-0">
-            <li *ngFor="let product of availableProducts" class="p-2 border-round shadow-1" pDraggable
-                (onDragStart)="dragStart(product)" (onDragEnd)="dragEnd()">
-                {{product.name}}
-            </li>
-        </ul>
-    </div>
-    <div class="p-2 border-1 surface-border border-round w-15rem" pDroppable (onDrop)="drop()">
-        <p class="text-center surface-border border-bottom-1">Drop Zone</p>
-        <ul class="list-none flex flex-column gap-2 p-0 m-0" *ngIf="selectedProducts">
-            <li *ngFor="let product of selectedProducts" class="p-2 border-round shadow-1" pDraggable
-                (onDragStart)="dragStart1(product)" (onDragEnd)="dragEnd1()">
-                {{product.name}}
-            </li>
-        </ul>
-    </div>
-</div>

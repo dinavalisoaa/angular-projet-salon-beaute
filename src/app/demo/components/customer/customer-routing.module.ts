@@ -19,6 +19,13 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                     ),
             },
             {
+                path: 'appointment',
+                loadChildren: () =>
+                    import('./registration/registration.module').then(
+                        (m) => m.RegistrationModule
+                    ),
+            },
+            {
                 path: '',
                 component: AppLayoutComponent,
                 children: [
@@ -42,6 +49,17 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                         loadChildren: () =>
                             import('./appointment/appointment.module').then(
                                 (m) => m.AppointmentModule
+                            ),
+                    },
+                    {
+                        path: 'profile',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'CUSTOMER',
+                        },
+                        loadChildren: () =>
+                            import('./profile/profile.module').then(
+                                (m) => m.ProfileModule
                             ),
                     },
                     {

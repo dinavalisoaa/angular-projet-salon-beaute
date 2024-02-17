@@ -15,6 +15,7 @@ import { AppointmentService } from 'src/app/service/appointment/appointment.serv
 import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
+import Swal from 'sweetalert2';
 
 @Component({
     templateUrl: './appointment.component.html',
@@ -89,31 +90,33 @@ export class AppointmentComponent implements OnInit {
     }
 
     pay() {
-        const token: TokenObject = this.utilService.getToken();
-        const account: Account = {};
-        account.customer = token.info;
-        account.date = new Date();
-        account.description = '';
-        account.debit = this.total;
-        account.credit = 0;
-        this.accountService.saveAccount(account, (res) => {
-            console.log(res);
-        });
-        this.appointmentService.saveAppointment(
-            this.filledAppointment,
-            (res) => {
-                // if(res.status==4)
-                // console.log(res);
-            }
-        );
-        this.servicesToDo = [];
-        this.fetchService();
+        // const token: TokenObject = this.utilService.getToken();
+        // const account: Account = {};
+        // account.customer = token.info;
+        // account.date = new Date();
+        // account.description = '';
+        // account.debit = this.total;
+        // account.credit = 0;
+        // this.accountService.saveAccount(account, (res) => {
+        //     console.log(res);
+        // });
+        // this.appointmentService.saveAppointment(
+        //     this.filledAppointment,
+        //     (res) => {
+        //         // if(res.status==4)
+        //         // console.log(res);
+        //     }
+        // );
+        // this.servicesToDo = [];
+        // this.fetchService();
 
-        this.visiblePay = false;
-        this.appointment = {};
+        // this.visiblePay = false;
+        // this.appointment = {};
     }
 
     saveAppointment() {
+            Swal.fire(this.appointment?.date?.toString());
+
         console.log(this.utilService.subtractDatePart(this.appointment.date, 24));
         console.log(this.appointment.customer?.email);
 

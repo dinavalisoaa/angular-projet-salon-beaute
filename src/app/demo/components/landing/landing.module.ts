@@ -15,6 +15,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
 import { ChipModule } from 'primeng/chip';
+import { CreateAppointmentModule } from '../customer/create-appointment/create-appointment.module';
+import { HeaderComponent } from './header/header.component';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
     imports: [
@@ -34,8 +37,10 @@ import { ChipModule } from 'primeng/chip';
         InputTextModule,
         DropdownModule,
         RatingModule,
-        ButtonModule
+        ButtonModule,
+        CreateAppointmentModule
     ],
-    declarations: [LandingComponent]
+    declarations: [LandingComponent, HeaderComponent, AppointmentComponent],
+    exports:[HeaderComponent,AppointmentComponent]
 })
 export class LandingModule { }

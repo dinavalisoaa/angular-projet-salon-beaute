@@ -9,6 +9,7 @@ import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
+import Swal from 'sweetalert2';
 
 @Component({
     templateUrl: './appointment.component.html',
@@ -153,6 +154,16 @@ export class AppointmentComponent implements OnInit {
             this.sortField = value;
         }
     }
+    getDate(date: any) {
+        return date.toString().split('T')[0];
+    }
+    navigate(appointment: Appointment) {
+        // Swal.fire(/
+            // '/employee/task?date=' + this.getDate(appointment.date));
+        this.uService.navigateToByUrl(
+            '/employee/task?date=' + this.getDate(appointment.date)
+        );
+    }
     hideDialog() {
         this.dialog = false;
     }
@@ -208,7 +219,7 @@ export class AppointmentComponent implements OnInit {
     dragEnd1() {
         this.draggedProduct1 = null;
     }
-    dragStart1(product:  Product | null | undefined) {
+    dragStart1(product: Product | null | undefined) {
         this.draggedProduct1 = product;
         console.log(product);
     }
@@ -238,7 +249,7 @@ export class AppointmentComponent implements OnInit {
                 // sourceList.forEach(element => {
                 //     console.log(element);
                 // });
-        // console.log(sourceList+"111<<<");
+                // console.log(sourceList+"111<<<");
 
                 let draggedProductIndex = this.findIndexInSource(
                     draggedProduct,

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import { Appointment, Service } from 'src/app/models/models';
+import {
+    Appointment,
+    Employee,
+    Service,
+    TokenObject,
+} from 'src/app/models/models';
 import Swal from 'sweetalert2';
 import { ProductService } from '../../service/product.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
@@ -80,31 +85,6 @@ import { DataView } from 'primeng/dataview';
 })
 export class LandingComponent implements OnInit {
 
-    appointment: Appointment = {};
-    filledAppointment: Appointment = {};
-
-    allServices: Service[] = [];
-
-    servicesToDo: Service[] = [];
-    // service:Service={};
-    click(service: Service) {
-        console.log('.............');
-        // Swal.fire(service.toString());
-    }
-    saveService(service: Service) {
-        if (!this.servicesToDo.includes(service)) {
-            this.servicesToDo.push(service);
-        }
-    }
-    trashService(service: Service) {
-        // Swal.fire(service.toString());
-        this.servicesToDo.filter((val, i) => val._id == service._id).pop();
-    }
-    saveAppointment() {
-        }
-    onFilter(dv: DataView, event: Event) {
-        dv.filter((event.target as HTMLInputElement).value);
-    }
     constructor(
         public layoutService: LayoutService,
         public router: Router,
@@ -116,18 +96,5 @@ export class LandingComponent implements OnInit {
         // private service: MessageService,
         private customerService: CustomerService
     ) {}
-    format(date: any) {
-        return this.utilService.toDateFr(date);
-    }
-    fetchService() {
-        this.serviceService.getService('', (res) => {
-            this.allServices = res;
-            console.log(this.allServices);
-        });
-    }
-    ngOnInit() {
-        this.fetchService();
-
-        this.servicesToDo = [];
-    }
+    ngOnInit() {}
 }

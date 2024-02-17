@@ -3,6 +3,7 @@ import  Swal from 'sweetalert2';
 
 export const CheckError = (next: (res: any) => any) => {
     return {
+
         next: next,
         error: (err: HttpErrorResponse) => {
             let errorData: any = {};

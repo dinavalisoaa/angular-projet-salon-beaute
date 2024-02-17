@@ -21,6 +21,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { CreateAppointmentModule } from '../create-appointment/create-appointment.module';
 
 @NgModule({
     imports: [
@@ -45,7 +46,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         ButtonModule,
         DialogModule,
         MessagesModule,
-        MessageModule,
+        MessageModule,CreateAppointmentModule
     ],
     declarations: [AppointmentComponent],
 })

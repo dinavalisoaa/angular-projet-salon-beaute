@@ -45,6 +45,7 @@ export interface scheduleForm {
     exit?: Date;
 }
 export interface Sex {
+    _id?:string;
     type?: string;
 }
 export interface Manager {
@@ -70,7 +71,7 @@ export interface Customer {
 export interface Appointment {
     date?: Date;
     _id?: string;
-    employee?:Employee;
+    employee?:Employee|null;
     customer?: Customer;
     service?: Service[];
     status?: Number;
