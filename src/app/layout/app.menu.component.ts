@@ -277,6 +277,11 @@ export class AppMenuComponent implements OnInit {
                 routerLink: ['/manager'],
                 items: [
                     {
+                        label: 'Réservation',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['reservation']
+                    },
+                    {
                         label: 'Employés',
                         icon: 'pi pi-fw pi-globe',
                         routerLink: ['personnel']
