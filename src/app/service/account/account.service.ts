@@ -6,6 +6,7 @@ import { API_URL, UtilService } from '../util-service/util.service';
 import Swal from 'sweetalert2';
 import { AppointmentService } from '../appointment/appointment.service';
 import { CustomerService } from '../customer/customer.service';
+import { closeLoad, loadPage } from '../util-service/load';
 const apiUrl = API_URL;
 
 @Injectable({
@@ -22,6 +23,7 @@ export class AccountService {
 
     // }
     getAccount(query: any, next: (res: any) => any) {
+
         let h = new Headers();
         h.append('Authorization', this.uService.getToken().token);
         this.http
@@ -38,6 +40,7 @@ export class AccountService {
             );
     }
     getAccountState(id: string, next: (res: any) => any) {
+
         this.http.get(`${apiUrl}/api/account/state?id=` + id).subscribe(
             CheckError((res) => {
                 next(res);
@@ -46,6 +49,7 @@ export class AccountService {
         );
     }
     saveAccount(data: Account, next: (res: any) => any) {
+
         console.log(data);
         this.http.post(`${apiUrl}/api/account`, data).subscribe(
             CheckError((res) => {
@@ -59,14 +63,17 @@ export class AccountService {
                 });
 
                 close();
+
             })
         );
     }
     saveAccountTransaction(data: Account, appoint: Appointment, next: (res: any) => any) {
         console.log(data);
+
         this.http.post(`${apiUrl}/api/account`, data).subscribe(
             CheckError((res) => {
                 next(res);
+
                 // Swal.showLoading(Swal.getDenyButton())
                 Swal.fire({
                     icon: 'success',
@@ -75,7 +82,6 @@ export class AccountService {
                     footer: '',
                 });
                 appoint.isPaid=true;
-
                 this.appoint.saveAppointment(appoint, (res) => {});
 
                 const data2 = {
