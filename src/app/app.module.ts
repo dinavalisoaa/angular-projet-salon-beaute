@@ -1,3 +1,4 @@
+import { FullCalendarModule } from 'primeng/fullcalendar';
 import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -48,7 +49,8 @@ import { TestComponent } from './test/test.component';
         DropdownModule,
         ProgressBarModule,
         ToastModule,
-        FormsModule
+        FormsModule,
+        FullCalendarModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
