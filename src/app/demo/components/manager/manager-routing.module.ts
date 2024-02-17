@@ -72,6 +72,17 @@ import { AuthGuardPermission } from './auth-permission';
                                 (m) => m.DashboardModule
                             ),
                     },
+                    {
+                        path: 'reservation',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'MANAGER',
+                        },
+                        loadChildren: () =>
+                            import('./reservation/reservation.module').then(
+                                (m) => m.ReservationModule
+                            ),
+                    },
                 ],
             },
         ]),
