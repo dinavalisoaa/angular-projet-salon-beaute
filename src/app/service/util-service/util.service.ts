@@ -120,4 +120,16 @@ export class UtilService {
         newDate.setHours(newDate.getHours() + hours);
         return newDate;
     }
+
+    format(number: any){
+        const options = {
+            style: 'decimal',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        };
+
+        const formatter = new Intl.NumberFormat('fr-FR', options);
+        const numberFormat = formatter.format(number);
+        return numberFormat;
+    }
 }
