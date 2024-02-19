@@ -22,6 +22,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     profits: [] = [];
 
+    totalAmount: any = {}
+
+    dailySales: any;
+
     items!: MenuItem[];
 
     products!: Product[];
@@ -32,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     subscription!: Subscription;
 
-    date: any;
+    date: any = new Date();
 
     year: any = new Date().getFullYear();
 
@@ -49,6 +53,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.initChart();
+        this.fetchTotalAmount();
+        this.getDailySales(null);
         this.productService.getProductsSmall().then(data => this.products = data);
 
         this.items = [
@@ -128,6 +134,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
                     }
                 }
             };
+        });
+    }
+
+    fetchTotalAmount() {
+        this.managerService.getTotalAmount((res) => {
+            this.totalAmount = res;
+        });
+    }
+
+    getDailySales(event: any) {
+        const date = event;
+        const data = {
+            date
+        };
+        console.log(event);
+        this.managerService.getDailySales(data, (res) => {
+            this.dailySales = res;
         });
     }
 
