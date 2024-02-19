@@ -102,6 +102,17 @@ export class EmployeeService {
         );
     }
 
+    getEmployeesWorkingTime(next: (res: any) => any) {
+        loadPage();
+        this.http.get(`${apiUrl}/api/dashboard/employee/working-time/average`).subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+                closeLoad();
+            })
+        );
+    }
+
     savePersonnel(data: any, next: (res: any) => any) {
         loadPage();
         this.http.post(`${apiUrl}/api/employee`, data).subscribe(
