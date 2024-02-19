@@ -132,4 +132,10 @@ export class UtilService {
         const numberFormat = formatter.format(number);
         return numberFormat;
     }
+
+    convertMinutesToHours(minutes: any) {
+        const hours = Math.floor(minutes / 60);
+        const remainingMinutes = minutes % 60;
+        return `${hours} h ${minutes}`;
+    }
 }
