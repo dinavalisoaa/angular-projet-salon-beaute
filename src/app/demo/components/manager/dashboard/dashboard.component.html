@@ -4,7 +4,7 @@
                 <div class="flex justify-content-between mb-3">
                     <div>
                         <span class="block text-500 font-medium mb-3">Chiffre d'affaires</span>
-                        <div class="text-900 font-medium text-xl">152 Ar</div>
+                        <div class="text-900 font-medium text-xl">{{utilService.format(totalAmount.sales)}} Ar</div>
                     </div>
                     <div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
                         <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
@@ -17,7 +17,7 @@
                 <div class="flex justify-content-between mb-3">
                     <div>
                         <span class="block text-500 font-medium mb-3">Dépense</span>
-                        <div class="text-900 font-medium text-xl">1882 Ar</div>
+                        <div class="text-900 font-medium text-xl">{{utilService.format(totalAmount.expenses)}} Ar</div>
                     </div>
                     <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
                         <i class="pi pi-map-marker text-orange-500 text-xl"></i>
@@ -30,7 +30,7 @@
                 <div class="flex justify-content-between mb-3">
                     <div>
                         <span class="block text-500 font-medium mb-3">Bénéfice</span>
-                        <div class="text-900 font-medium text-xl">28441 Ar</div>
+                        <div class="text-900 font-medium text-xl">{{utilService.format(totalAmount.profits)}} Ar</div>
                     </div>
                     <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
                         <i class="pi pi-inbox text-cyan-500 text-xl"></i>
@@ -42,8 +42,8 @@
             <div class="card mb-0">
                 <div class="flex justify-content-between mb-3">
                     <div>
-                        <span class="block text-500 font-medium mb-3">Chiffre d'affaire: 152 Ar </span>
-                        <p-calendar [placeholder]="utilService.toDateFr(currentDate)" [(ngModel)]="date" ></p-calendar>
+                        <span class="block text-500 font-medium mb-3">Chiffre d'affaire: <b>{{utilService.format(dailySales)}} Ar </b> </span>
+                        <p-calendar (ngModelChange)="getDailySales($event)" [(ngModel)]="date" ></p-calendar>
                     </div>
                 </div>
             </div>
