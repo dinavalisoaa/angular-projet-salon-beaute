@@ -1,3 +1,4 @@
+import { WorkingTimeModule } from './workingtime/workingtime.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppLayoutComponent } from 'src/app/layout/app.layout.component';
@@ -81,6 +82,17 @@ import { AuthGuardPermission } from './auth-permission';
                         loadChildren: () =>
                             import('./reservation/reservation.module').then(
                                 (m) => m.ReservationModule
+                            ),
+                    },
+                    {
+                        path: 'working-time',
+                        canActivate: [AuthGuardPermission ],
+                        data: {
+                            role: 'MANAGER',
+                        },
+                        loadChildren: () =>
+                            import('./workingtime/workingtime.module').then(
+                                (m) => m.WorkingTimeModule
                             ),
                     },
                 ],
