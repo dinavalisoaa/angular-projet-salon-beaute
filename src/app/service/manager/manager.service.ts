@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Manager, TokenObject } from 'src/app/models/models';
@@ -32,6 +32,33 @@ export class ManagerService {
     getFinancialReview(year: any ,next: (res: any) => any) {
         this.http
             .get(`${apiUrl}/api/dashboard/financial-review/${year}/per/month`)
+           .subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+            })
+        );
+    }
+
+    getTotalAmount(next: (res: any) => any) {
+        this.http
+            .get(`${apiUrl}/api/dashboard/amount/total`)
+           .subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+            })
+        );
+    }
+
+    getDailySales(query: any, next: (res: any) => any) {
+        let date = new HttpParams();
+        Object.keys(query).forEach(key => {
+            date = date.append(key, query[key]);
+        });
+
+        this.http
+            .get(`${apiUrl}/api/dashboard/sales/per/day`, { params: date })
            .subscribe(
             CheckError((res) => {
                 next(res);
