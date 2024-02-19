@@ -28,6 +28,18 @@ export class ManagerService {
             })
         );
     }
+
+    getFinancialReview(year: any ,next: (res: any) => any) {
+        this.http
+            .get(`${apiUrl}/api/dashboard/financial-review/${year}/per/month`)
+           .subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+            })
+        );
+    }
+
     saveManager(data: Manager, next: (res: any) => any) {
         this.http
             .post(`${apiUrl}/api/manager`, data)
