@@ -4,11 +4,23 @@ import { Product } from '../../../api/product';
 import { ProductService } from '../../../service/product.service';
 import { Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
+import { ManagerService } from 'src/app/service/manager/manager.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+
+    currentDate: any = new Date();
+
+    months: [] = [];
+
+    sales: [] = [];
+
+    expenses: [] = [];
+
+    profits: [] = [];
 
     items!: MenuItem[];
 
@@ -20,7 +32,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     subscription!: Subscription;
 
-    constructor(private productService: ProductService, public layoutService: LayoutService) {
+    date: any;
+
+    year: any = new Date().getFullYear();
+
+    constructor(
+        private productService: ProductService,
+        public layoutService: LayoutService,
+        public utilService: UtilService,
+        private managerService: ManagerService
+    ) {
         this.subscription = this.layoutService.configUpdate$.subscribe(() => {
             this.initChart();
         });
@@ -37,62 +58,77 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     initChart() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        this.managerService.getFinancialReview(this.year ,(res) => {
+            this.months = res.map((item: { month: { abbreviation: any; }; }) => item.month.abbreviation);
+            this.sales = res.map((item: { sales: any }) => item.sales);
+            this.expenses = res.map((item: { expenses: any }) => item.expenses);
+            this.profits = res.map((item: { profits: any }) => item.profits);
 
-        this.chartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--bluegray-700'),
-                    borderColor: documentStyle.getPropertyValue('--bluegray-700'),
-                    tension: .4
-                },
-                {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--green-600'),
-                    borderColor: documentStyle.getPropertyValue('--green-600'),
-                    tension: .4
-                }
-            ]
-        };
+            const documentStyle = getComputedStyle(document.documentElement);
+            const textColor = documentStyle.getPropertyValue('--text-color');
+            const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+            const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-        this.chartOptions = {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: textColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: textColorSecondary
+            this.chartData = {
+                labels: this.months,
+                datasets: [
+                    {
+                        label: 'Chiffre d\'affaires',
+                        data: this.sales,
+                        fill: false,
+                        backgroundColor: documentStyle.getPropertyValue('--gray-600'),
+                        borderColor: documentStyle.getPropertyValue('--gray-600'),
+                        tension: .4
                     },
-                    grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
+                    {
+                        label: 'Bénéfices',
+                        data: this.profits,
+                        fill: false,
+                        backgroundColor: documentStyle.getPropertyValue('--green-600'),
+                        borderColor: documentStyle.getPropertyValue('--green-600'),
+                        tension: .4
+                    },
+                    {
+                        label: 'Dépenses',
+                        data: this.expenses,
+                        fill: false,
+                        backgroundColor: documentStyle.getPropertyValue('--red-600'),
+                        borderColor: documentStyle.getPropertyValue('--red-600'),
+                        tension: .4
+                    }
+                ]
+            };
+
+            this.chartOptions = {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: textColor
+                        }
                     }
                 },
-                y: {
-                    ticks: {
-                        color: textColorSecondary
+                scales: {
+                    x: {
+                        ticks: {
+                            color: textColorSecondary
+                        },
+                        grid: {
+                            color: surfaceBorder,
+                            drawBorder: false
+                        }
                     },
-                    grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
+                    y: {
+                        ticks: {
+                            color: textColorSecondary
+                        },
+                        grid: {
+                            color: surfaceBorder,
+                            drawBorder: false
+                        }
                     }
                 }
-            }
-        };
+            };
+        });
     }
 
     ngOnDestroy() {
