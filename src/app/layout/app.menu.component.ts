@@ -237,7 +237,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Accueil',
                 items: [
-                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/'] }
                 ]
             },
             {
@@ -247,17 +247,17 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {
                         label: 'Mon profil',
-                        icon: 'pi pi-fw pi-globe',
+                        icon: 'pi pi-fw pi-user',
                         routerLink: ['profile']
                     },
                     {
                         label: 'Rendez-vous',
-                        icon: 'pi pi-fw pi-user',
+                        icon: 'pi pi-fw pi-calendar-times',
                         routerLink: ['appointment']
                     },
                     {
                         label: 'Tâches',
-                        icon: 'pi pi-fw pi-pencil',
+                        icon: 'pi pi-fw pi-list',
                         routerLink: ['task']
                     }
                 ]
