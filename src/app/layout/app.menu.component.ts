@@ -194,38 +194,38 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {
                         label: 'Mon profil',
-                        icon: 'pi pi-fw pi-globe',
+                        icon: 'pi pi-fw pi-user',
                         routerLink: ['profile']
                     },
                     {
                         label: 'Mes rendez-vous',
-                        icon: 'pi pi-fw pi-user',
+                        icon: 'pi pi-fw pi-calendar-times',
                         items: [
                             {
                                 label: 'Nouveau',
-                                icon: 'pi pi-fw pi-sign-in',
+                                icon: 'pi pi-fw pi-plus-circle',
                                 routerLink: ['appointment/making']
                             },
                             {
                                 label: 'Historique',
-                                icon: 'pi pi-fw pi-times-circle',
+                                icon: 'pi pi-fw pi-history',
                                 routerLink: ['appointment/history']
                             }
                         ]
                     },
                     {
                         label: 'Mon compte monétaire',
-                        icon: 'pi pi-fw pi-pencil',
+                        icon: 'pi pi-fw pi-money-bill',
                         routerLink: ['account/load']
                     },
                     {
                         label: 'Mes préférences',
-                        icon: 'pi pi-fw pi-calendar',
+                        icon: 'pi pi-fw pi-heart',
                         routerLink: ['preference']
                     },
                     {
                         label: 'Mes notifications',
-                        icon: 'pi pi-fw pi-exclamation-circle',
+                        icon: 'pi pi-fw pi-bell',
                         routerLink: ['notifications'],
                         badge: 3
                     }
