@@ -136,6 +136,9 @@ export class UtilService {
     convertMinutesToHours(minutes: any) {
         const hours = Math.floor(minutes / 60);
         const remainingMinutes = minutes % 60;
-        return `${hours} h ${minutes}`;
+        if(hours <= 0){
+            return `${remainingMinutes} min`;
+        }
+        return `${hours} h ${remainingMinutes}`;
     }
 }
