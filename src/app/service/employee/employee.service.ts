@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Employee, TokenObject } from 'src/app/models/models';
@@ -98,6 +98,21 @@ export class EmployeeService {
                 close();
                 closeLoad();
 
+            })
+        );
+    }
+
+    getCommission(employeeId: any ,query: any, next: (res: any) => any) {
+        let date = new HttpParams();
+        Object.keys(query).forEach(key => {
+            date = date.append(key, query[key]);
+        });
+        this.http
+            .get(`${apiUrl}/api/employee/${employeeId}/commission`, { params: date })
+            .subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
             })
         );
     }
