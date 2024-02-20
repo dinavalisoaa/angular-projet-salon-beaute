@@ -215,7 +215,7 @@ export class AppMenuComponent implements OnInit {
                     },
                     {
                         label: 'Mon compte monétaire',
-                        icon: 'pi pi-fw pi-money-bill',
+                        icon: 'pi pi-fw pi-wallet',
                         routerLink: ['account/load']
                     },
                     {
@@ -268,7 +268,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Accueil',
                 items: [
-                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-home', routerLink: ['/manager/dashboard'] }
+                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/manager/dashboard'] }
                 ]
             },
             {
@@ -278,38 +278,38 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {
                         label: 'Réservation',
-                        icon: 'pi pi-fw pi-globe',
+                        icon: 'pi pi-fw pi-calendar-times',
                         routerLink: ['reservation']
                     },
                     {
                         label: 'Employés',
-                        icon: 'pi pi-fw pi-user',
+                        icon: 'pi pi-fw pi-users',
                         items: [
                             {
                                 label: 'Liste',
-                                icon: 'pi pi-fw pi-sign-in',
+                                icon: 'pi pi-fw pi-list',
                                 routerLink: ['personnel']
                             },
                             {
                                 label: 'Temps de travail',
-                                icon: 'pi pi-fw pi-times-circle',
+                                icon: 'pi pi-fw pi-clock',
                                 routerLink: ['working-time']
                             }
                         ]
                     },
                     {
                         label: 'Service',
-                        icon: 'pi pi-fw pi-pencil',
+                        icon: 'pi pi-fw pi-th-large',
                         routerLink: ['service']
                     },
                     {
                         label: 'Offre spéciale',
-                        icon: 'pi pi-fw pi-calendar',
+                        icon: 'pi pi-fw pi-star',
                         routerLink: ['special-offer']
                     },
                     {
                         label: 'Dépense',
-                        icon: 'pi pi-fw pi-exclamation-circle',
+                        icon: 'pi pi-fw pi-money-bill',
                         routerLink: ['expense']
                     }
                 ]
