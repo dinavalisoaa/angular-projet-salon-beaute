@@ -18,6 +18,7 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { EmployeeService } from 'src/app/service/employee/employee.service';
 
 @Component({
     selector: 'my-task',
@@ -33,6 +34,9 @@ export class TaskComponent implements OnInit {
     dialog: Boolean = false;
     currentFilter: any = {};
     name: string = '';
+
+    commission: any;
+    taskDate: any = new Date();
 
     sortOptions: SelectItem[] = [];
     statusOptions: SelectItem[] = [];
@@ -71,8 +75,9 @@ export class TaskComponent implements OnInit {
         private appointmentService: AppointmentService,
         private customersService: CustomerService,
         private serviceService: ServiceService,
-        private uService: UtilService,
-        private route: ActivatedRoute
+        public uService: UtilService,
+        private route: ActivatedRoute,
+        private employeeService: EmployeeService
     ) {}
 
     showDiag() {
@@ -155,6 +160,7 @@ export class TaskComponent implements OnInit {
         this.setCustomer();
         this.setService();
         this.getAppoints();
+        this.setCommission();
 
         this.fetchAll();
         this.selectedProducts = [];
@@ -178,6 +184,18 @@ export class TaskComponent implements OnInit {
             { label: 'Fini', routerLink: '/?state=2' },
         ];
     }
+
+    setCommission() {
+        const employeeId = this.uService.getToken().userId;
+        const date = this.taskDate;
+        const data = {
+            date
+        }
+        this.employeeService.getCommission(employeeId, data, (res) => {
+            this.commission = res.total;
+        });
+    }
+
     findByStatus(val: Appointment[], value: any) {
         return val.filter((appointment) => appointment.status == value);
     }
@@ -208,12 +226,17 @@ export class TaskComponent implements OnInit {
             this.sortField = value;
         }
     }
+
     hideDialog() {
         this.dialog = false;
     }
+
     changeDate(event: any) {
         this.fetchAll();
+        this.taskDate = event;
+        this.setCommission();
     }
+
     filterCustomer(event: any) {
         const filtered: any[] = [];
         const query = event.query;

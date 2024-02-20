@@ -15,8 +15,8 @@
     </style>
     <div class="col-12 lg:col-4">
         <div class="card z-3">
-            <span [class]="'customer-badge status-new'" style="font-size: 20px;">8 H</span>
-
+            <!-- <span [class]="'customer-badge status-new'" style="font-size: 20px;">8 H</span> -->
+            <span [class]="'customer-badge status-new'" style="font-size: 20px;">{{uService.format(commission)}} Ar</span>
         </div>
     </div>
 
