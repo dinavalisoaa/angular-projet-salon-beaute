@@ -1,5 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Appointment } from 'src/app/models/models';
+import { cU, em } from '@fullcalendar/core/internal-common';
+import {
+    Appointment,
+    Customer,
+    Employee,
+    TokenObject,
+} from 'src/app/models/models';
 import { UtilService } from 'src/app/service/util-service/util.service';
 
 @Component({
@@ -16,6 +22,22 @@ export class CardTaskComponent implements OnInit {
     constructor(private uService: UtilService) {}
     format(date: any) {
         return this.uService.toDatetimeFr(date);
+    }
+    getCurrentEmp() {
+        const token: TokenObject = this.uService.getToken();
+        const emp: Employee = token.info;
+        return emp;
+    }
+    isPrefered(customer: Customer | undefined) {
+        const emp = this.getCurrentEmp();
+        let bool = false;
+        const preference: Employee[] | undefined =
+            customer?.preference?.employee;
+        let val = preference?.filter((val, i) => val == emp._id);
+        if (val != undefined) {
+            return val?.length > 0;
+        }
+        return bool;
     }
     showService(appointment: Appointment) {
         let str = '';
