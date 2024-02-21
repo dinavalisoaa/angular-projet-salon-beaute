@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     date: any = new Date();
 
-    year: any = new Date().getFullYear();
+    year: any = new Date();
 
     constructor(
         private productService: ProductService,
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     initChart() {
-        this.managerService.getFinancialReview(this.year ,(res) => {
+        this.managerService.getFinancialReview(this.year.getFullYear() ,(res) => {
             this.months = res.map((item: { month: { abbreviation: any; }; }) => item.month.abbreviation);
             this.sales = res.map((item: { sales: any }) => item.sales);
             this.expenses = res.map((item: { expenses: any }) => item.expenses);
