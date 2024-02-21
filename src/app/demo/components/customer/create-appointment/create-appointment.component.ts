@@ -43,34 +43,62 @@ export class CreateAppointmentComponent implements OnInit {
     appointment: Appointment = {};
     @Input() date: Date = new Date();
     filledAppointment: Appointment = {};
+    showallServices: Service[] = [];
     @Input() display: boolean = false;
     visiblePay: boolean = false;
     allServices: Service[] = [];
     state: string = '';
     total: number = 0;
+    showService: any = []; //this.getDistinct(this.servicesFilled);
 
     @Input() servicesFilled: Service[] = [];
+
     // service:Service={};
     click(service: Service) {}
+    getDistinct(array: Service[]) {
+        this.fetchService();
+        let idtab = [...new Set(array.map((item) => item._id))];
+        // if (this.isSetCart()) {
+        //     this.servicesFilled = this.utilService.getCart().service;
+        // }
+
+        idtab.forEach((element) => {
+            console.log(this.getCurrence(element) + '>>');
+        });
+        return [...new Set(array.map((item) => item._id))];
+    }
     saveService(service: Service) {
-        if (!this.servicesFilled.includes(service)) {
-            this.servicesFilled.push(service);
-        }
+        this.servicesFilled.push(service);
+
         let ap: Appointment = {};
         ap.date = this.date;
         ap.service = this.servicesFilled;
         this.utilService.saveCart(ap);
+        this.showService = this.getDistinct(this.servicesFilled);
+    }
+    getCurrence(item: any) {
+        let count = this.servicesFilled.reduce(
+            (acc, cur) => (cur._id == item ? ++acc : acc),
+            0
+        );
+        return count;
     }
     choose() {
         this.display = true;
     }
     trashService(service: Service) {
-        let index = this.servicesFilled.indexOf(service);
-        if (this.servicesFilled.length > 1) {
-            this.servicesFilled.splice(index, index);
-        } else {
-            this.servicesFilled.pop();
-        }
+
+        // console.log(service);
+        //recherche d'object correspond a l'ID
+        let object = this.servicesFilled.filter(
+            (val, index) => val._id == service
+        );
+        //recherche d'index correspond a l'object
+
+        let index = this.servicesFilled.indexOf(object[0]);
+
+        // suppression de l'object correspondant a l'index
+        this.servicesFilled.splice(index, 1);
         let ap: Appointment = {};
         ap.date = this.date;
         ap.service = this.servicesFilled;
@@ -85,8 +113,8 @@ export class CreateAppointmentComponent implements OnInit {
         public layoutService: LayoutService,
         public router: Router,
         private productService: ProductService,
-        private utilService: UtilService,
-        private serviceService: ServiceService,
+        public utilService: UtilService,
+        public serviceService: ServiceService,
         private appointmentService: AppointmentService,
         private accountService: AccountService,
         // private service: MessageService,
@@ -101,6 +129,9 @@ export class CreateAppointmentComponent implements OnInit {
             console.log(this.allServices);
         });
     }
+    getObjectService(service: any) {
+        return this.allServices.filter((va, index) => va._id == service)[0];
+    }
     isSetCart() {
         return (
             this.utilService.getCart().date != null &&
@@ -108,16 +139,7 @@ export class CreateAppointmentComponent implements OnInit {
             this.utilService.getCart().date != undefined
         );
     }
-    ngOnInit() {
-        // Swal.fire(">>>"+this.isSetCart()+"<<");
-        // this.servicesFilled = [];
-        if (this.isSetCart()) {
-            this.servicesFilled = this.utilService.getCart().service;
-        }
-        this.fetchService();
 
-        // this.servicesFilled = [];
-    }
     totalize() {
         let sum = 0;
         this.servicesFilled.forEach((element) => {
@@ -147,22 +169,19 @@ export class CreateAppointmentComponent implements OnInit {
         account.description = '';
         account.debit = this.total;
         account.credit = 0;
-        this.accountService.saveAccountTransaction(account,   this.filledAppointment, (res) => {});
+        this.accountService.saveAccountTransaction(
+            account,
+            this.filledAppointment,
+            (res) => {
+                this.utilService.saveCart([]);
 
-        // this.appointmentService.saveAppointment(
-        //     this.filledAppointment,
-        //     (res) => {
+            }
+        );
 
-        //         // if(res.status==4)
-        //         // console.log(res);
-        //     }
-        // );
-        // this.servicesFilled = [];
         this.fetchService();
 
         this.visiblePay = false;
         this.appointment = {};
-
     }
     logged() {
         const token: TokenObject = this.getToken();
@@ -185,16 +204,6 @@ export class CreateAppointmentComponent implements OnInit {
         }
         this.visiblePay = true;
         this.appointment.date = this.date;
-        // console.log(
-        // Swal.fire( this.appointment.date.toISOString());
-        // Swal.fire(
-        //     JSON.stringify(
-        //         this.utilService.subtractDatePart(this.appointment.date, 24)
-        //     )
-        // );
-
-        // );
-        // console.log(this.appointment.customer?.email);
 
         const data: Appointment = {};
         data.date = this.appointment.date;
@@ -225,5 +234,17 @@ export class CreateAppointmentComponent implements OnInit {
         // this.customerService.sendScheduledEmail(data2, (res) => {
         //     console.log(data2);
         // });
+    }
+    ngOnInit() {
+        if (this.isSetCart()) {
+            this.servicesFilled = this.utilService.getCart().service;
+        }
+        console.log(this.servicesFilled + '.....<<<<');
+        console.log(this.getDistinct(this.servicesFilled) + '.....2<<<<');
+        this.showService = this.getDistinct(this.servicesFilled);
+
+        this.fetchService();
+
+        // this.servicesFilled = [];
     }
 }
