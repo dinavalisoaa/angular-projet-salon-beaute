@@ -31,6 +31,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ServiceAvatarComponent } from '../service-avatar/service-avatar.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { EmpAvatarComponent } from '../emp-avatar/emp-avatar.component';
 
 @NgModule({
     imports: [
@@ -66,6 +67,6 @@ import { SplitButtonModule } from 'primeng/splitbutton';
         ToolbarModule,
         SplitButtonModule
     ],
-    declarations: [TaskComponent,CardTaskComponent,ServiceAvatarComponent],
+    declarations: [TaskComponent,CardTaskComponent,ServiceAvatarComponent,EmpAvatarComponent],
 })
 export class TaskModule {}
