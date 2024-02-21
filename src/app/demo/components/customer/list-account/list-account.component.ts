@@ -43,7 +43,7 @@ export class ListAccountComponent implements OnInit {
 
     constructor(
         private productService: ProductService,
-        private uService: UtilService,
+        public uService: UtilService,
         private accountService: AccountService,
 
     ) {}
