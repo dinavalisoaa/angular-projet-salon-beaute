@@ -58,7 +58,7 @@ export interface Customer {
     _id?:string;
     name?: string;
     firstname?: string;
-    // preference: {   service?: Service[], employee?: Employee[] };
+    preference?: {   service?: Service[], employee?: Employee[] };
     dateOfBirth?: Date;
     sex?: Sex;
     address?: string;
