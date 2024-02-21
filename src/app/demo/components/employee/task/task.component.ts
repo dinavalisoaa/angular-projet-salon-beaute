@@ -19,6 +19,7 @@ import { HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { EmployeeService } from 'src/app/service/employee/employee.service';
+import { LocaleSettings } from 'primeng/calendar';
 
 @Component({
     selector: 'my-task',
@@ -31,6 +32,44 @@ export class TaskComponent implements OnInit {
     loadIcon: string = 'pi-clock';
     beginIcon: string = 'pi-times';
     products: Product[] = [];
+    _locale: LocaleSettings = {
+        firstDayOfWeek: 1,
+        dayNames: [],
+        dayNamesShort: [],
+        dayNamesMin: [],
+        monthNames: [
+            'Janvier',
+            'Février',
+            'Mars',
+            'Avril',
+            'Mai',
+            'Juin',
+            'Juillet',
+            'Août',
+            'Septembre',
+            'Octobre',
+            'Novembre',
+            'Décembre',
+        ],
+        monthNamesShort: [
+            'Jan',
+            'Fév',
+            'Mars',
+            'Avril',
+            'Mai',
+            'Juin',
+            'Juil',
+            'Août',
+            'Sept',
+            'Oct',
+            'Nov',
+            'Déc',
+        ],
+        today: '',
+        clear: '',
+        dateFormat: '',
+        weekHeader: '',
+    };
     dialog: Boolean = false;
     currentFilter: any = {};
     name: string = '';
@@ -152,7 +191,7 @@ export class TaskComponent implements OnInit {
 
     ngOnInit() {
         if (this.route.snapshot.queryParams['date'] != null) {
-            this.datejour =new Date( this.route.snapshot.queryParams['date']);
+            this.datejour = new Date(this.route.snapshot.queryParams['date']);
         }
 
         // this.id =
@@ -189,8 +228,8 @@ export class TaskComponent implements OnInit {
         const employeeId = this.uService.getToken().userId;
         const date = this.taskDate;
         const data = {
-            date
-        }
+            date,
+        };
         this.employeeService.getCommission(employeeId, data, (res) => {
             this.commission = res.total;
         });
@@ -335,6 +374,7 @@ export class TaskComponent implements OnInit {
                 this.draggedDo?._id,
                 (res) => {
                     this.fetchAll();
+                    this.setCommission();
                 }
             );
         }
