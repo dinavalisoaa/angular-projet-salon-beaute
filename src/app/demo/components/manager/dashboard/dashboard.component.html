@@ -54,8 +54,8 @@
             <div class="card">
                 <h5>Bilan financier mensuel</h5>
                 <div class="col-12 xl:col-2" style="margin-bottom: 3%; margin-top: 3%;">
-                    <input type="text" pInputText [(ngModel)]="year" placeholder="Année" style="width: 110px; height: 40px;" />
-                    <p-button label="OK" (click)="initChart()" style="height: 40px;"></p-button>
+                    <p-calendar view="year" dateFormat="yy" [(ngModel)]="year" (ngModelChange)="initChart()" ></p-calendar>
+
                 </div>
                 <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
             </div>
