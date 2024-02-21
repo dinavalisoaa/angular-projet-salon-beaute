@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Expense } from 'src/app/models/models';
 import { ExpenseService } from 'src/app/service/expense/expense.service';
+import { UtilService } from 'src/app/service/util-service/util.service';
 
 @Component({
     templateUrl: './expense.component.html',
@@ -33,6 +34,7 @@ export class ExpenseComponent implements OnInit {
 
     constructor(
         private expenseExpense: ExpenseService,
+        public utilService:UtilService,
         private messageExpense: MessageService
     ) {}
 
