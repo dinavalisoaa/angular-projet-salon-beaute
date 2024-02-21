@@ -12,16 +12,17 @@ const apiUrl = API_URL;
 export class ServiceService {
     constructor(private http: HttpClient, private utilService: UtilService) {}
     getService(query: any, next: (res: any) => any) {
-        loadPage();
+        // loadPage();
 
         this.http.get(`${apiUrl}/api/services` + query).subscribe(
             CheckError((res) => {
                 next(res);
                 close();
-                closeLoad();
+                // closeLoad();
             })
         );
     }
+
 
     createHeader(head: Headers) {
         head.append('Authorization', this.utilService.getToken().token);
