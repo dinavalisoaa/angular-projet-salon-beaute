@@ -14,6 +14,7 @@
 </div> -->
 
 <style>
+
     .round-icon.green {
         background: #e0fef4;
         color: #00f7a7;
@@ -29,12 +30,23 @@
         vertical-align: middle;
         text-align: center;
     }
+
+    .card-footer {
+        justify-content: flex-end;
+    }
 </style>
-<div class="card p-4 border-blue" style="height: 150px;margin:10px;">
+<div class="card p-4 border-blue" style="height:50% ;margin:10px;">
+
     <h5>
         <i class="pi {{icon}} round-icon "></i>
         {{appointment.customer?.name}}
     </h5>
     <p class="mb-0">{{format(appointment.date)}}</p>
+
     <app-service-avatar [services]="appointment.service"></app-service-avatar>
+
+    <p-chip *ngIf="isPrefered(appointment.customer)==true" style="cursor: pointer;" label="Favoris" icon="pi pi-star"
+        styleClass="m-1 warning"></p-chip>
+
+
 </div>
