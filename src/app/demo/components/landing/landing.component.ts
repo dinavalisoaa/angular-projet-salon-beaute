@@ -85,6 +85,43 @@ import { DataView } from 'primeng/dataview';
 })
 export class LandingComponent implements OnInit {
 
+    carouselResponsiveOptions: any[] = [
+        {
+            breakpoint: '1024px',
+            numVisible: 3,
+            numScroll: 3
+        },
+        {
+            breakpoint: '768px',
+            numVisible: 2,
+            numScroll: 2
+        },
+        {
+            breakpoint: '560px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
+
+    services: any[] = [
+        { image: 'service-1.jpg' },
+        { image: 'service-2.jpg' },
+        { image: 'service-3.jpg' },
+        { image: 'service-4.jpg' },
+        { image: 'service-5.jpg' },
+        { image: 'service-6.jpg' },
+        { image: 'service-7.jpg' },
+        { image: 'service-8.jpg' },
+        { image: 'service-9.jpg' },
+        { image: 'service-10.jpg' },
+        { image: 'service-11.jpg' },
+        { image: 'service-12.png' },
+        { image: 'service-13.jpg' },
+        { image: 'service-14.jpg' },
+        { image: 'service-15.jpg' },
+        { image: 'service-15.jpg' }
+    ];
+
     constructor(
         public layoutService: LayoutService,
         public router: Router,
