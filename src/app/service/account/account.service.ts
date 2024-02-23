@@ -84,16 +84,16 @@ export class AccountService {
                 appoint.isPaid=true;
                 this.appoint.saveAppointment(appoint, (res) => {});
 
-                const data2 = {
+                const emailData = {
                     date: this.uService.subtractDatePart(appoint.date, 24),
-                    shipper: 'BEAUTY SALON',
-                    recipient: 'lalaina.nancia64@gmail.com',
-                    subject: "Rappel d'un rendez-vous",
-                    message:
-                        `Bonjour,${appoint.customer?.name} ${appoint.customer?.firstname} .  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure`,
+                    shipper: 'NOVA BEAUTY',
+                    recipient: appoint.customer?.email,
+                    subject: "RAPPEL D'UN RENDEZ-VOUS",
+                    customer: `${appoint.customer?.name} ${appoint.customer?.firstname}`,
+                    datetime: `${this.uService.toDatetimeFr(this.uService.getRealDate(appoint.date))}`
                 };
-                this.customerService.sendScheduledEmail(data2, (res) => {
-                    console.log(data2);
+                this.customerService.sendScheduledEmail(emailData, (res) => {
+                    console.log(emailData);
                 });
                 return res;
                 // close();
