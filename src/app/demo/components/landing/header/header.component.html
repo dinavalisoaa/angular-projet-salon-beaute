@@ -35,7 +35,7 @@
             <button (click)="router.navigate(['/customer/login'])" pButton pRipple label="Se connecter"
                 *ngIf="logged()==false"
                 class="p-button-text p-button-rounded border-none font-light line-height-2 text-blue-500"></button>
-            <p-chip label="{{getName()}}" icon="pi pi-user" styleClass="m-1" *ngIf="logged()==true"></p-chip>
+            <p-chip (click)="router.navigate(['/customer/profile'])" style="cursor: pointer;" label="{{getName()}}" icon="pi pi-user" styleClass="m-1" *ngIf="logged()==true"></p-chip>
 
             <button (click)="router.navigate(['/customer/registration'])" pButton pRipple label="S'inscrire"
                 class="p-button-rounded border-none ml-5 font-light line-height-2 bg-blue-500 text-white"></button>

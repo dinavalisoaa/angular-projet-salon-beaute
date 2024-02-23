@@ -28,7 +28,7 @@ export class UtilService {
     }
     noCart() {
         let i = localStorage.getItem('cartId');
-        return i ;
+        return i;
     }
     getCart() {
         const tokenObjectString = localStorage.getItem('cartId');
@@ -115,13 +115,17 @@ export class UtilService {
         return datePart;
     }
 
+    getRealDate(date: any) {
+        return this.addToDate(date, 3);
+    }
+
     addToDate(date: any, hours: any) {
         const newDate = new Date(date);
         newDate.setHours(newDate.getHours() + hours);
         return newDate;
     }
 
-    format(number: any){
+    format(number: any) {
         const options = {
             style: 'decimal',
             minimumFractionDigits: 2,
@@ -136,7 +140,7 @@ export class UtilService {
     convertMinutesToHours(minutes: any) {
         const hours = Math.floor(minutes / 60);
         const remainingMinutes = minutes % 60;
-        if(hours <= 0){
+        if (hours <= 0) {
             return `${remainingMinutes} min`;
         }
         return `${hours} h ${remainingMinutes}`;

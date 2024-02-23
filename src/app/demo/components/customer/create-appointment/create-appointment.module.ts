@@ -21,6 +21,7 @@ import { CreateAppointmentComponent } from './create-appointment.component';
 import { DataViewModule } from 'primeng/dataview';
 import { CalendarModule } from 'primeng/calendar';
 import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { DialogModule } from 'primeng/dialog';
         ProgressBarModule,
         ToastModule,DataViewModule,
         CalendarModule,
-        DialogModule
+        DialogModule,
+        SidebarModule
     ],
     declarations: [CreateAppointmentComponent],
     exports: [

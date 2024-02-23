@@ -1,9 +1,10 @@
 <div class="grid">
     <div class="col-12 lg:col-4">
         <div class="card">
-            <p-calendar inputId="calendar" placeholder="Date du jour" [(ngModel)]="datejour"
-            (ngModelChange)="changeDate($event)"></p-calendar>
-        <h3 class="text-center">{{format(datejour)}}</h3>
+            <h3 class="text-center">{{format(datejour)}}</h3>
+            <p-calendar dateFormat="dd/MM/yy" [locale]="_locale" inputId="calendar" aria-label="s"
+                [(ngModel)]="datejour" (ngModelChange)="changeDate($event)"></p-calendar>
+
         </div>
     </div>
     <style>
@@ -15,8 +16,9 @@
     </style>
     <div class="col-12 lg:col-4">
         <div class="card z-3">
-            <!-- <span [class]="'customer-badge status-new'" style="font-size: 20px;">8 H</span> -->
-            <span [class]="'customer-badge status-new'" style="font-size: 20px;">{{uService.format(commission)}} Ar</span>
+            <h3>Montant de commission:</h3>
+            <span [class]="'customer-badge status-proposal'" style="font-size: 20px;">{{uService.format(commission)}}
+                Ar</span>
         </div>
     </div>
 

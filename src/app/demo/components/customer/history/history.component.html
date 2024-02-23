@@ -24,11 +24,11 @@
 						<td>
 							<button type="button" pButton pRipple [pRowToggler]="history" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
 						</td>
-						<td style="min-width: 12rem;">{{utilService.extractDateFromDate(history.date)}}</td>
+						<td style="min-width: 12rem;">{{utilService.toDateFr(utilService.extractDateFromDate(history.date))}}</td>
 						<td>{{utilService.getTimeFromDate(history.date)}}</td>
 						<td *ngIf="history.totalDuration.hours > 0" style="min-width: 8rem;">{{history.totalDuration.hours}} h {{history.totalDuration.minutes}} min</td>
                         <td *ngIf="history.totalDuration.hours == 0" style="min-width: 8rem;">{{history.totalDuration.minutes}} min</td>
-						<td style="min-width: 10rem;">{{history.totalAmount}} Ar</td>
+						<td style="min-width: 10rem;">{{utilService.format(history.totalAmount)}} Ar</td>
 						<td>
                             <p-badge [value]="checkStatus(history.status).message" severity="{{checkStatus(history.status).type}}"></p-badge>
                         </td>

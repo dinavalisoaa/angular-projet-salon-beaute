@@ -17,6 +17,11 @@ radial-gradient(
     #eeefaf 0%,
     #c3e3fa 100%
 );
+display: flex !important;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: center;
+    flex-wrap: wrap;
 border-style: none;
 gap: 30px;
 }

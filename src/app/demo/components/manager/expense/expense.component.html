@@ -50,12 +50,12 @@
 
             <td style="width:20%; min-width:10rem;">
                 <span class="p-column-title">Amount</span>
-                {{expense.amount}}Ar
+                {{utilService.format(expense.amount)}}Ar
 
             </td>
             <td style="width:20%; min-width:8rem;">
                 <span class="p-column-title">Date</span>
-                {{expense.date}}
+                {{utilService.toDateFr(expense.date)}}
             </td>
 
 
