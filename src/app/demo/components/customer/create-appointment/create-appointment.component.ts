@@ -19,6 +19,7 @@ import { ServiceService } from 'src/app/service/service/service.service';
 import { DataView } from 'primeng/dataview';
 import Swal from 'sweetalert2';
 import { CustomerService } from 'src/app/service/customer/customer.service';
+
 @Component({
     selector: 'app-create-appointment',
     templateUrl: './create-appointment.component.html',
@@ -39,6 +40,7 @@ import { CustomerService } from 'src/app/service/customer/customer.service';
         `,
     ],
 })
+
 export class CreateAppointmentComponent implements OnInit {
     appointment: Appointment = {};
     @Input() date: Date = new Date();
@@ -55,6 +57,7 @@ export class CreateAppointmentComponent implements OnInit {
 
     // service:Service={};
     click(service: Service) {}
+
     getDistinct(array: Service[]) {
         this.fetchService();
         let idtab = [...new Set(array.map((item) => item._id))];
@@ -67,6 +70,7 @@ export class CreateAppointmentComponent implements OnInit {
         });
         return [...new Set(array.map((item) => item._id))];
     }
+
     saveService(service: Service) {
         this.servicesFilled.push(service);
 
@@ -76,6 +80,7 @@ export class CreateAppointmentComponent implements OnInit {
         this.utilService.saveCart(ap);
         this.showService = this.getDistinct(this.servicesFilled);
     }
+
     getCurrence(item: any) {
         let count = this.servicesFilled.reduce(
             (acc, cur) => (cur._id == item ? ++acc : acc),
@@ -83,9 +88,11 @@ export class CreateAppointmentComponent implements OnInit {
         );
         return count;
     }
+
     choose() {
         this.display = true;
     }
+
     trashService(service: Service) {
 
         // console.log(service);
@@ -106,9 +113,11 @@ export class CreateAppointmentComponent implements OnInit {
         // Swal.fire(.toString());
         // ;
     }
+
     onFilter(dv: DataView, event: Event) {
         dv.filter((event.target as HTMLInputElement).value);
     }
+
     constructor(
         public layoutService: LayoutService,
         public router: Router,
@@ -120,18 +129,22 @@ export class CreateAppointmentComponent implements OnInit {
         // private service: MessageService,
         private customerService: CustomerService
     ) {}
+
     format(date: any) {
         return this.utilService.toDateFr(date);
     }
+
     fetchService() {
         this.serviceService.getService('', (res) => {
             this.allServices = res;
             console.log(this.allServices);
         });
     }
+
     getObjectService(service: any) {
         return this.allServices.filter((va, index) => va._id == service)[0];
     }
+
     isSetCart() {
         return (
             this.utilService.getCart().date != null &&
@@ -149,10 +162,12 @@ export class CreateAppointmentComponent implements OnInit {
         });
         return sum;
     }
+
     getToken() {
         const token: TokenObject = this.utilService.getToken();
         return token;
     }
+
     getName() {
         const token: TokenObject = this.getToken();
         if (token.userId != null) {
@@ -183,6 +198,7 @@ export class CreateAppointmentComponent implements OnInit {
         this.visiblePay = false;
         this.appointment = {};
     }
+
     logged() {
         const token: TokenObject = this.getToken();
         if (token.userId != null && token.role == 'CUSTOMER') {
@@ -190,6 +206,7 @@ export class CreateAppointmentComponent implements OnInit {
         }
         return false;
     }
+
     saveNoPay() {
         if (!this.logged()) {
             this.utilService.navigateToByUrl(
@@ -235,6 +252,7 @@ export class CreateAppointmentComponent implements OnInit {
         //     console.log(data2);
         // });
     }
+
     ngOnInit() {
         if (this.isSetCart()) {
             this.servicesFilled = this.utilService.getCart().service;
