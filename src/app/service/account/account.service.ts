@@ -90,7 +90,7 @@ export class AccountService {
                     recipient: appoint.customer?.email,
                     subject: "RAPPEL D'UN RENDEZ-VOUS",
                     customer: `${appoint.customer?.name} ${appoint.customer?.firstname}`,
-                    datetime: `${this.uService.toDatetimeFr(appoint.date)}`
+                    datetime: `${this.uService.toDatetimeFr(this.uService.getRealDate(appoint.date))}`
                 };
                 this.customerService.sendScheduledEmail(emailData, (res) => {
                     console.log(emailData);
