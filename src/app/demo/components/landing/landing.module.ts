@@ -19,6 +19,8 @@ import { CreateAppointmentModule } from '../customer/create-appointment/create-a
 import { HeaderComponent } from './header/header.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { CarouselModule } from 'primeng/carousel';
+import { TeamComponent } from './team/team.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     imports: [
@@ -40,9 +42,10 @@ import { CarouselModule } from 'primeng/carousel';
         RatingModule,
         ButtonModule,
         CreateAppointmentModule,
-        CarouselModule
+        CarouselModule,
+        ToastModule
     ],
-    declarations: [LandingComponent, HeaderComponent, AppointmentComponent],
+    declarations: [LandingComponent, HeaderComponent, AppointmentComponent,TeamComponent],
     exports:[HeaderComponent,AppointmentComponent]
 })
 export class LandingModule { }

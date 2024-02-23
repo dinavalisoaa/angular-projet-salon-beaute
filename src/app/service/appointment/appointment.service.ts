@@ -11,21 +11,34 @@ const apiUrl = API_URL;
 })
 export class AppointmentService {
     constructor(private http: HttpClient) {}
-    getAppointment2(query: any,sort:Appointment, next: (res: any) => any) {
-        this.http.post(`${apiUrl}/api/appointments` + query,sort).subscribe(
+    getAppointment2(query: any, sort: Appointment, next: (res: any) => any) {
+        this.http.post(`${apiUrl}/api/appointments` + query, sort).subscribe(
             CheckError((res) => {
                 next(res);
                 return res;
             })
         );
     }
-    getAppointment(query: any,sort:Appointment, next: (res: any) => any) {
-        this.http.post(`${apiUrl}/api/appointments` + query,sort).subscribe(
+    getAppointment(query: any, sort: Appointment, next: (res: any) => any) {
+        this.http.post(`${apiUrl}/api/appointments` + query, sort).subscribe(
             CheckError((res) => {
                 next(res);
                 // close();
             })
         );
+    }
+    getAppointmentByEmp(
+        query: any,
+        next: (res: any) => any
+    ) {
+        this.http
+            .get(`${apiUrl}/api/appointment/state/` + query)
+            .subscribe(
+                CheckError((res) => {
+                    next(res);
+                    // close();
+                })
+            );
     }
     saveAppointment(data: Appointment, next: (res: any) => any) {
         this.http.post(`${apiUrl}/api/appointment`, data).subscribe(
@@ -36,23 +49,19 @@ export class AppointmentService {
         );
     }
     updateAppointment(data: Appointment, param: any, next: (res: any) => any) {
-        this.http
-            .put(`${apiUrl}/api/appointment/` + param, data)
-            .subscribe(
-                CheckError((res) => {
-                    next(res);
-                    close();
-                })
-            );
+        this.http.put(`${apiUrl}/api/appointment/` + param, data).subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+            })
+        );
     }
     patchAppointment(data: Appointment, param: any, next: (res: any) => any) {
-        this.http
-            .patch(`${apiUrl}/api/appointment/` + param, data)
-            .subscribe(
-                CheckError((res) => {
-                    next(res);
-                    close();
-                })
-            );
+        this.http.patch(`${apiUrl}/api/appointment/` + param, data).subscribe(
+            CheckError((res) => {
+                next(res);
+                close();
+            })
+        );
     }
 }

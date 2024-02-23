@@ -342,6 +342,7 @@ export class TaskComponent implements OnInit {
         const employee: Employee = {};
         employee._id = token.userId;
         return employee;
+        // const emps: Employee = this.getEmp();
     }
     dropDo() {
         const emps: Employee = this.getEmp();
@@ -356,13 +357,19 @@ export class TaskComponent implements OnInit {
             );
             this.fetchAll();
         } else if (this.draggedDone?._id != undefined) {
-            this.appointmentService.patchAppointment(
-                { status: 1, employee: emps },
-                this.draggedDone?._id,
-                (res) => {
-                    this.fetchAll();
-                }
-            );
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Tache fini',
+                footer: '',
+            });
+            // this.appointmentService.patchAppointment(
+            //     { status: 1, employee: emps },
+            //     this.draggedDone?._id,
+            //     (res) => {
+            //         this.fetchAll();
+            //     }
+            // );
         }
     }
     dropDone() {
@@ -383,13 +390,19 @@ export class TaskComponent implements OnInit {
     dropTodo() {
         const emps: Employee = this.getEmp();
         if (this.draggedDo != undefined) {
-            this.appointmentService.patchAppointment(
-                { status: 0, employee: null },
-                this.draggedDo?._id,
-                (res) => {
-                    this.fetchAll();
-                }
-            );
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Tâche en traitement',
+                footer: '',
+            });
+            // this.appointmentService.patchAppointment(
+            //     { status: 0, employee: null },
+            //     this.draggedDo?._id,
+            //     (res) => {
+            //         this.fetchAll();
+            //     }
+            // );
         }
     }
 }

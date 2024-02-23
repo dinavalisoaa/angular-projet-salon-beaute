@@ -32,6 +32,7 @@ export interface Employee {
     firstname?: String;
     dateOfBirth?: Date;
     sex?: Sex;
+    specialite?:String;
     address?: String;
     phoneNumber?: String;
     email?: String;

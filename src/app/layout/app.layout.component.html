@@ -3,8 +3,23 @@
     <div class="layout-sidebar">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="layout-main-container">
-        <div class="layout-main">
+    <style>
+        #features {
+            background: linear-gradient(
+                    0deg,
+                    #bdc3c7 ,
+                    #2c3e50
+                ),
+                radial-gradient(
+                    77.36% 256.97% at 77.36% 57.52%,
+                    #eeefaf 0%,
+                    #c3e3fa 100%
+                );
+
+        }
+    </style>
+    <div id="features" class="layout-main-container">
+        <div  id="features"class="layout-main">
             <router-outlet></router-outlet>
         </div>
         <app-footer></app-footer>

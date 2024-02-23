@@ -49,7 +49,7 @@ export class CreateAppointmentComponent implements OnInit {
     allServices: Service[] = [];
     state: string = '';
     total: number = 0;
-    showService: any = []; //this.getDistinct(this.servicesFilled);
+    showService: any = [];
 
     @Input() servicesFilled: Service[] = [];
 
@@ -75,6 +75,7 @@ export class CreateAppointmentComponent implements OnInit {
         ap.service = this.servicesFilled;
         this.utilService.saveCart(ap);
         this.showService = this.getDistinct(this.servicesFilled);
+        this.total = this.totalize();
     }
     getCurrence(item: any) {
         let count = this.servicesFilled.reduce(
@@ -87,7 +88,6 @@ export class CreateAppointmentComponent implements OnInit {
         this.display = true;
     }
     trashService(service: Service) {
-
         // console.log(service);
         //recherche d'object correspond a l'ID
         let object = this.servicesFilled.filter(
@@ -103,6 +103,8 @@ export class CreateAppointmentComponent implements OnInit {
         ap.date = this.date;
         ap.service = this.servicesFilled;
         this.utilService.saveCart(ap);
+        this.total = this.totalize();
+
         // Swal.fire(.toString());
         // ;
     }
@@ -173,8 +175,9 @@ export class CreateAppointmentComponent implements OnInit {
             account,
             this.filledAppointment,
             (res) => {
+                this.servicesFilled = [];
                 this.utilService.saveCart([]);
-
+                this.showService = [];
             }
         );
 
@@ -235,6 +238,13 @@ export class CreateAppointmentComponent implements OnInit {
         //     console.log(data2);
         // });
     }
+    formattAr(montant:any){
+      return this.utilService.format(montant);
+    }
+    dot(ele1: any, ele2: any) {
+        if (ele1 == undefined || ele2 == undefined) return 0;
+        return ele1 * ele2;
+    }
     ngOnInit() {
         if (this.isSetCart()) {
             this.servicesFilled = this.utilService.getCart().service;
@@ -242,6 +252,7 @@ export class CreateAppointmentComponent implements OnInit {
         console.log(this.servicesFilled + '.....<<<<');
         console.log(this.getDistinct(this.servicesFilled) + '.....2<<<<');
         this.showService = this.getDistinct(this.servicesFilled);
+        this.total = this.totalize();
 
         this.fetchService();
 

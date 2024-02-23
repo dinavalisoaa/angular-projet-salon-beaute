@@ -8,7 +8,6 @@ import { closeLoad, loadPage } from '../util-service/load';
 
 // const apiUrl = process.env.API_URL;
 const apiUrl = API_URL;
-
 @Injectable({
     providedIn: 'root',
 })

@@ -22,6 +22,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DragDropModule } from 'primeng/dragdrop';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
     imports: [
@@ -49,6 +50,8 @@ import { DragDropModule } from 'primeng/dragdrop';
         AutoCompleteModule,
         ButtonModule,
         TableModule,
+        DialogModule,
+        ConfirmDialogModule
     ],
     declarations: [AppointmentComponent],
 })

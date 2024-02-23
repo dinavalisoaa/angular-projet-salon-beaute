@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng/api';
+import { Component, Input, OnInit } from '@angular/core';
+import { ConfirmationService, SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
-import { Appointment, Customer, Service } from 'src/app/models/models';
+import {
+    Appointment,
+    Customer,
+    Employee,
+    Service,
+    TokenObject,
+} from 'src/app/models/models';
 import { AppointmentService } from 'src/app/service/appointment/appointment.service';
 import { CustomerService } from 'src/app/service/customer/customer.service';
 import { ServiceService } from 'src/app/service/service/service.service';
@@ -12,7 +18,9 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 import Swal from 'sweetalert2';
 
 @Component({
+    selector:'app-appointment',
     templateUrl: './appointment.component.html',
+    providers: [ConfirmationService],
 })
 export class AppointmentComponent implements OnInit {
     products: Product[] = [];
@@ -40,7 +48,7 @@ export class AppointmentComponent implements OnInit {
     orderCities: any[] = [];
     selectedCustomers: any[] = [];
     selectedServices: any[] = [];
-    appointments: Appointment[] = [];
+   @Input() appointments: Appointment[] = [];
     customers: Customer[] = [];
     services: Service[] = [];
     constructor(
@@ -48,6 +56,7 @@ export class AppointmentComponent implements OnInit {
         private appointmentService: AppointmentService,
         private customersService: CustomerService,
         private serviceService: ServiceService,
+        public confirmationService: ConfirmationService,
         private uService: UtilService
     ) {}
     showService(appointment: Appointment) {
@@ -83,7 +92,7 @@ export class AppointmentComponent implements OnInit {
         });
     }
     getAppoints() {
-        this.appointmentService.getAppointment('', {}, (res) => {
+        this.appointmentService.getAppointment('', { status: 0 }, (res) => {
             this.appointments = res;
             console.log(res);
         });
@@ -113,7 +122,7 @@ export class AppointmentComponent implements OnInit {
             { label: 'Plus recent', value: 'date' },
         ];
         this.statusOptions = [
-            { label: 'Choisir', value: '-1' },
+            { label: 'Tout', value: '-1' },
             { label: 'Nouveau', value: '0' },
             { label: 'En cours', value: '1' },
             { label: 'Fini', value: '2' },
@@ -157,12 +166,54 @@ export class AppointmentComponent implements OnInit {
     getDate(date: any) {
         return date.toString().split('T')[0];
     }
-    navigate(appointment: Appointment) {
-        // Swal.fire(/
-            // '/employee/task?date=' + this.getDate(appointment.date));
+    confirm1() {
+        // this.confirmationService.onAccept();
+    }
+    getToken() {
+        const token: TokenObject = this.uService.getToken();
+        return token;
+    }
+    getEmp() {
+        const token: TokenObject = this.getToken();
+        const employee: Employee = {};
+        employee._id = token.userId;
+        return employee;
+    }
+    // for appointemnt was not done but do
+    navigateToTask(appointment: Appointment) {
         this.uService.navigateToByUrl(
             '/employee/task?date=' + this.getDate(appointment.date)
         );
+    }
+    navigate(appointment: Appointment) {
+        const emps: Employee = this.getEmp();
+        this.confirmationService.confirm({
+            key: 'confirm1',
+            message: 'Voulez vous occuper ce rendez-vous',
+            accept: () => {
+                this.appointmentService.patchAppointment(
+                    { employee: emps },
+                    appointment?._id,
+                    (res) => {
+                        // this.fetchAll();
+                    }
+                );
+                this.uService.navigateToByUrl(
+                    '/employee/task?date=' + this.getDate(appointment.date)
+                );
+            },
+        });
+        // this.uService.navigateToByUrl(
+        //     '/employee/task?date=' + this.getDate(appointment.date)
+        // );
+
+        // this.confirmationService.confirm({
+        //     key: 'confirm1',
+        //     message: 'Voulez-bous',
+        //     accept: () => {
+        //         Swal.fire('YESS');
+        //     },
+        // });
     }
     hideDialog() {
         this.dialog = false;

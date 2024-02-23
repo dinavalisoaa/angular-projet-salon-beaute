@@ -24,9 +24,15 @@
                 </a>
             </li>
             <li>
+                <a (click)="router.navigate(['/team'], {fragment: 'highlights'})" pRipple
+                    class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
+                    <span>EQUIPES</span>
+                </a>
+            </li>
+            <li>
                 <a (click)="router.navigate(['/pages/landing'], {fragment: 'highlights'})" pRipple
                     class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                    <span>Images</span>
+                    <span>Service</span>
                 </a>
             </li>
         </ul>
@@ -35,7 +41,8 @@
             <button (click)="router.navigate(['/customer/login'])" pButton pRipple label="Se connecter"
                 *ngIf="logged()==false"
                 class="p-button-text p-button-rounded border-none font-light line-height-2 text-blue-500"></button>
-            <p-chip (click)="router.navigate(['/customer/profile'])" style="cursor: pointer;" label="{{getName()}}" icon="pi pi-user" styleClass="m-1" *ngIf="logged()==true"></p-chip>
+
+            <p-chip (click)="navigate()" style="cursor: pointer;" label="{{getName()}}" icon="pi pi-user" styleClass="m-1" *ngIf="logged()==true"></p-chip>
 
             <button (click)="router.navigate(['/customer/registration'])" pButton pRipple label="S'inscrire"
                 class="p-button-rounded border-none ml-5 font-light line-height-2 bg-blue-500 text-white"></button>

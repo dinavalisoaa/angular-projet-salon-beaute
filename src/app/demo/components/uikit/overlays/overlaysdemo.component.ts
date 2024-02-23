@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
     templateUrl: './overlaysdemo.component.html',
@@ -54,8 +55,12 @@ export class OverlaysDemoComponent implements OnInit {
     confirm1() {
         this.confirmationService.confirm({
             key: 'confirm1',
-            message: 'Are you sure to perform this action?'
+            message: 'Are you sure to sssss this action?',
+            accept:()=>{
+                Swal.fire("YESS");
+            }
         });
+        // this.confirmationService.onAccept();
     }
 
     confirm2(event: Event) {

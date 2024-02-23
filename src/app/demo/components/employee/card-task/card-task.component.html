@@ -44,9 +44,12 @@
     <p class="mb-0">{{format(appointment.date)}}</p>
 
     <app-service-avatar [services]="appointment.service"></app-service-avatar>
+    <button pButton pRipple type="button" *ngIf="appointment.employee!=null" label=" {{appointment.employee?.name}}"
+    class="p-button-rounded p-button-warning mr-2 mb-2">
+    <i class="pi pi-spin pi-spinner" ></i></button>
 
-    <p-chip *ngIf="isPrefered(appointment.customer)==true" style="cursor: pointer;" label="Favoris" icon="pi pi-star"
-        styleClass="m-1 warning"></p-chip>
+    <!-- <p-chip *ngIf="isPrefered(appointment.customer)==true" style="cursor: pointer;" label="Favoris" icon="pi pi-star"
+        styleClass="m-1 warning"></p-chip> -->
 
 
 </div>

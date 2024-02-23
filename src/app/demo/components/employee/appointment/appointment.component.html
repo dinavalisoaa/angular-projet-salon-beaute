@@ -1,3 +1,9 @@
+<p-confirmDialog header="Confirmation" key="confirm1" icon="pi pi-exclamation-triangle"
+    message="Are you sure you want to proceed?" [style]="{width: '350px'}" acceptButtonStyleClass="p-button-text"
+    rejectButtonStyleClass="p-button-text">
+    <ng-template>
+    </ng-template>
+</p-confirmDialog>
 <div class="grid">
     <div class="col-12">
         <div class="card">
@@ -84,16 +90,28 @@
                             </div>
                             <div class="flex align-items-center justify-content-between">
                                 <!-- <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-outlined p-button-text mr-2 mb-2"></button> -->
-                                <button (click)="navigate(appointment)"  pButton pRipple type="button" icon="pi pi-plus-circle"
-                                    class="p-button-rounded p-button-outlined mr-2 mb-2">
-                                </button>
-                                <button  pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
+                                <button (click)="navigate(appointment)" *ngIf="appointment.employee==null" pButton
+                                    pRipple type="button" label="Prendre" icon="pi pi-times-circle"
+                                    class="p-button-rounded p-button-warning mr-2 mb-2"></button>
+                                <button (click)="navigateToTask(appointment)"
+                                    *ngIf="appointment.employee!=null && appointment.status==1" pButton pRipple
+                                    type="button" icon="pi pi-clock" label="Traité "
+                                    class="p-button-rounded p-button-secondary mr-2 mb-2"></button>
+                                <button *ngIf="appointment.employee!=null && appointment.status==2" pButton pRipple
+                                    type="button" icon="pi pi-check-circle" label="Fini "
+                                    class="p-button-rounded p-button-success mr-2 mb-2"></button>
+
+                                <!-- <button (click)="navigate(appointment)" pButton  type="button"
+                                    icon="pi pi-plus-circle" class="p-button p-button-outlined  p-button-warning2">
+                                    Occupee
+                                </button> -->
+                                <!-- <button pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
                                     class="p-button-rounded p-button-danger mr-2 mb-2"></button>
                                 <button pButton pRipple type="button" icon="pi pi-clock" *ngIf="appointment.status==1"
                                     class="p-button-rounded p-button-secondary mr-2 mb-2"></button>
 
                                 <button pButton pRipple type="button" icon="pi pi-check" *ngIf="appointment.status==2"
-                                    class="p-button-rounded p-button-success mr-2 mb-2"></button>
+                                    class="p-button-rounded p-button-success mr-2 mb-2"></button> -->
 
 
                             </div>

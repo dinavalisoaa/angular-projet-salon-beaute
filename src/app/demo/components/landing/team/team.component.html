@@ -1,0 +1,40 @@
+<div class="surface-0  justify-content-center">
+    <div id="home" class="landing-wrapper overflow-hidden">
+        <app-header></app-header>
+        <div id="features" class="grid py-4 px-4 lg:px-12 relative">
+            <div class="col-12">
+                <div class="grid justify-content-center">
+                    <p-toast></p-toast>
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="">
+                            <h5>Nos employés</h5>
+                            <p-carousel [value]="employees" [numVisible]="employees.length/2" [circular]="true"
+                                [autoplayInterval]="3000" [responsiveOptions]="carouselResponsiveOptions">
+                                <ng-template let-employee pTemplate="item">
+                                    <div class="border-round m-2 text-center p-2"
+                                        style="border: 2px solid var(--surface-d);border-color: rgb(170, 167, 167);">
+                                        <div class="my-5">
+                                            <img *ngIf="employee.profile == null"
+                                                src="assets/demo/images/profile/default-profile.jpg"
+                                                [alt]="employee.firstname" class="shadow-4" height="250" />
+                                            <img *ngIf="employee.profile != null" src="{{employee.profile}}"
+                                                [alt]="employee.firstname" class="shadow-4" height="250" />
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-1">{{employee.name}}
+                                                {{employee.firstname}}</h5>
+
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </p-carousel>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
