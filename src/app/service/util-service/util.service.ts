@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
-import { Manager } from 'src/app/models/models';
+import { Manager, TokenObject } from 'src/app/models/models';
 
 export const API_URL = 'http://localhost:5050';
 // export const API_URL= process.env['API_URL'];
@@ -144,5 +144,31 @@ export class UtilService {
             return `${remainingMinutes} min`;
         }
         return `${hours} h ${remainingMinutes}`;
+    }
+    subtractDatePartExpiration(date: any, hours: any) {
+        const newDate = new Date(date);
+        newDate.setHours(newDate.getHours() + hours);
+
+        return new Date(
+            new Date(newDate).getFullYear(),
+            new Date(newDate).getMonth(),
+            new Date(newDate).getDate(),
+            new Date(newDate).getHours(),
+            new Date(newDate).getMinutes()
+        );
+    }
+
+    checkExpiration(): boolean {
+        const token: TokenObject = this.getToken();
+        let news = this.subtractDatePartExpiration(new Date(), 0);
+        let token_date = this.subtractDatePartExpiration(new Date(token.expiration), -3);
+        const retours: boolean =
+            token_date.getTime() <= new Date(news).getTime();
+
+        console.log('EXPIRATION:'+token_date);
+        if (retours) {
+            return true;
+        }
+        return false;
     }
 }
