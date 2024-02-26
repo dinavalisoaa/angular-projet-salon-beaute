@@ -89,6 +89,7 @@ export class ManagerService {
                     data.userId = res.userId;
                     data.role=res.role;
                     data.info=res.info;
+                    data.expiration = res.expiration;
                     this.uService.saveDataStorage('sessionId',JSON.stringify(data) );
                     next(res);
                     close();

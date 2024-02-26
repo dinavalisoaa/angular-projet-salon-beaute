@@ -58,6 +58,7 @@ export class CustomerService {
                 data.userId = res.userId;
                 data.role = res.role;
                 data.info = res.info;
+                data.expiration = res.expiration;
                 console.log(data);
                 this.uService.saveDataStorage(
                     'sessionId',
