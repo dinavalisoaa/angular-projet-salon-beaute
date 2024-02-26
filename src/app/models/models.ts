@@ -24,6 +24,7 @@ export interface TokenObject {
     token?: string;
     role?: string;
     info?: any;
+    expiration?: any;
     userId?: string;
 }
 export interface Employee {
