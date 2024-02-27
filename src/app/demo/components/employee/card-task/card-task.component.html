@@ -39,15 +39,17 @@
 
     <h5>
         <i class="pi {{icon}} round-icon "></i>
-        {{appointment.customer?.name}}
+        {{appointment.customer?.firstname}}
     </h5>
     <p class="mb-0">{{format(appointment.date)}}</p>
+<div class="flex">
 
-    <app-service-avatar [services]="appointment.service"></app-service-avatar>
+    <app-service-avatar [services]="appointment.service" ></app-service-avatar>
+</div>
     <button pButton pRipple type="button" *ngIf="appointment.employee!=null" label=" {{appointment.employee?.name}}"
     class="p-button-rounded p-button-warning mr-2 mb-2">
 
-    <i class="pi pi-spin pi-spinner" ></i></button>
+    <i class="pi pi-spin pi-spinner" *ngIf="appointment.status!=2"></i></button>
 
     <!-- <p-chip *ngIf="isPrefered(appointment.customer)==true" style="cursor: pointer;" label="Favoris" icon="pi pi-star"
         styleClass="m-1 warning"></p-chip> -->

@@ -62,6 +62,7 @@ export class RegistrationComponent {
     fetchSexes() {
         this.sexService.getAllSexes((res) => {
             this.dropdownSexes = res;
+            console.log(res);
         });
     }
 

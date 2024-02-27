@@ -4,6 +4,7 @@ import { Table } from 'primeng/table';
 import { Expense } from 'src/app/models/models';
 import { ExpenseService } from 'src/app/service/expense/expense.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
+import Swal from 'sweetalert2';
 
 @Component({
     templateUrl: './expense.component.html',
@@ -131,14 +132,22 @@ export class ExpenseComponent implements OnInit {
         if (this.expense.amount) {
             query += '&amount=' + this.expense.amount;
         }
-        if (this.expense.date) {
-            query += '&date=' + this.expense.date;
-        }
+
         if (this.expense.description) {
             query += '&description=' + this.expense.description;
         }
-        console.log(query);
-        this.fetchList(query);
+        // this.fetchList(query);
+        this.expenseExpense.getExpense(query, (res) => {
+            this.expenses = res;
+            if(this.expense.date){
+                let year=this.expense.date.toString().split("-")[0];
+                let month=this.expense.date.toString().split("-")[1];
+                console.log(this.expenses[0].date?.toString().split("-")[0]);
+                this.expenses=this.expenses.filter((val,index)=>val.date?.toString().split("-")[0]==year && val.date?.toString().split("-")[1]==month);
+
+            }
+        });
+
         this.filtreDialog = false;
     }
     resetFilter() {

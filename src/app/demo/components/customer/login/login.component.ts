@@ -33,7 +33,7 @@ import { UtilService } from 'src/app/service/util-service/util.service';
 })
 export class LoginComponent {
     // valCheck: string[] = ['remember'];
-    password: string = 'root';
+    password: string = '*dina*';
     email: string = 'randriamifidydina@gmail.com';
 
     constructor(

@@ -18,7 +18,7 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 import Swal from 'sweetalert2';
 
 @Component({
-    selector:'app-appointment',
+    selector: 'app-appointment',
     templateUrl: './appointment.component.html',
     providers: [ConfirmationService],
 })
@@ -48,7 +48,7 @@ export class AppointmentComponent implements OnInit {
     orderCities: any[] = [];
     selectedCustomers: any[] = [];
     selectedServices: any[] = [];
-   @Input() appointments: Appointment[] = [];
+    @Input() appointments: Appointment[] = [];
     customers: Customer[] = [];
     services: Service[] = [];
     constructor(
@@ -59,12 +59,35 @@ export class AppointmentComponent implements OnInit {
         public confirmationService: ConfirmationService,
         private uService: UtilService
     ) {}
+
+    getCurrence(item: any, services: Service[] | undefined) {
+        let count = services?.reduce(
+            (acc, cur) => (cur.name == item ? ++acc : acc),
+            0
+        );
+        return count;
+    }
+
+    getDistinct(array: Service[]) {
+        return [...new Set(array.map((item) => item.name))];
+    }
+
     showService(appointment: Appointment) {
         let str = '';
-        if (appointment.service != undefined)
-            appointment.service.forEach((element) => {
-                str += element.name + ' & \n ';
+        let taille = appointment.service?.length;
+        if (appointment.service != undefined) {
+            let distinct = this.getDistinct(appointment.service);
+            distinct.forEach((element, index) => {
+                {
+                    if(element){
+                    let show=this.getCurrence(element, appointment?.service)==1?'':"( ×"+this.getCurrence(element, appointment?.service)+')';
+                    str +=" ✓ "+
+                        element +show
+                         +
+                        '  \n\n ';
+                }}
             });
+        }
         return str;
     }
     showDiag() {

@@ -111,7 +111,7 @@
 
         <div class="field">
             <label for="description">Date</label>
-            <input type="date" pInputText id="date" [(ngModel)]="expense.date"  [ngClass]="{'ng-invalid ng-dirty' : submitted && !expense.date}"/>
+            <input type="month" pInputText id="date" [(ngModel)]="expense.date"  [ngClass]="{'ng-invalid ng-dirty' : submitted && !expense.date}"/>
 
         </div>
         <div class="field">
