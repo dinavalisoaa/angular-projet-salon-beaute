@@ -40,7 +40,6 @@ import { CustomerService } from 'src/app/service/customer/customer.service';
         `,
     ],
 })
-
 export class CreateAppointmentComponent implements OnInit {
     appointment: Appointment = {};
     @Input() date: Date = new Date();
@@ -179,6 +178,8 @@ export class CreateAppointmentComponent implements OnInit {
     }
 
     pay() {
+
+
         const token: TokenObject = this.utilService.getToken();
         const account: Account = {};
         account.customer = token.info;
@@ -186,6 +187,7 @@ export class CreateAppointmentComponent implements OnInit {
         account.description = '';
         account.debit = this.total;
         account.credit = 0;
+        this.filledAppointment.duration=this.getDurations(this.filledAppointment);
         this.accountService.saveAccountTransaction(
             account,
             this.filledAppointment,
@@ -200,6 +202,15 @@ export class CreateAppointmentComponent implements OnInit {
 
         this.visiblePay = false;
         this.appointment = {};
+    }
+    getDurations(app: Appointment) {
+        let som = 0;
+        app?.service?.forEach((val, index) => {
+            if (val?.duration != undefined) {
+                som +=val?.duration;
+            }
+        });
+        return som;
     }
 
     logged() {
@@ -255,8 +266,8 @@ export class CreateAppointmentComponent implements OnInit {
         //     console.log(data2);
         // });
     }
-    formattAr(montant:any){
-      return this.utilService.format(montant);
+    formattAr(montant: any) {
+        return this.utilService.format(montant);
     }
     dot(ele1: any, ele2: any) {
         if (ele1 == undefined || ele2 == undefined) return 0;
