@@ -1,0 +1,179 @@
+<p-confirmDialog header="Confirmation" key="confirm1" icon="pi pi-exclamation-triangle"
+    message="Are you sure you want to proceed?" [style]="{width: '350px'}" acceptButtonStyleClass="p-button-text"
+    rejectButtonStyleClass="p-button-text">
+    <ng-template>
+    </ng-template>
+</p-confirmDialog>
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h3>
+
+                Rendez selon preférences clients({{appointments.length}})</h3>
+            <p-dataView #dv [value]="appointments" [paginator]="true" [rows]="9" filterBy="name" [sortField]="sortField"
+                [sortOrder]="sortOrder" layout="grid">
+                <ng-template pTemplate="header">
+                    <div class="grid grid-nogutter flex-column md:flex-row justify-content-between">
+                        <p-dropdown [options]="sortOptions" placeholder="Triez par date"
+                            (onChange)="onSortChange($event)"></p-dropdown>
+                        <p-dropdown [options]="statusOptions" placeholder="Status"
+                            (onChange)="onStatusChange($event)"></p-dropdown>
+                        <span class="p-input-icon-left mb-2 md:mb-0">
+                            <button pButton pRipple label="Recherche" class="p-button-primary" (click)="showDiag()">
+                                <i class="pi pi-search"></i>
+                            </button>
+                        </span>
+                        <!-- <p-dataViewLayoutOptions></p-dataViewLayoutOptions> -->
+                    </div>
+                </ng-template>
+
+                <ng-template let-appointment pTemplate="listItem">
+                    <div class="col-12">
+                        <div class="flex flex-column md:flex-row align-items-center p-3 w-full">
+                            <!-- <img [src]="'assets/demo/images/appointment/' + appointment.image" [alt]="appointment.name" class="my-4 md:my-0 w-9 md:w-10rem shadow-2 mr-5"/> -->
+                            <div class="flex-1 text-center md:text-left">
+                                <div class="font-bold text-2xl">{{appointment}}</div>
+                                <div class="mb-3">{{appointment.description}}</div>
+                                <p-rating [ngModel]="appointment.rating" [readonly]="true" [cancel]="false"></p-rating>
+                                <div class="flex align-items-center mt-2">
+                                    <i class="pi pi-tag mr-2"></i>
+                                    <span class="font-semibold">{{appointment.category}}</span>
+                                </div>
+                            </div>
+                            <div
+                                class="flex flex-row md:flex-column justify-content-between w-full md:w-auto align-items-center md:align-items-end mt-5 md:mt-0">
+                                <span
+                                    class="text-2xl font-semibold mb-2 align-self-center md:align-self-end">${{appointment.price}}</span>
+                                <p-button icon="pi pi-shopping-cart" label="Add to Cart"
+                                    [disabled]="appointment.inventoryStatus === 'OUTOFSTOCK'" class="mb-2"></p-button>
+                                <span [class]="'appointment-badge status-'">{{appointment.inventoryStatus}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <style>
+
+                </style>
+                <ng-template let-appointment pTemplate="gridItem">
+                    <div class="col-12 md:col-3">
+                        <div id="cards" class="card m-3 border-0 surface-border" style="    background-image:url('assets/demo/images/appointment-img-bg.png');border-style: none;
+                      ">
+                            <div class="flex align-items-center justify-content-between">
+                                <span [class]="'customer-badge status-new'  " style="display:none">
+                                    <i class="pi pi-plus-circle"></i>
+                                </span>
+
+                                <span [class]="'customer-badge'">{{format(appointment.date)}} &agrave; 13h 15</span>
+
+                                <!-- <span  *ngIf="appointment.status==1"[class]="'customer-badge status-proposal'  ">En cours</span> <span  *ngIf="appointment.status==2"[class]="'customer-badge status-qualified'  ">Fini</span> -->
+                            </div>
+                            <!-- <div class="flex align-items-center justify-content-between">
+                                <div class="flex align-items-center">
+                                    <span [class]="'sm:ml-1 appointment-badge status-outofstock'">
+                                        {{format(appointment.date)}} &agrave; 12h30
+                                    </span>
+                                </div>
+                            </div> -->
+                            <br />
+
+                            <div class="text-center">
+                                <div class="text-2xl font-bold" *ngIf="appointment.customer!=undefined">
+
+                                    {{appointment.customer.name}}
+
+                                </div>
+                                <!-- <hr />  -->
+                                <div class="mb-3">
+                                    {{showService(appointment)}}
+
+                                </div>
+                                <!-- <p-rating [ngModel]="appointment.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+                            </div>
+                            <div class="flex align-items-center justify-content-between">
+
+                                <button (click)="navigate(appointment)" *ngIf="appointment.employee==null" pButton
+                                    pRipple type="button" label="Prendre" icon="pi pi-times-circle"
+                                    class="p-button-rounded p-button-warning mr-2 mb-2"></button>
+                                <button
+                                    *ngIf="appointment.employee!=null && appointment.employee._id==getEmp()._id && appointment.status!=2"
+                                    pButton pRipple type="button" label="Par {{appointment.employee.name}}"
+                                    icon="pi pi-times-circle"
+                                    class="p-button-rounded p-button-danger mr-2 mb-2"></button>
+
+
+
+                                <button (click)="navigateToTask(appointment)"
+                                    *ngIf="appointment.employee!=null && appointment.status==1" pButton pRipple
+                                    type="button" icon="pi pi-clock" label="Traité "
+                                    class="p-button-rounded p-button-secondary mr-2 mb-2"></button>
+                                <button *ngIf="appointment.employee!=null && appointment.status==2" pButton pRipple
+                                    type="button" icon="pi pi-check-circle" label="Fini "
+                                    class="p-button-rounded p-button-success mr-2 mb-2"></button>
+
+                                <!-- <button (click)="navigate(appointment)" pButton  type="button"
+                                    icon="pi pi-plus-circle" class="p-button p-button-outlined  p-button-warning2">
+                                    Occupee
+                                </button> -->
+                                <!-- <button pButton pRipple type="button" icon="pi pi-times" *ngIf="appointment.status==0"
+                                    class="p-button-rounded p-button-danger mr-2 mb-2"></button>
+                                <button pButton pRipple type="button" icon="pi pi-clock" *ngIf="appointment.status==1"
+                                    class="p-button-rounded p-button-secondary mr-2 mb-2"></button>
+
+                                <button pButton pRipple type="button" icon="pi pi-check" *ngIf="appointment.status==2"
+                                    class="p-button-rounded p-button-success mr-2 mb-2"></button> -->
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </div>
+
+
+</div>
+<p-dialog [(visible)]="dialog" [style]="{width: '450px',height:'600px'}" header="Recherche " [modal]="true"
+    class="p-fluid">
+    <p-autoComplete [(ngModel)]="selectedCustomers" [suggestions]="filteredCustomers"
+        (completeMethod)="filterCustomer($event)" field="name" [dropdown]="true" placeholder="  Selectionné un client" placeholder=" Selectionné un client">
+    </p-autoComplete>
+
+    <div class="field">
+        <label for="name">Services</label>
+        <p-multiSelect class="field" [options]="services" [(ngModel)]="selectedServices" defaultLabel="Select a Service"
+            optionLabel="name">
+            <ng-template style="display: flex;" let-value pTemplate="selectedItems">
+                <div class="country-item country-item-value" *ngFor="let option of selectedServices">
+                    <div>{{option.name}}</div>
+                </div>
+                <div *ngIf="!selectedServices || selectedServices.length === 0" class="country-placeholder">
+                    Selectionné un ou plusieur services
+                </div>
+            </ng-template>
+            <ng-template let-country pTemplate="item">
+                <div class="country-item">
+                    <img src="{{country.illustration}}" class="shadow-4" width="10%" height="20%" />
+                    <div>{{country.name}}</div>
+                </div>
+            </ng-template>
+        </p-multiSelect>
+    </div>
+    <ng-template pTemplate="content">
+        <div class="field">
+            <label for="name">Date</label>
+            <input type="date" pInputText id="_id" [(ngModel)]="date" />
+
+
+            <!-- <p-autoComplete [(ngModel)]="selectedCountryAdvanced" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name" [dropdown]="true">
+			</p-autoComplete> -->
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Filtrer" icon="pi pi-check" class="p-button-text" (click)="filter()"></button>
+    </ng-template>
+</p-dialog>
