@@ -25,7 +25,7 @@ export class AccountComponent implements OnInit {
         const account: Account = {};
         account.customer = token.info;
         account.date = new Date();
-        account.description = '';
+        account.description = 'Rechargement de compte';
         account.debit = 0;
         account.credit = this.amount;
         this.accountService.saveAccount(account, (res) => {
