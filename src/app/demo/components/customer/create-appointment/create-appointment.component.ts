@@ -76,6 +76,7 @@ export class CreateAppointmentComponent implements OnInit {
         let ap: Appointment = {};
         ap.date = this.date;
         ap.service = this.servicesFilled;
+
         this.utilService.saveCart(ap);
         this.showService = this.getDistinct(this.servicesFilled);
         this.total = this.totalize();
@@ -105,11 +106,15 @@ export class CreateAppointmentComponent implements OnInit {
 
         // suppression de l'object correspondant a l'index
         this.servicesFilled.splice(index, 1);
+        if(this.servicesFilled.length==0){
+            this.date=new Date();
+        }
         let ap: Appointment = {};
         ap.date = this.date;
         ap.service = this.servicesFilled;
         this.utilService.saveCart(ap);
         this.total = this.totalize();
+
 
         // Swal.fire(.toString());
         // ;
@@ -188,16 +193,20 @@ export class CreateAppointmentComponent implements OnInit {
         account.debit = this.total;
         account.credit = 0;
         this.filledAppointment.duration=this.getDurations(this.filledAppointment);
+        this.filledAppointment.date=this.utilService.getRealDate(this.date);
+
+        // Swal.fire( this.filledAppointment.date.toISOString());
         this.accountService.saveAccountTransaction(
             account,
             this.filledAppointment,
             (res) => {
                 this.servicesFilled = [];
                 this.utilService.saveCart([]);
+                this.date=new Date();
                 this.showService = [];
             }
         );
-
+//
         this.fetchService();
 
         this.visiblePay = false;
@@ -266,6 +275,7 @@ export class CreateAppointmentComponent implements OnInit {
     ngOnInit() {
         if (this.isSetCart()) {
             this.servicesFilled = this.utilService.getCart().service;
+            this.date=new Date(this.utilService.getCart().date.toString().split("T")[0]);
         }
         console.log(this.servicesFilled + '.....<<<<');
         console.log(this.getDistinct(this.servicesFilled) + '.....2<<<<');
