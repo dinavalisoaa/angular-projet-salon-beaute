@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Table } from 'primeng/table';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Customer, Representative } from 'src/app/demo/api/customer';
@@ -33,12 +33,13 @@ interface expandedRows {
     ],
 })
 export class ListAccountComponent implements OnInit {
-    moves: Account[] = [];
+    // moves: Account[] = [];
     reload:boolean=false;
-    credit: number = 0;
-    debit: number = 0;
+    @Input()credit: number = 0;
+    @Input() debit: number = 0;
 
     @ViewChild('filter') filter!: ElementRef;
+    @Input() moves:Account[]=[];
     services: any[] = [];
 
     constructor(
@@ -49,20 +50,7 @@ export class ListAccountComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        let sumC = 0;
-        let sumD = 0;
 
-        this.accountService.getAccount('', (res) => {
-            this.moves = res;
-            this.moves.forEach((element) => {
-                if (element.credit != undefined && element.debit != undefined) {
-                    sumC += element.credit;
-                    sumD += element.debit;
-                }
-            });
-            this.credit = sumC;
-            this.debit = sumD;
-        });
     }
 
     onSort() {}

@@ -10,7 +10,9 @@ import { UtilService } from 'src/app/service/util-service/util.service';
 export class AccountComponent implements OnInit {
     countries: any[] = [];
     actualAmount: string = 'Ar';
-
+    moves:Account[]=[];
+    credit: number = 0;
+     debit: number = 0;
     value2: any = 1234235;
     amount: any;
     unit: string = 'Ar';
@@ -42,10 +44,27 @@ export class AccountComponent implements OnInit {
     }
     reload() {
         this.setAmount();
+        this.accountMovement();
+
         this.amount = 0;
     }
-
+    accountMovement(){
+        let sumC=0;
+        let sumD=0;
+          this.accountService.getAccount('', (res) => {
+            this.moves = res;
+            this.moves.forEach((element) => {
+                if (element.credit != undefined && element.debit != undefined) {
+                    sumC += element.credit;
+                    sumD += element.debit;
+                }
+            });
+            this.credit = sumC;
+            this.debit = sumD;
+        });
+    }
     ngOnInit() {
+        this.accountMovement();
         this.setAmount();
     }
 }
