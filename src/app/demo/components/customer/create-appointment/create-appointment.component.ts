@@ -184,7 +184,7 @@ export class CreateAppointmentComponent implements OnInit {
         const account: Account = {};
         account.customer = token.info;
         account.date = new Date();
-        account.description = '';
+        account.description = 'Prise de rendez-vous';
         account.debit = this.total;
         account.credit = 0;
         this.filledAppointment.duration=this.getDurations(this.filledAppointment);
