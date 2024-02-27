@@ -29,8 +29,8 @@ import { UtilService } from 'src/app/service/util-service/util.service';
 })
 export class LoginComponent {
     // valCheck: string[] = ['remember'];
-    password: string = 'dina';
-    email: string = 'dina@gmail.com';
+    password: string = '*andry*';
+    email: string = 'andry.harry@gmail.com';
 
     constructor(
         public layoutService: LayoutService,
