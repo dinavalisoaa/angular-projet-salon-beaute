@@ -118,13 +118,21 @@ export class UtilService {
     getRealDate(date: any) {
         return this.addToDate(date, 3);
     }
+    getRealDate2(date: any) {
+        return this.addToDate2(date, 3);
+    }
 
     addToDate(date: any, hours: any) {
         const newDate = new Date(date);
         newDate.setHours(newDate.getHours() + hours);
         return newDate;
     }
-
+    addToDate2(date: any, hours: any) {
+        const newDate = new Date(date);
+        newDate.setHours(newDate.getHours() + hours);
+        newDate.setDate(newDate.getDate() -1);
+        return newDate;
+    }
     format(number: any) {
         const options = {
             style: 'decimal',
