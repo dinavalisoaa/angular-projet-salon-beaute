@@ -78,5 +78,6 @@ export interface Appointment {
     service?: Service[];
     status?: Number;
     isPaid?: Boolean;
+    duration?:Number
 }
 

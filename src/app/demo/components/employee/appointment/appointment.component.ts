@@ -71,7 +71,7 @@ export class AppointmentComponent implements OnInit {
         this.dialog = true;
     }
     format(date: any) {
-        return this.uService.toDateFr(date);
+        return this.uService.toDatetimeFr(date);
     }
     filterByValue(val: Appointment[], value: any) {
         return val.filter((appointment) =>

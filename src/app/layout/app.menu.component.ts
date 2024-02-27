@@ -2,6 +2,9 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
 import { UtilService } from 'src/app/service/util-service/util.service';
+import { TokenObject } from '../models/models';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -21,10 +24,13 @@ export class AppMenuComponent implements OnInit {
 
     constructor(
         public layoutService: LayoutService,
+        public router: Router,
         public utilService: UtilService
     ) { }
 
     ngOnInit() {
+
+
         this.checkUserRole();
         console.log("ROLE: " + this.role);
 
