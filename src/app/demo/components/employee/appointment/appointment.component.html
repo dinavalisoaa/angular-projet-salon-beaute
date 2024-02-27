@@ -62,7 +62,7 @@
                                     <i class="pi pi-plus-circle"></i>
                                 </span>
 
-                                <span [class]="'customer-badge'">{{format(appointment.date)}} &agrave; 13h 15</span>
+                                <span [class]="'customer-badge'">{{format(appointment.date)}} </span>
 
                                 <!-- <span  *ngIf="appointment.status==1"[class]="'customer-badge status-proposal'  ">En cours</span> <span  *ngIf="appointment.status==2"[class]="'customer-badge status-qualified'  ">Fini</span> -->
                             </div>
@@ -89,10 +89,18 @@
                                 <!-- <p-rating [ngModel]="appointment.rating" [readonly]="true" [cancel]="false"></p-rating> -->
                             </div>
                             <div class="flex align-items-center justify-content-between">
-                                <!-- <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-outlined p-button-text mr-2 mb-2"></button> -->
+
                                 <button (click)="navigate(appointment)" *ngIf="appointment.employee==null" pButton
                                     pRipple type="button" label="Prendre" icon="pi pi-times-circle"
                                     class="p-button-rounded p-button-warning mr-2 mb-2"></button>
+                                <button
+                                    *ngIf="appointment.employee!=null && appointment.employee._id==getEmp()._id && appointment.status!=2"
+                                    pButton pRipple type="button" label="Par {{appointment.employee.name}}"
+                                    icon="pi pi-times-circle"
+                                    class="p-button-rounded p-button-danger mr-2 mb-2"></button>
+
+
+
                                 <button (click)="navigateToTask(appointment)"
                                     *ngIf="appointment.employee!=null && appointment.status==1" pButton pRipple
                                     type="button" icon="pi pi-clock" label="Traité "
@@ -125,7 +133,7 @@
 
 
 </div>
-<p-dialog [(visible)]="dialog" [style]="{width: '450px',height:'600px'}" header="Service Details" [modal]="true"
+<p-dialog [(visible)]="dialog" [style]="{width: '450px',height:'600px'}" header="Recherche" [modal]="true"
     class="p-fluid">
     <p-autoComplete [(ngModel)]="selectedCustomers" [suggestions]="filteredCustomers"
         (completeMethod)="filterCustomer($event)" field="name" [dropdown]="true">
@@ -140,7 +148,7 @@
                     <div>{{option.name}}</div>
                 </div>
                 <div *ngIf="!selectedServices || selectedServices.length === 0" class="country-placeholder">
-                    Select Customer
+                    Selectionné un ou plusieur services
                 </div>
             </ng-template>
             <ng-template let-country pTemplate="item">
@@ -153,7 +161,7 @@
     </div>
     <ng-template pTemplate="content">
         <div class="field">
-            <label for="name">Names</label>
+            <label for="name">Date</label>
             <input type="date" pInputText id="_id" [(ngModel)]="date" />
 
 
@@ -164,6 +172,6 @@
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="filter()"></button>
+        <button pButton pRipple label="Filtrer" icon="pi pi-check" class="p-button-text" (click)="filter()"></button>
     </ng-template>
 </p-dialog>
