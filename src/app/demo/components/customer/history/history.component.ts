@@ -56,9 +56,9 @@ export class HistoryComponent implements OnInit {
     }
 
     checkStatus(status: number) {
-        let res: { type: any, message: string } = { type: "danger", message: "Annulé" };
+        let res: { type: any, message: string } = { type: "danger", message: "Pas fini" };
         if(status == 1){
-            res = { type: "warning", message: "Inachevé" };
+            res = { type: "warning", message: "En traitement" };
         }
         else if(status == 2){
             res = { type: "success", message: "Achevé" };
