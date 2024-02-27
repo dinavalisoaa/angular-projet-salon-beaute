@@ -237,7 +237,7 @@ export class CreateAppointmentComponent implements OnInit {
         this.appointment.date = this.date;
 
         const data: Appointment = {};
-        data.date = this.appointment.date;
+        data.date = this.utilService.getRealDate(this.appointment.date);
         const token: TokenObject = this.utilService.getToken();
         data.customer = token.info;
         data.service = this.servicesFilled;
