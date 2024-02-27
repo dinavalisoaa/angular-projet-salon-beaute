@@ -253,22 +253,11 @@ export class CreateAppointmentComponent implements OnInit {
                 // this.show = true;
             }
         });
-
-        // const data2 = {
-        //     date: this.utilService.subtractDatePart(this.appointment.date, 24),
-        //     shipper: 'BEAUTY SALON',
-        //     recipient: 'lalaina.nancia64@gmail.com',
-        //     subject: "Rappel d'un rendez-vous",
-        //     message:
-        //         'Bonjour,  Nous voulions simplement vous rappeler que vous avez un rendez-vous pour votre séance de beauté demain à la meme heure',
-        // };
-        // this.customerService.sendScheduledEmail(data2, (res) => {
-        //     console.log(data2);
-        // });
     }
     formattAr(montant: any) {
         return this.utilService.format(montant);
     }
+
     dot(ele1: any, ele2: any) {
         if (ele1 == undefined || ele2 == undefined) return 0;
         return ele1 * ele2;
