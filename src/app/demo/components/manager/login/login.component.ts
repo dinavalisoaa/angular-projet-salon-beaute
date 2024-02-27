@@ -32,7 +32,7 @@ import { UtilService } from 'src/app/service/util-service/util.service';
 export class LoginComponent {
     // valCheck: string[] = ['remember'];
     password: string = 'root';
-    email: string = 'admin@salon.com';
+    email: string = 'admin@nova.com';
 
     constructor(
         public layoutService: LayoutService,
