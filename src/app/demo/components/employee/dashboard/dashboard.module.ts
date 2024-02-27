@@ -11,6 +11,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
+import { PreferenceModule } from '../preference/preference.module';
 
 @NgModule({
     imports: [
@@ -24,7 +25,7 @@ import { InputTextModule } from 'primeng/inputtext';
         ButtonModule,
         DashboardsRoutingModule,
         CalendarModule,
-        InputTextModule
+        InputTextModule,PreferenceModule
     ],
     declarations: [DashboardComponent]
 })
