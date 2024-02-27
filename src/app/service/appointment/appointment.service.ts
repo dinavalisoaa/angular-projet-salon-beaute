@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Appointment } from 'src/app/models/models';
 import { API_URL, UtilService } from '../util-service/util.service';
 import { CheckError } from '../util-service/error';
+import { loadPage } from '../util-service/load';
+import Swal from 'sweetalert2';
 
 const apiUrl = API_URL;
 
@@ -12,17 +14,23 @@ const apiUrl = API_URL;
 export class AppointmentService {
     constructor(private http: HttpClient) {}
     getAppointment2(query: any, sort: Appointment, next: (res: any) => any) {
+        // loadPage();
+
         this.http.post(`${apiUrl}/api/appointments` + query, sort).subscribe(
             CheckError((res) => {
                 next(res);
+                // Swal.close();
+
                 return res;
             })
         );
     }
     getAppointment(query: any, sort: Appointment, next: (res: any) => any) {
+        // loadPage();
         this.http.post(`${apiUrl}/api/appointments` + query, sort).subscribe(
             CheckError((res) => {
                 next(res);
+                // Swal.close();
                 // close();
             })
         );
