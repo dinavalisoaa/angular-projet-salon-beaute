@@ -32,10 +32,11 @@
                                     height="50px"></div>
                             <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
                                 {{utilService.format(getObjectService(service).price)}} Ar</div>
-                            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1" style="padding:4px"> x ({{getCurrence(service)}})
+                            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1" style="padding:4px">   ....{{(getObjectService(service).duration)}} x ({{getCurrence(service)}})
                             </div>
                             <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
                                 {{formattAr(dot(getObjectService(service).price,getCurrence(service)))}}
+
                             </div>
 
 
@@ -125,7 +126,6 @@
         <ng-template pTemplate="content">
 
             <div class="field">
-                <label for="description">Amount</label>
                 <h4 class="ng-dirty ng-invalid">A payer: {{utilService.format(total)}} Ar</h4>
                 <h4 class="ng-dirty ng-invalid">Solde actuel :{{(state)}} Ar</h4>
                 <!-- <input type="number" pInputText id="amount" [(ngModel)]="amount" required autofocus
