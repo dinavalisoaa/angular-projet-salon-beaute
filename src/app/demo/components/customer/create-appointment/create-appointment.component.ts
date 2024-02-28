@@ -189,7 +189,7 @@ export class CreateAppointmentComponent implements OnInit {
         const account: Account = {};
         account.customer = token.info;
         account.date = new Date();
-        account.description = '';
+        account.description = 'Prise de rendez-vous';
         account.debit = this.total;
         account.credit = 0;
         this.filledAppointment.duration=this.getDurations(this.filledAppointment);
@@ -246,7 +246,7 @@ export class CreateAppointmentComponent implements OnInit {
         this.appointment.date = this.date;
 
         const data: Appointment = {};
-        data.date = this.appointment.date;
+        data.date = this.utilService.getRealDate(this.appointment.date);
         const token: TokenObject = this.utilService.getToken();
         data.customer = token.info;
         data.service = this.servicesFilled;
