@@ -129,7 +129,7 @@ export class ServiceCrudComponent implements OnInit {
     }
 
     fetchList(query:string) {
-        this.serviceService.getService(query,(res) => {
+        this.serviceService.getServiceWithLoad(query,(res) => {
             this.services = res;
         });
     }

@@ -22,6 +22,18 @@ export class ServiceService {
             })
         );
     }
+    getServiceWithLoad(query: any, next: (res: any) => any) {
+        loadPage();
+
+        this.http.get(`${apiUrl}/api/services` + query).subscribe(
+            CheckError((res) => {
+                next(res);
+                closeLoad();
+
+                close();
+            })
+        );
+    }
 
 
     createHeader(head: Headers) {
