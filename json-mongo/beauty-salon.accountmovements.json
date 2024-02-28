@@ -1,0 +1,990 @@
+[{
+  "_id": {
+    "$oid": "65de2077da46f239bdeb01f2"
+  },
+  "date": {
+    "$date": "2024-02-27T17:48:39.627Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 0,
+  "credit": 5000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de3e94da46f239bdeb05db"
+  },
+  "date": {
+    "$date": "2024-02-27T19:57:08.621Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 0,
+  "credit": 116000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de3eabda46f239bdeb05ee"
+  },
+  "date": {
+    "$date": "2024-02-27T19:57:30.995Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 120000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de3f08da46f239bdeb06f8"
+  },
+  "date": {
+    "$date": "2024-02-27T19:59:04.831Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 0,
+  "credit": 600000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de432eda46f239bdeb094e"
+  },
+  "date": {
+    "$date": "2024-02-27T20:16:46.773Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 70000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de43fbda46f239bdeb09d7"
+  },
+  "date": {
+    "$date": "2024-02-27T20:20:11.377Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 50000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4436da46f239bdeb09f7"
+  },
+  "date": {
+    "$date": "2024-02-27T20:21:10.703Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de450eda46f239bdeb0a42"
+  },
+  "date": {
+    "$date": "2024-02-27T20:24:46.464Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 45000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de457dda46f239bdeb0a90"
+  },
+  "date": {
+    "$date": "2024-02-27T20:26:37.111Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de45b4da46f239bdeb0ab6"
+  },
+  "date": {
+    "$date": "2024-02-27T20:27:32.728Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 45000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de45cdda46f239bdeb0aca"
+  },
+  "date": {
+    "$date": "2024-02-27T20:27:57.147Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 125000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de45efda46f239bdeb0ae1"
+  },
+  "date": {
+    "$date": "2024-02-27T20:28:31.921Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 0,
+  "credit": 700000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4619da46f239bdeb0aff"
+  },
+  "date": {
+    "$date": "2024-02-27T20:29:13.371Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 25000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4654da46f239bdeb0b1d"
+  },
+  "date": {
+    "$date": "2024-02-27T20:30:12.471Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 50000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4680da46f239bdeb0b41"
+  },
+  "date": {
+    "$date": "2024-02-27T20:30:56.835Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 170000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de46b3da46f239bdeb0b59"
+  },
+  "date": {
+    "$date": "2024-02-27T20:31:47.295Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "debit": 140000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4803da46f239bdeb0b95"
+  },
+  "date": {
+    "$date": "2024-02-27T20:37:23.319Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 0,
+  "credit": 6890001,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de481dda46f239bdeb0ba6"
+  },
+  "date": {
+    "$date": "2024-02-27T20:37:49.856Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 70000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4844da46f239bdeb0bbb"
+  },
+  "date": {
+    "$date": "2024-02-27T20:38:28.013Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de494fda46f239bdeb0c75"
+  },
+  "date": {
+    "$date": "2024-02-27T20:42:55.729Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4989da46f239bdeb0c91"
+  },
+  "date": {
+    "$date": "2024-02-27T20:43:53.355Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 153000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de49a6da46f239bdeb0ca7"
+  },
+  "date": {
+    "$date": "2024-02-27T20:44:22.701Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 143000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de49d4da46f239bdeb0cc1"
+  },
+  "date": {
+    "$date": "2024-02-27T20:45:08.373Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 220000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4a10da46f239bdeb0cde"
+  },
+  "date": {
+    "$date": "2024-02-27T20:46:08.869Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 90000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4a2ada46f239bdeb0cf2"
+  },
+  "date": {
+    "$date": "2024-02-27T20:46:33.897Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 143000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4aa7da46f239bdeb0d08"
+  },
+  "date": {
+    "$date": "2024-02-27T20:48:39.789Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 93000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4ac3da46f239bdeb0d20"
+  },
+  "date": {
+    "$date": "2024-02-27T20:49:07.891Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 355000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4b0bda46f239bdeb0d3f"
+  },
+  "date": {
+    "$date": "2024-02-27T20:50:19.403Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 150000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4b69da46f239bdeb0d6c"
+  },
+  "date": {
+    "$date": "2024-02-27T20:51:53.607Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 308000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4ba9da46f239bdeb0d8d"
+  },
+  "date": {
+    "$date": "2024-02-27T20:52:56.923Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 240000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4c28da46f239bdeb0db9"
+  },
+  "date": {
+    "$date": "2024-02-27T20:55:04.091Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 290000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4c5fda46f239bdeb0dd6"
+  },
+  "date": {
+    "$date": "2024-02-27T20:55:59.699Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4cbeda46f239bdeb0e5c"
+  },
+  "date": {
+    "$date": "2024-02-27T20:57:33.993Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 120000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4ce0da46f239bdeb0e77"
+  },
+  "date": {
+    "$date": "2024-02-27T20:58:08.588Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 426000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4d1ada46f239bdeb0e93"
+  },
+  "date": {
+    "$date": "2024-02-27T20:59:06.310Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 68000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4d77da46f239bdeb0eb3"
+  },
+  "date": {
+    "$date": "2024-02-27T21:00:39.215Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4d98da46f239bdeb0ec9"
+  },
+  "date": {
+    "$date": "2024-02-27T21:01:12.740Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "debit": 318000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4dfcda46f239bdeb0eea"
+  },
+  "date": {
+    "$date": "2024-02-27T21:02:52.210Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "debit": 0,
+  "credit": 3450001,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4e09da46f239bdeb0f16"
+  },
+  "date": {
+    "$date": "2024-02-27T21:03:05.893Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "debit": 268000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4e87da46f239bdeb0f2e"
+  },
+  "date": {
+    "$date": "2024-02-27T21:05:11.881Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "debit": 298000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de57d5da46f239bdeb1677"
+  },
+  "date": {
+    "$date": "2024-02-27T21:44:53.384Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5834da46f239bdeb16be"
+  },
+  "date": {
+    "$date": "2024-02-27T21:46:28.761Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 0,
+  "credit": 6767676,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de583bda46f239bdeb16cb"
+  },
+  "date": {
+    "$date": "2024-02-27T21:46:35.478Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 85000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de584cda46f239bdeb16e3"
+  },
+  "date": {
+    "$date": "2024-02-27T21:46:52.886Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 168000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5923da46f239bdeb172b"
+  },
+  "date": {
+    "$date": "2024-02-27T21:50:27.701Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 125000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de596eda46f239bdeb1755"
+  },
+  "date": {
+    "$date": "2024-02-27T21:51:42.656Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 228000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5989da46f239bdeb176e"
+  },
+  "date": {
+    "$date": "2024-02-27T21:52:09.454Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 130000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de59fada46f239bdeb17d8"
+  },
+  "date": {
+    "$date": "2024-02-27T21:54:02.527Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 200000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a22da46f239bdeb17f8"
+  },
+  "date": {
+    "$date": "2024-02-27T21:54:42.307Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 45000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a39da46f239bdeb1809"
+  },
+  "date": {
+    "$date": "2024-02-27T21:55:05.572Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 140000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a4fda46f239bdeb181b"
+  },
+  "date": {
+    "$date": "2024-02-27T21:55:27.500Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 205000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a60da46f239bdeb182b"
+  },
+  "date": {
+    "$date": "2024-02-27T21:55:44.588Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 118000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a71da46f239bdeb183c"
+  },
+  "date": {
+    "$date": "2024-02-27T21:56:01.027Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 193000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5ab6da46f239bdeb1851"
+  },
+  "date": {
+    "$date": "2024-02-27T21:57:10.654Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "debit": 118000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c5509668141d650ede6"
+  },
+  "date": {
+    "$date": "2024-02-27T23:12:21.050Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 0,
+  "credit": 1439285,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c7c09668141d650ee5b"
+  },
+  "date": {
+    "$date": "2024-02-27T23:13:00.689Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 180000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c8909668141d650ee6b"
+  },
+  "date": {
+    "$date": "2024-02-27T23:13:13.414Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 155000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c9d09668141d650ee7b"
+  },
+  "date": {
+    "$date": "2024-02-27T23:13:33.690Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 135000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cba09668141d650ee8f"
+  },
+  "date": {
+    "$date": "2024-02-27T23:14:02.504Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 293000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cc009668141d650ee9a"
+  },
+  "date": {
+    "$date": "2024-02-27T23:14:08.039Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 0,
+  "credit": 32814324,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cc509668141d650eea1"
+  },
+  "date": {
+    "$date": "2024-02-27T23:14:13.705Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 0,
+  "credit": -2299914,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cd509668141d650eead"
+  },
+  "date": {
+    "$date": "2024-02-27T23:14:29.281Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 0,
+  "credit": -324924,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cda09668141d650eeb4"
+  },
+  "date": {
+    "$date": "2024-02-27T23:14:34.263Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 0,
+  "credit": -13839423,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cf409668141d650ef09"
+  },
+  "date": {
+    "$date": "2024-02-27T23:15:00.643Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 278000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6d2309668141d650ef7a"
+  },
+  "date": {
+    "$date": "2024-02-27T23:15:47.184Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 70000,
+  "credit": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6d5509668141d650ef9a"
+  },
+  "date": {
+    "$date": "2024-02-27T23:16:37.913Z"
+  },
+  "description": "",
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "debit": 75000,
+  "credit": 0,
+  "__v": 0
+}]
