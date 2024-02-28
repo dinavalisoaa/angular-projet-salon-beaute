@@ -23,10 +23,14 @@ export class CustomerService {
         );
     }
     getOneCustomer(query: any, next: (res: any) => any) {
+        loadPage();
         this.http.get(`${apiUrl}/api/customer/` + query).subscribe(
             CheckError((res) => {
                 next(res);
+            closeLoad();
+
                 close();
+
             })
         );
     }
@@ -123,11 +127,14 @@ export class CustomerService {
     }
 
     getAppointmentHistory(customerId: any, next: (res: any) => any) {
+        loadPage();
         this.http
             .get(`${apiUrl}/api/appointment/customer/${customerId}`)
             .subscribe( CheckError((res) => {
                 next(res);
+                closeLoad();
                 close();
+
             })
         );
     }
