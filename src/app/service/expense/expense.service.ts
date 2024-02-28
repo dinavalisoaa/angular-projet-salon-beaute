@@ -19,7 +19,6 @@ export class ExpenseService {
             CheckError((res) => {
                 Swal.close();
                 next(res);
-                close();
             })
         );
     }
@@ -28,7 +27,6 @@ export class ExpenseService {
         this.http.post(`${apiUrl}/api/expense`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -37,7 +35,6 @@ export class ExpenseService {
         this.http.put(`${apiUrl}/api/expense/` + param, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }

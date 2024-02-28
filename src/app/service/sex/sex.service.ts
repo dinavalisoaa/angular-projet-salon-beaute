@@ -19,7 +19,6 @@ export class SexService {
             .subscribe(
                 CheckError((res) => {
                     next(res);
-                    close();
                 })
             );
     }

@@ -18,7 +18,6 @@ export class CustomerService {
         this.http.get(`${apiUrl}/api/customers` + query).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -39,7 +38,6 @@ export class CustomerService {
         this.http.post(`${apiUrl}/api/customer`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -49,7 +47,6 @@ export class CustomerService {
             CheckError((res) => {
 
                 next(res);
-                close();
             })
         );
     }
@@ -69,7 +66,6 @@ export class CustomerService {
                     JSON.stringify(data)
                 );
                 next(res);
-                close();
             })
         );
     }
@@ -79,7 +75,6 @@ export class CustomerService {
             .put(`${apiUrl}/api/customer/` + param, data)
             .subscribe( CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -89,7 +84,6 @@ export class CustomerService {
             .put(`${apiUrl}/api/customer/${id}/choose/service`, data)
             .subscribe( CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -99,7 +93,6 @@ export class CustomerService {
             .put(`${apiUrl}/api/customer/${id}/choose/employee`, data)
             .subscribe( CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -110,7 +103,6 @@ export class CustomerService {
             .get(`${apiUrl}/api/customer/${customerId}/services`)
             .subscribe( CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
             })
         );
@@ -121,7 +113,6 @@ export class CustomerService {
             .get(`${apiUrl}/api/customer/${customerId}/employees`)
             .subscribe( CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -144,7 +135,6 @@ export class CustomerService {
             .post(`${apiUrl}/api/email/scheduled/send`, data)
             .subscribe((res) => {
                 next(res);
-                close();
             });
     }
 }

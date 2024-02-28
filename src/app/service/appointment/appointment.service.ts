@@ -52,7 +52,6 @@ export class AppointmentService {
         this.http.post(`${apiUrl}/api/appointment`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -60,7 +59,6 @@ export class AppointmentService {
         this.http.put(`${apiUrl}/api/appointment/` + param, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -68,7 +66,6 @@ export class AppointmentService {
         this.http.patch(`${apiUrl}/api/appointment/` + param, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }

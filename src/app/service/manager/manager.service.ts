@@ -25,7 +25,6 @@ export class ManagerService {
            .subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -81,7 +80,6 @@ export class ManagerService {
            .subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -100,7 +98,6 @@ export class ManagerService {
                     data.expiration = res.expiration;
                     this.uService.saveDataStorage('sessionId',JSON.stringify(data) );
                     next(res);
-                    close();
                 })
             );
     }
@@ -110,7 +107,6 @@ export class ManagerService {
            .subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }

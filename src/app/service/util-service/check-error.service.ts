@@ -45,7 +45,6 @@ export class CheckErrorService {
             .get('http://localhost:5050/api/mange' + query)
             .subscribe((res) => {
                 next(res);
-                close();
             });
     }
     saveManager(data: Manager, next: (res: any) => any) {
@@ -53,7 +52,6 @@ export class CheckErrorService {
             .post('http://localhost:5050/api/Manager', data)
             .subscribe((res) => {
                 next(res);
-                close();
             });
     }
 
@@ -63,7 +61,6 @@ export class CheckErrorService {
 
             .subscribe((res) => {
                 next(res);
-                close();
             });
     }
     updateManager(data: Manager, param: any, next: (res: any) => any) {
@@ -71,7 +68,6 @@ export class CheckErrorService {
             .put('http://localhost:5050/api/appointment/' + param, data)
             .subscribe((res) => {
                 next(res);
-                close();
             });
     }
 }

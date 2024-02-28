@@ -21,7 +21,6 @@ export class EmployeeService {
         this.http.get(`${apiUrl}/api/employee` + query).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
             })
         );
@@ -35,7 +34,6 @@ export class EmployeeService {
             .subscribe(
                 CheckError((res) => {
                     next(res);
-                    close();
                 closeLoad();
 
                 })
@@ -48,7 +46,6 @@ export class EmployeeService {
         this.http.post(`${apiUrl}/api/employee`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })
@@ -82,7 +79,6 @@ export class EmployeeService {
         this.http.put(`${apiUrl}/api/employee/` + param, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })
@@ -94,7 +90,6 @@ export class EmployeeService {
         this.http.get(`${apiUrl}/api/employees`).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })
@@ -111,7 +106,6 @@ export class EmployeeService {
             .subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -121,7 +115,6 @@ export class EmployeeService {
         this.http.get(`${apiUrl}/api/dashboard/employee/working-time/average`).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
             })
         );
@@ -132,7 +125,6 @@ export class EmployeeService {
         this.http.post(`${apiUrl}/api/employee`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -143,7 +135,6 @@ export class EmployeeService {
         this.http.put(`${apiUrl}/api/employee/` + id, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })
@@ -157,7 +148,6 @@ export class EmployeeService {
             .subscribe(
                 CheckError((res) => {
                     next(res);
-                    close();
                 closeLoad();
 
                 })
@@ -169,7 +159,6 @@ export class EmployeeService {
         this.http.put(`${apiUrl}/api/employee/${id}/activate`, null).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })

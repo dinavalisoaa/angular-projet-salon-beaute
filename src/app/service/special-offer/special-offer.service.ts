@@ -30,7 +30,6 @@ export class SpecialOfferService {
         this.http.post(`${apiUrl}/api/specialOffer`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }

@@ -43,7 +43,6 @@ export class NotificationService {
         this.http.put(`${apiUrl}/api/notifications/user/${userId}/markAllAsRead`, null).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }

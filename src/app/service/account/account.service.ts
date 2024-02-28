@@ -35,7 +35,6 @@ export class AccountService {
             .subscribe(
                 CheckError((res) => {
                     next(res);
-                    close();
                 })
             );
     }
@@ -44,7 +43,6 @@ export class AccountService {
         this.http.get(`${apiUrl}/api/account/state?id=` + id).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }
@@ -104,7 +102,6 @@ export class AccountService {
         this.http.put(`${apiUrl}/api/account/` + param, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
             })
         );
     }

@@ -17,7 +17,6 @@ export class ServiceService {
         this.http.get(`${apiUrl}/api/services` + query).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 // closeLoad();
             })
         );
@@ -45,7 +44,6 @@ export class ServiceService {
         this.http.post(`${apiUrl}/api/service`, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })
@@ -65,7 +63,6 @@ export class ServiceService {
             .subscribe(
                 CheckError((res) => {
                     next(res);
-                    close();
                     closeLoad();
                 })
             );
@@ -77,7 +74,6 @@ export class ServiceService {
         this.http.put(`${apiUrl}/api/service/` + param, data).subscribe(
             CheckError((res) => {
                 next(res);
-                close();
                 closeLoad();
 
             })
