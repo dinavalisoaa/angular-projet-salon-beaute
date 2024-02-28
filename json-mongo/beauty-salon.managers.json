@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "65de2228da46f239bdeb022f"
+  },
+  "name": "Manager",
+  "email": "admin@nova.com",
+  "password": "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2",
+  "__v": 0
+}]

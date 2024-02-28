@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "65de63f109668141d650d0ca"
+  },
+  "date": {
+    "$date": "2024-02-28T01:33:00.000Z"
+  },
+  "content": "Oeee! Offre spéciale pour ce Samedi 2 Mars 2024, au programme, tous nos services seront a 45%! Profitez-en!\nVenez chez Nova Beauty!",
+  "sender": {
+    "$oid": "65de2228da46f239bdeb022f"
+  },
+  "recipient": [
+    {
+      "id": {
+        "$oid": "65de2068da46f239bdeb01e3"
+      },
+      "status": 1,
+      "_id": {
+        "$oid": "65de63f209668141d650d0cb"
+      }
+    },
+    {
+      "id": {
+        "$oid": "65de47e1da46f239bdeb0b71"
+      },
+      "status": 0,
+      "_id": {
+        "$oid": "65de63f209668141d650d0cc"
+      }
+    },
+    {
+      "id": {
+        "$oid": "65de4dd6da46f239bdeb0ed2"
+      },
+      "status": 0,
+      "_id": {
+        "$oid": "65de63f209668141d650d0cd"
+      }
+    },
+    {
+      "id": {
+        "$oid": "65de581dda46f239bdeb1684"
+      },
+      "status": 1,
+      "_id": {
+        "$oid": "65de63f209668141d650d0ce"
+      }
+    }
+  ],
+  "__v": 0
+}]

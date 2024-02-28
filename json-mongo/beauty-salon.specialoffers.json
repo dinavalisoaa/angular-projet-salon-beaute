@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "65de63f109668141d650d0c7"
+  },
+  "sender": {
+    "$oid": "65de2228da46f239bdeb022f"
+  },
+  "launchDate": {
+    "$date": "2024-02-28T01:33:00.000Z"
+  },
+  "message": "Oeee! Offre spéciale pour ce Samedi 2 Mars 2024, au programme, tous nos services seront a 45%! Profitez-en!\nVenez chez Nova Beauty!",
+  "expirationDate": {
+    "$date": "2024-02-28T06:33:00.000Z"
+  },
+  "__v": 0
+}]

@@ -1,19 +1,1410 @@
 [{
   "_id": {
-    "$oid": "65bbe8078ed31ca046994577"
+    "$oid": "65de4436da46f239bdeb09f9"
   },
   "date": {
-    "$date": "2023-01-02T00:00:00.000Z"
+    "$date": "2024-01-14T08:00:43.000Z"
   },
   "customer": {
-    "$oid": "65ba5c5aaa0e52499934a334"
+    "$oid": "65de2068da46f239bdeb01e3"
   },
   "service": [
     {
-      "$oid": "65bb56c89d77d921242b30d4"
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2575da46f239bdeb0265"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de450eda46f239bdeb0a44"
+  },
+  "date": {
+    "$date": "2024-01-02T12:30:38.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de25bfda46f239bdeb0269"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de457dda46f239bdeb0a92"
+  },
+  "date": {
+    "$date": "2024-01-02T23:26:20.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de25bfda46f239bdeb0269"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de45b5da46f239bdeb0ab8"
+  },
+  "date": {
+    "$date": "2024-02-13T23:27:20.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2575da46f239bdeb0265"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de45cdda46f239bdeb0acc"
+  },
+  "date": {
+    "$date": "2024-03-21T23:27:32.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de25bfda46f239bdeb0269"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4619da46f239bdeb0b01"
+  },
+  "date": {
+    "$date": "2024-01-31T03:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de25bfda46f239bdeb0269"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4654da46f239bdeb0b1f"
+  },
+  "date": {
+    "$date": "2024-02-02T13:30:03.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de262dda46f239bdeb026d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4681da46f239bdeb0b43"
+  },
+  "date": {
+    "$date": "2024-02-06T15:30:42.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2769da46f239bdeb027d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de46b3da46f239bdeb0b5b"
+  },
+  "date": {
+    "$date": "2024-02-11T11:30:57.000Z"
+  },
+  "customer": {
+    "$oid": "65de2068da46f239bdeb01e3"
+  },
+  "service": [
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de262dda46f239bdeb026d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de481eda46f239bdeb0ba8"
+  },
+  "date": {
+    "$date": "2024-02-13T07:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2575da46f239bdeb0265"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4844da46f239bdeb0bbd"
+  },
+  "date": {
+    "$date": "2024-02-09T09:35:49.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2575da46f239bdeb0265"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de494fda46f239bdeb0c77"
+  },
+  "date": {
+    "$date": "2024-02-01T16:38:45.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de25bfda46f239bdeb0269"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4989da46f239bdeb0c93"
+  },
+  "date": {
+    "$date": "2024-02-20T14:42:55.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de49a6da46f239bdeb0ca9"
+  },
+  "date": {
+    "$date": "2024-02-22T23:43:53.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de49d4da46f239bdeb0cc3"
+  },
+  "date": {
+    "$date": "2024-02-16T10:44:22.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de267bda46f239bdeb0271"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4a11da46f239bdeb0ce0"
+  },
+  "date": {
+    "$date": "2024-02-29T17:45:08.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2769da46f239bdeb027d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4a2ada46f239bdeb0cf4"
+  },
+  "date": {
+    "$date": "2024-02-26T07:46:09.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
     }
   ],
   "status": 1,
-  "isPaid": true,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4aa7da46f239bdeb0d0a"
+  },
+  "date": {
+    "$date": "2024-02-24T03:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de267bda46f239bdeb0271"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4ac4da46f239bdeb0d22"
+  },
+  "date": {
+    "$date": "2024-02-27T12:48:39.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4b0bda46f239bdeb0d41"
+  },
+  "date": {
+    "$date": "2024-02-07T11:00:08.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de262dda46f239bdeb026d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4b69da46f239bdeb0d6e"
+  },
+  "date": {
+    "$date": "2024-02-21T08:50:44.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de267bda46f239bdeb0271"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4ba9da46f239bdeb0d8f"
+  },
+  "date": {
+    "$date": "2024-01-17T12:55:53.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de267bda46f239bdeb0271"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4c28da46f239bdeb0dbb"
+  },
+  "date": {
+    "$date": "2024-01-22T09:52:57.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2769da46f239bdeb027d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4c5fda46f239bdeb0dd8"
+  },
+  "date": {
+    "$date": "2024-02-11T07:55:04.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de262dda46f239bdeb026d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4cbeda46f239bdeb0e60"
+  },
+  "date": {
+    "$date": "2024-01-09T18:00:24.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de27b6da46f239bdeb0281"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4ce0da46f239bdeb0e79"
+  },
+  "date": {
+    "$date": "2024-02-27T09:57:34.118Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4d1ada46f239bdeb0e95"
+  },
+  "date": {
+    "$date": "2024-01-11T13:58:08.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4d77da46f239bdeb0eb5"
+  },
+  "date": {
+    "$date": "2024-01-11T10:59:06.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 1,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4d99da46f239bdeb0ecb"
+  },
+  "date": {
+    "$date": "2024-01-25T07:00:39.000Z"
+  },
+  "customer": {
+    "$oid": "65de47e1da46f239bdeb0b71"
+  },
+  "service": [
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    },
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4e0ada46f239bdeb0f18"
+  },
+  "date": {
+    "$date": "2024-03-13T03:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "service": [
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de271dda46f239bdeb0279"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de4e88da46f239bdeb0f30"
+  },
+  "date": {
+    "$date": "2024-02-27T03:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de57d5da46f239bdeb1679"
+  },
+  "date": {
+    "$date": "2024-02-27T12:43:59.000Z"
+  },
+  "customer": {
+    "$oid": "65de4dd6da46f239bdeb0ed2"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de271dda46f239bdeb0279"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de583bda46f239bdeb16cd"
+  },
+  "date": {
+    "$date": "2024-03-14T03:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de27b6da46f239bdeb0281"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de584dda46f239bdeb16e5"
+  },
+  "date": {
+    "$date": "2024-03-21T00:46:42.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    },
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2769da46f239bdeb027d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5923da46f239bdeb172d"
+  },
+  "date": {
+    "$date": "2024-03-08T07:50:18.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de27b6da46f239bdeb0281"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de596eda46f239bdeb1757"
+  },
+  "date": {
+    "$date": "2024-03-27T10:51:25.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de27b6da46f239bdeb0281"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5989da46f239bdeb1770"
+  },
+  "date": {
+    "$date": "2024-02-28T17:51:42.738Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de59fada46f239bdeb17da"
+  },
+  "date": {
+    "$date": "2024-03-29T15:53:51.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de271dda46f239bdeb0279"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a22da46f239bdeb17fa"
+  },
+  "date": {
+    "$date": "2024-03-09T00:54:32.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de27b6da46f239bdeb0281"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a39da46f239bdeb180b"
+  },
+  "date": {
+    "$date": "2024-02-28T11:00:42.388Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de26c5da46f239bdeb0275"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a4fda46f239bdeb181d"
+  },
+  "date": {
+    "$date": "2024-04-19T08:55:05.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de2769da46f239bdeb027d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a60da46f239bdeb182d"
+  },
+  "date": {
+    "$date": "2024-01-17T07:55:27.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de262dda46f239bdeb026d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5a71da46f239bdeb183e"
+  },
+  "date": {
+    "$date": "2024-01-29T00:55:44.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    },
+    {
+      "$oid": "65de24d0da46f239bdeb025b"
+    },
+    {
+      "$oid": "65de2466da46f239bdeb0253"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de271dda46f239bdeb0279"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5ab6da46f239bdeb1853"
+  },
+  "date": {
+    "$date": "2024-01-26T03:00:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de581dda46f239bdeb1684"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de23c3da46f239bdeb0247"
+    },
+    {
+      "$oid": "65de2436da46f239bdeb0250"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de262dda46f239bdeb026d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c7c09668141d650ee5d"
+  },
+  "date": {
+    "$date": "2024-02-22T02:12:52.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 2,
+  "employee": {
+    "$oid": "65de27edda46f239bdeb0285"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c8909668141d650ee6d"
+  },
+  "date": {
+    "$date": "2024-02-13T11:13:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 0,
+  "employee": null,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6c9d09668141d650ee7d"
+  },
+  "date": {
+    "$date": "2024-03-13T08:13:13.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    }
+  ],
+  "status": 0,
+  "employee": null,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cba09668141d650ee91"
+  },
+  "date": {
+    "$date": "2024-03-04T14:13:33.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    },
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    },
+    {
+      "$oid": "65de2506da46f239bdeb025e"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    }
+  ],
+  "status": 0,
+  "employee": null,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6cf409668141d650ef0b"
+  },
+  "date": {
+    "$date": "2024-01-19T08:14:44.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2498da46f239bdeb0256"
+    },
+    {
+      "$oid": "65de2403da46f239bdeb024d"
+    },
+    {
+      "$oid": "65de238cda46f239bdeb0240"
+    },
+    {
+      "$oid": "65de23e5da46f239bdeb024a"
+    },
+    {
+      "$oid": "65de2365da46f239bdeb023d"
+    }
+  ],
+  "status": 0,
+  "employee": null,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6d2309668141d650ef7c"
+  },
+  "date": {
+    "$date": "2024-01-14T02:15:00.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2342da46f239bdeb0238"
+    }
+  ],
+  "status": 0,
+  "employee": null,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de6d5609668141d650ef9c"
+  },
+  "date": {
+    "$date": "2024-02-17T02:16:32.000Z"
+  },
+  "customer": {
+    "$oid": "65de6c4f09668141d650eddb"
+  },
+  "service": [
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    },
+    {
+      "$oid": "65de2322da46f239bdeb0235"
+    }
+  ],
+  "status": 0,
+  "employee": null,
   "__v": 0
 }]

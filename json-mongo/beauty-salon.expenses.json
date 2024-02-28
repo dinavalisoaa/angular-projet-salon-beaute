@@ -1,33 +1,99 @@
 [{
   "_id": {
-    "$oid": "65bbcf712943bcc5f0d2b74e"
+    "$oid": "65de29fbda46f239bdeb02ae"
   },
   "date": {
-    "$date": "2024-01-31T00:00:00.000Z"
+    "$date": "2024-02-20T00:00:00.000Z"
   },
   "description": "Salaire",
-  "amount": 12999,
+  "amount": 90,
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "65bbcf7f2943bcc5f0d2b751"
+    "$oid": "65de2a17da46f239bdeb02b1"
   },
   "date": {
-    "$date": "2024-02-19T00:00:00.000Z"
+    "$date": "2024-02-15T00:00:00.000Z"
   },
   "description": "Loyer",
-  "amount": 130,
+  "amount": 500000,
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "65bbd3ef2943bcc5f0d2b799"
+    "$oid": "65de2a2eda46f239bdeb02b4"
   },
   "date": {
     "$date": "2024-02-06T00:00:00.000Z"
   },
-  "description": "Transport",
-  "amount": 12999,
+  "description": "Materiel",
+  "amount": 130000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de2a51da46f239bdeb02b7"
+  },
+  "date": {
+    "$date": "2024-02-29T00:00:00.000Z"
+  },
+  "description": "Piece",
+  "amount": 200000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de2a5bda46f239bdeb02ba"
+  },
+  "date": {
+    "$date": "2024-02-24T00:00:00.000Z"
+  },
+  "description": "JIRAMA",
+  "amount": 160000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de2da1da46f239bdeb02f3"
+  },
+  "date": {
+    "$date": "2024-01-16T00:00:00.000Z"
+  },
+  "description": "Salaire",
+  "amount": 50000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de2ff1da46f239bdeb0344"
+  },
+  "date": {
+    "$date": "2024-01-10T00:00:00.000Z"
+  },
+  "description": "Loyer",
+  "amount": 600000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de3002da46f239bdeb0347"
+  },
+  "date": {
+    "$date": "2024-01-05T00:00:00.000Z"
+  },
+  "description": "Jirama",
+  "amount": 312900,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65de5ae7da46f239bdeb18b6"
+  },
+  "date": {
+    "$date": "2024-02-08T00:00:00.000Z"
+  },
+  "description": "Imprevu",
+  "amount": 500000,
   "__v": 0
 }]
