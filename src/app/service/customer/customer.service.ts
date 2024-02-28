@@ -52,6 +52,7 @@ export class CustomerService {
     }
 
     loginCustomer(data: Customer, next: (res: any) => any) {
+        loadPage();
         this.http.post(`${apiUrl}/api/customer/connection`, data).subscribe(
             CheckError((res) => {
                 const data: TokenObject = {};
@@ -65,6 +66,7 @@ export class CustomerService {
                     'sessionId',
                     JSON.stringify(data)
                 );
+                closeLoad();
                 next(res);
             })
         );
