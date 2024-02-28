@@ -28,7 +28,6 @@ export class ServiceService {
         this.http.get(`${apiUrl}/api/services` + query).subscribe(
             CheckError((res) => {
                 next(res);
-                closeLoad();
 
                 close();
             })

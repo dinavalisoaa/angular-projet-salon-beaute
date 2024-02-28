@@ -70,7 +70,6 @@ export class ManagerService {
             CheckError((res) => {
                 next(res);
                 closeLoad();
-
                 close();
             })
         );
