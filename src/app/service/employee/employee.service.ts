@@ -56,7 +56,6 @@ export class EmployeeService {
     }
 
     loginEmployee(data: Employee, next: (res: any) => any) {
-        loadPage();
 
         this.http.post(`${apiUrl}/api/employee/connection`, data).subscribe(
             CheckError((res) => {
@@ -71,7 +70,6 @@ export class EmployeeService {
                     JSON.stringify(data)
                 );
                 next(res);
-                closeLoad();
 
                 close();
             })

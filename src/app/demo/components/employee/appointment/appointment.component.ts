@@ -115,7 +115,7 @@ export class AppointmentComponent implements OnInit {
         });
     }
     getAppoints() {
-        this.appointmentService.getAppointment('', { status: 0 }, (res) => {
+        this.appointmentService.getAppointment2('', { status: 0 }, (res) => {
             this.appointments = res;
             console.log(res);
         });
@@ -161,8 +161,7 @@ export class AppointmentComponent implements OnInit {
     }
 
     onStatusChange(event: any) {
-        console.log('KKKKKKKKKK' + event.value);
-        this.appointmentService.getAppointment(
+        this.appointmentService.getAppointment2(
             '',
             this.currentFilter,
             (res) => {
@@ -263,7 +262,7 @@ export class AppointmentComponent implements OnInit {
         filter.date = this.date;
         this.currentFilter = filter;
 
-        this.appointmentService.getAppointment('', filter, (res) => {
+        this.appointmentService.getAppointment2('', filter, (res) => {
             this.appointments = res;
             this.hideDialog();
         });
@@ -320,10 +319,7 @@ export class AppointmentComponent implements OnInit {
             // if (this.draggedProduct)
             {
                 console.log(sourceList.length);
-                // sourceList.forEach(element => {
-                //     console.log(element);
-                // });
-                // console.log(sourceList+"111<<<");
+
 
                 let draggedProductIndex = this.findIndexInSource(
                     draggedProduct,

@@ -33,7 +33,7 @@ import { AuthGuardPermission } from '../manager/auth-permission';
                 component: AppLayoutComponent,
                 children: [
                     {
-                        path: 'dashbord',
+                        path: 'dashboard',
                         canActivate: [AuthGuardPermission],
                         data: {
                             role: 'EMP',

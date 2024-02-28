@@ -14,17 +14,17 @@ const apiUrl = API_URL;
 export class AppointmentService {
     constructor(private http: HttpClient) {}
     getAppointment2(query: any, sort: Appointment, next: (res: any) => any) {
-        // loadPage();
-
+        loadPage();
         this.http.post(`${apiUrl}/api/appointments` + query, sort).subscribe(
             CheckError((res) => {
                 next(res);
-                // Swal.close();
-
-                return res;
+                Swal.close();
+                close();
+                // return res;
             })
         );
     }
+
     getAppointment(query: any, sort: Appointment, next: (res: any) => any) {
         // loadPage();
         this.http.post(`${apiUrl}/api/appointments` + query, sort).subscribe(

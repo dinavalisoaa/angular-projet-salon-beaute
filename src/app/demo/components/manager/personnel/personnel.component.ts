@@ -83,12 +83,6 @@ export class PersonnelComponent implements OnInit {
         this.fetchPersonnel();
         this.fetchSexes();
 
-        // if(this.personnel != null){
-        //     console.log("diff null" + this.personnel.schedule.entry);
-        //     this.entryTimePart = this.utilService.getTimeFromDate(this.personnel.schedule.entry);
-        // }
-        ///////////////////////////////////////////////////////////
-
         this.cols = [
             { field: 'product', header: 'Product' },
             { field: 'price', header: 'Price' },

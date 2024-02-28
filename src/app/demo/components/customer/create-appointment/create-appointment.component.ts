@@ -64,9 +64,7 @@ export class CreateAppointmentComponent implements OnInit {
         //     this.servicesFilled = this.utilService.getCart().service;
         // }
 
-        idtab.forEach((element) => {
-            console.log(this.getCurrence(element) + '>>');
-        });
+
         return [...new Set(array.map((item) => item._id))];
     }
 
@@ -277,8 +275,6 @@ export class CreateAppointmentComponent implements OnInit {
             this.servicesFilled = this.utilService.getCart().service;
             this.date=new Date(this.utilService.getCart().date.toString().split("T")[0]);
         }
-        console.log(this.servicesFilled + '.....<<<<');
-        console.log(this.getDistinct(this.servicesFilled) + '.....2<<<<');
         this.showService = this.getDistinct(this.servicesFilled);
         this.total = this.totalize();
 

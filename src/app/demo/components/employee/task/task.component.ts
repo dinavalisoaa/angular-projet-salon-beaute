@@ -240,7 +240,6 @@ export class TaskComponent implements OnInit {
     }
 
     onStatusChange(event: any) {
-        console.log('KKKKKKKKKK' + event.value);
         this.appointmentService.getAppointment(
             '',
             this.currentFilter,

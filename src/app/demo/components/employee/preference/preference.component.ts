@@ -152,7 +152,6 @@ export class PreferenceComponent implements OnInit {
         return res;
     }
     onStatusChange(event: any) {
-        console.log('KKKKKKKKKK' + event.value);
         this.appointmentService.getAppointment(
             '',
             this.currentFilter,
@@ -250,7 +249,7 @@ export class PreferenceComponent implements OnInit {
         if (this.selectedCustomers.length != 0) {
             filter.customer = this.selectedCustomers;
         }
-        // console.log("KKKKKKKKKKKKKKKKK"+this.selectedCustomers.length);
+
         filter.date = this.date;
         this.currentFilter = filter;
 
@@ -312,10 +311,7 @@ export class PreferenceComponent implements OnInit {
             // if (this.draggedProduct)
             {
                 console.log(sourceList.length);
-                // sourceList.forEach(element => {
-                //     console.log(element);
-                // });
-                // console.log(sourceList+"111<<<");
+
 
                 let draggedProductIndex = this.findIndexInSource(
                     draggedProduct,
@@ -323,7 +319,6 @@ export class PreferenceComponent implements OnInit {
                 );
 
                 targetList = [...(targetList as Product[]), draggedProduct];
-                // console.log("..."+targetList.length+"...");
 
                 sourceList = sourceList?.filter(
                     (_val, i) => i != draggedProductIndex

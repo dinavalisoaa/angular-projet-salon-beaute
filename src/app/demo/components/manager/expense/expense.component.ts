@@ -46,7 +46,6 @@ export class ExpenseComponent implements OnInit {
         // console.log(this.expenses)
     }
     myUploader(event: any, expense?: any) {
-        console.log('onUpload() START');
 
         for (let file of event.files) {
             var reader = new FileReader();
@@ -54,7 +53,6 @@ export class ExpenseComponent implements OnInit {
             reader.onload = function () {
                 expense.illustration = reader.result;
             };
-            console.log('FILE TO BE UPLOADED: ', file);
             //   this.uploadedFiles.push(file);
         }
         // this.expense.illustration=
@@ -142,7 +140,6 @@ export class ExpenseComponent implements OnInit {
             if(this.expense.date){
                 let year=this.expense.date.toString().split("-")[0];
                 let month=this.expense.date.toString().split("-")[1];
-                console.log(this.expenses[0].date?.toString().split("-")[0]);
                 this.expenses=this.expenses.filter((val,index)=>val.date?.toString().split("-")[0]==year && val.date?.toString().split("-")[1]==month);
 
             }
