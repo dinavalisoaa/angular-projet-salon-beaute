@@ -5,6 +5,7 @@ import { Manager, TokenObject } from 'src/app/models/models';
 import { CheckError } from '../util-service/error';
 import { UtilService } from '../util-service/util.service';
 import { API_URL } from '../util-service/util.service';
+import { closeLoad, loadPage } from '../util-service/load';
 const apiUrl = API_URL;
 @Injectable({
     providedIn: 'root',
@@ -30,22 +31,27 @@ export class ManagerService {
     }
 
     getFinancialReview(year: any ,next: (res: any) => any) {
+        loadPage();
         this.http
             .get(`${apiUrl}/api/dashboard/financial-review/${year}/per/month`)
            .subscribe(
             CheckError((res) => {
                 next(res);
+                closeLoad();
                 close();
             })
         );
     }
 
     getTotalAmount(next: (res: any) => any) {
+        loadPage();
+
         this.http
             .get(`${apiUrl}/api/dashboard/amount/total`)
            .subscribe(
             CheckError((res) => {
                 next(res);
+                closeLoad();
                 close();
             })
         );
@@ -56,12 +62,15 @@ export class ManagerService {
         Object.keys(query).forEach(key => {
             date = date.append(key, query[key]);
         });
+        loadPage();
 
         this.http
             .get(`${apiUrl}/api/dashboard/sales/per/day`, { params: date })
            .subscribe(
             CheckError((res) => {
                 next(res);
+                closeLoad();
+
                 close();
             })
         );
