@@ -22,7 +22,6 @@ export class NotificationService {
             CheckError((res) => {
                 next(res);
                 closeLoad();
-                close();
 
             })
         );

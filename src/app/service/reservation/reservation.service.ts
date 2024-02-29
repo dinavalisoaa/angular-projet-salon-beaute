@@ -21,7 +21,6 @@ export class ReservationService {
             CheckError((res) => {
                 next(res);
                 closeLoad();
-                close();
             })
         );
     }
@@ -33,7 +32,6 @@ export class ReservationService {
                 next(res);
                 closeLoad();
 
-                close();
             })
         );
     }
