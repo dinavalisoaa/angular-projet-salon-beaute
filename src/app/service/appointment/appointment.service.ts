@@ -19,7 +19,6 @@ export class AppointmentService {
             CheckError((res) => {
                 next(res);
                 Swal.close();
-                close();
                 // return res;
             })
         );
@@ -44,7 +43,6 @@ export class AppointmentService {
             .subscribe(
                 CheckError((res) => {
                     next(res);
-                    // close();
                 })
             );
     }

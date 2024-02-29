@@ -28,7 +28,6 @@ export class CustomerService {
                 next(res);
             closeLoad();
 
-                close();
 
             })
         );
@@ -126,7 +125,7 @@ export class CustomerService {
             .subscribe( CheckError((res) => {
                 next(res);
                 closeLoad();
-                close();
+
 
             })
         );
