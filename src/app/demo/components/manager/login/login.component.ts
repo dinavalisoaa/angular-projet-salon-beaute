@@ -49,7 +49,7 @@ export class LoginComponent {
         };
         this.managerService.loginManager(data, (res) => {
             console.log(this.utilService.getToken());
-            this.utilService.navigateTo('/manager/service');
+            this.utilService.navigateTo('/manager/reservation');
         });
     }
 }
