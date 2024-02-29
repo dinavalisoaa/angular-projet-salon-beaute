@@ -26,8 +26,11 @@ export class ServiceAvatarComponent implements OnInit {
         this.illustrations = this.getDistinct(this.services).filter(
             (val, index) => index < 5
         );
-        if (this.services != undefined) {
+        if (this.services != undefined &&this.services?.length>5 ) {
             this.autre = (this.services?.length - 5)+'+';
+        }else{
+            // this.autre = (this.services?.length)+'+';
+
         }
         // this.services=this.getDistinct(this.services);
     }
