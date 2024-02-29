@@ -14,7 +14,7 @@
             overflow: scroll;
         }
     </style>
-    <div class="col-12 lg:col-4">
+    <div class="col-12 lg:col-5">
         <div class="card z-3">
             <h3>Montant de commission:</h3>
             <span [class]="'customer-badge status-proposal'" style="font-size: 20px;">{{uService.format(commission)}}
@@ -29,8 +29,8 @@
             <div id="zone_drop" class="p-2 border-2 surface-border border-round w-20rem" pDroppable
                (onDrop)="dropTodo()" style="background-color: #fff1e0">
                 <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
-                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Tache à
-                        effectuée({{appointTodo.length}})</strong></p>
+                <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>Tâches à
+                        effectuer ({{appointTodo.length}})</strong></p>
                 <app-card-task [icon]="beginIcon" *ngFor="let appointment of appointTodo" [appointment]="appointment"
                     pDraggable (onDragStart)="dragStartTodo(appointment)" (onDragEnd)="dragEndTodo()"></app-card-task>
             </div>
@@ -39,7 +39,7 @@
                 style="height:500px;overflow: scroll;scrollbar-width: thin;background-color: #e0f1ff;">
                 <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
                 <p class="text-center surface-border border-bottom-1 text-bold" style=""><strong>En
-                        traitement({{appointDo.length}})</strong></p>
+                        traitement ({{appointDo.length}})</strong></p>
                 <app-card-task *ngFor="let appointment of appointDo" [appointment]="appointment" [icon]="loadIcon"
                     pDraggable (onDragStart)="dragStartDo(appointment)" (onDragEnd)="dragEndDo()"></app-card-task>
 
@@ -48,13 +48,12 @@
                 (onDrop)="dropDone()" style="height:500px;overflow: scroll;background-color: #f3f7fb;">
                 <!-- <ul class="list-none flex flex-column gap-2 p-0 m-0"> -->
                 <p class="text-center surface-border border-bottom-1 text-bold" style="">
-                    <strong>Fini({{appointDone.length}})</strong>
+                    <strong>Finis ({{appointDone.length}})</strong>
                 </p>
                 <app-card-task *ngFor="let appointment of appointDone" [appointment]="appointment" [icon]="successIcon"
                     pDraggable (onDragStart)="dragStartDone(appointment)" (onDragEnd)="dragEndDone()"></app-card-task>
 
             </div>
-
 
         </div>
 

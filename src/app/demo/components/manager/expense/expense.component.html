@@ -14,7 +14,7 @@
 <p-table #dt [value]="expenses" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['description','country.description','representative.description','status']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Afficher {first} de {last} à {totalRecords} éléments" [(selection)]="selectedExpenses" selectionMode="multiple" [rowHover]="true" dataKey="id">
     <ng-template pTemplate="caption">
         <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-            <h5 class="m-0">Depenses</h5>
+            <h5 class="m-0">Dépenses</h5>
             <span class="block mt-2 md:mt-0 p-input-icon-left">
 
             <button pButton pRipple label="Recherche" class="p-button-danger" (click)="showDialogFilter()"
@@ -32,7 +32,7 @@
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
             <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
-            <th pSortableColumn="amount">Amount <p-sortIcon field="amount"></p-sortIcon></th>
+            <th pSortableColumn="amount">Montant <p-sortIcon field="amount"></p-sortIcon></th>
             <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
             <th></th>
         </tr>
@@ -49,7 +49,7 @@
             </td>
 
             <td style="width:20%; min-width:10rem;">
-                <span class="p-column-title">Amount</span>
+                <span class="p-column-title">Montant</span>
                 {{utilService.format(expense.amount)}}Ar
 
             </td>
@@ -85,7 +85,7 @@
 
         </div>
         <div class="field">
-            <label for="description">Amount</label>
+            <label for="description">Montant</label>
             <input type="number" pInputText id="amount" [(ngModel)]="expense.amount" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !expense.amount}"/>
             <small class="ng-dirty ng-invalid" *ngIf="submitted && !expense.amount">Amount is required.</small>
 
@@ -104,7 +104,7 @@
 <p-dialog [(visible)]="filtreDialog" [style]="{width: '450px'}" header="Search for a expense" [modal]="true" class="p-fluid">
     <ng-template pTemplate="content">
         <div class="field">
-            <label for="description">Descriptions</label>
+            <label for="description">Description</label>
             <input type="text" pInputText id="description" [(ngModel)]="expense.description"     [ngClass]="{'ng-invalid ng-dirty' : submitted && !expense.description}"/>
         </div>
         <input type="hidden" pInputText id="_id" [(ngModel)]="expense._id" />
@@ -115,7 +115,7 @@
 
         </div>
         <div class="field">
-            <label for="description">Amount</label>
+            <label for="description">Montant</label>
             <input type="number" pInputText id="amount" [(ngModel)]="expense.amount"     [ngClass]="{'ng-invalid ng-dirty' : submitted && !expense.amount}"/>
 
         </div>

@@ -9,7 +9,7 @@
         <div class="card">
             <h3>
 
-                Rendez-vous selon preférences clients({{appointments.length}})</h3>
+                Rendez-vous selon preférences clients ({{appointments.length}})</h3>
             <p-dataView #dv [value]="appointments" [paginator]="true" [rows]="9" filterBy="name" [sortField]="sortField"
                 [sortOrder]="sortOrder" layout="grid">
                 <ng-template pTemplate="header">
@@ -138,9 +138,9 @@
 <p-dialog [(visible)]="dialog" [style]="{width: '450px',height:'600px'}" header="Recherche " [modal]="true"
     class="p-fluid">
     <p-autoComplete [(ngModel)]="selectedCustomers" [suggestions]="filteredCustomers"
-        (completeMethod)="filterCustomer($event)" field="name" [dropdown]="true" placeholder="  Selectionné un client" placeholder=" Selectionné un client">
+        (completeMethod)="filterCustomer($event)" field="name" [dropdown]="true" placeholder="  Selectionnez un client" placeholder=" Selectionnez un client">
     </p-autoComplete>
-
+    <br/>
     <div class="field">
         <label for="name">Services</label>
         <p-multiSelect class="field" [options]="services" [(ngModel)]="selectedServices" defaultLabel="Select a Service"
@@ -150,7 +150,7 @@
                     <div>{{option.name}}</div>
                 </div>
                 <div *ngIf="!selectedServices || selectedServices.length === 0" class="country-placeholder">
-                    Selectionné un ou plusieur services
+                    Selectionnez un ou plusieurs services
                 </div>
             </ng-template>
             <ng-template let-country pTemplate="item">

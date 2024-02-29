@@ -6,12 +6,12 @@
             <p-table  #dt [value]="moves" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Afficher {first} de {last} à {totalRecords} éléments" selectionMode="multiple" [rowHover]="true" dataKey="id">
                 <ng-template pTemplate="caption">
                     <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                        <h5 class="m-0">Historique des mouvements de compte</h5>
+                        <h5 class="m-0">Historique des mouvements du compte</h5>
 
                     </div>
                     <br/>
                     <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                        <h5 class="m-0">Total des entrees:<mark>{{uService.format(credit)}}</mark>
+                        <h5 class="m-0">Total des entrées:<mark>{{uService.format(credit)}}</mark>
                         </h5>
                         <h5 class="m-0">Total des sorties:<mark>{{uService.format(debit)}}</mark></h5>
                         <h5 class="m-0"></h5>
@@ -25,7 +25,7 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th pSortableColumn="name">Description <p-sortIcon field="name"></p-sortIcon></th>
-                        <th pSortableColumn="entry">Entree <p-sortIcon field="entry"></p-sortIcon></th>
+                        <th pSortableColumn="entry">Entrée <p-sortIcon field="entry"></p-sortIcon></th>
                         <th pSortableColumn="out">Sortie <p-sortIcon field="out"></p-sortIcon></th>
                         <th pSortableColumn="commission">Date <p-sortIcon field="commission"></p-sortIcon></th>
                     </tr>
@@ -33,19 +33,19 @@
                 <ng-template pTemplate="body" let-move>
                     <tr>
                         <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">Name</span>
+                            <span class="p-column-title">Description</span>
                            {{move.description}}
                         </td>
                         <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">Entry</span>
+                            <span class="p-column-title">Entrée</span>
                             {{uService.format(move.credit)}}Ar
                         </td>
 
-                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">Out</span>
+                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">Sortie</span>
                             {{uService.format(move.debit)}}Ar
                         </td>
                         <td style="width:14%; min-width:8rem;">
-                            <span class="p-column-title">Duration</span>
+                            <span class="p-column-title">Date</span>
                             {{uService.toDateFr(move.date)}}
 
                         </td>
