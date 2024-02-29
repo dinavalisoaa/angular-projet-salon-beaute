@@ -243,7 +243,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Accueil',
                 items: [
-                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/employee/dashbord'] }
+                    { label: 'Tableau de bord', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/employee/dashboard'] }
                 ]
             },
             {
