@@ -11,7 +11,7 @@
 
         <div class="card">
             <div class="">
-                <div class="font-medium text-3xl text-900 mb-3">Service choisie</div>
+                <div class="font-medium text-3xl text-900 mb-3">Services choisis</div>
 
                 <div class="text-500 mb-5">
                     <ng-container *ngIf="servicesFilled.length>0"> <button (click)="saveNoPay()" pButton pRipple
@@ -74,7 +74,7 @@
         <p-calendar [(ngModel)]="date" [inline]="true" [showTime]="true" [required]="true">
             <ng-template pTemplate="header">
                 <div class="text-center">
-                    <h2> Date de rendez-vous</h2>
+                    <h2> Date du rendez-vous</h2>
 
                 </div>
                 <div class="text" style="float:right;">
