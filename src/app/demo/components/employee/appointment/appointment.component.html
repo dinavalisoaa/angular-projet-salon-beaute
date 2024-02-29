@@ -138,7 +138,7 @@
     <p-autoComplete [(ngModel)]="selectedCustomers" [suggestions]="filteredCustomers"
         (completeMethod)="filterCustomer($event)" field="name" [dropdown]="true">
     </p-autoComplete>
-
+    <br/>
     <div class="field">
         <label for="name">Services</label>
         <p-multiSelect class="field" [options]="services" [(ngModel)]="selectedServices" defaultLabel="Select a Service"
